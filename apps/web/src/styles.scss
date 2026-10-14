@@ -9,6 +9,13 @@ textarea { min-height: 8rem; resize: vertical; }
 button { cursor: pointer; background: #185745; color: white; }
 button:disabled { opacity: 0.6; cursor: wait; }
 :focus-visible { outline: 3px solid #bc7400; outline-offset: 3px; }
+.resource-panel { max-width: 48rem; margin: 1rem auto; padding: 1.5rem; background: white; border: 1px solid #c8d6ce; border-radius: 1rem; }
+.resource-panel fieldset { display: grid; gap: 0.7rem; min-width: 0; border: 1px solid #c8d6ce; padding: 1rem; }
+.resource-panel input, .resource-panel textarea, .resource-panel select { width: 100%; min-width: 0; }
+.resource-panel textarea { min-height: 5rem; }
+select { font: inherit; padding: 0.7rem; }
+.source-url { overflow-wrap: anywhere; }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
 [role='alert'] { color: #8a2020; }
 article { border-block-end: 1px solid #c8d6ce; padding-block: 1rem; margin-bottom: 1rem; }
 @media (max-width: 40rem) { .account-panel { padding: 1rem; margin: 1rem 0; } header { gap: 1rem; flex-wrap: wrap; } }

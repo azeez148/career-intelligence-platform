@@ -25,6 +25,11 @@ describe('browser authentication', () => {
       expect(safeReturnUrl(url)).toBe('/profile');
     }
     expect(safeReturnUrl('/sessions')).toBe('/sessions');
+    expect(safeReturnUrl('/companies/new')).toBe('/companies/new');
+    expect(safeReturnUrl('/preferences/01234567-89ab-cdef-0123-456789abcdef/edit')).toContain('/preferences/');
+    for (const path of ['/companies/../login', '/companies//evil', '/preferences/bad/edit', '/companies/%2f%2fevil']) {
+      expect(safeReturnUrl(path)).toBe('/profile');
+    }
   });
 
   it('never refreshes permission failures', async () => {
@@ -71,10 +76,10 @@ describe('browser authentication', () => {
     controller.expectNone('/api/v1/auth/refresh');
   });
 
-  it('uses the rotated CSRF value when retrying a mutation', async () => {
-    const result = firstValueFrom(http.patch('/api/v1/users/me/profile', { display_name: 'Updated' },
-      { headers: { 'X-XSRF-TOKEN': 'previous' } }));
-    controller.expectOne('/api/v1/users/me/profile').flush({}, { status: 401, statusText: 'Unauthorized' });
+  it.each(['/api/v1/users/me/profile', '/api/v1/companies/id', '/api/v1/preferences/id'])('uses rotated CSRF when retrying %s', async (path) => {
+    const result = firstValueFrom(http.request(path.includes('/users/') ? 'PATCH' : 'PUT', path,
+      { body: { name: 'Updated' }, headers: { 'X-XSRF-TOKEN': 'previous' } }));
+    controller.expectOne(path).flush({}, { status: 401, statusText: 'Unauthorized' });
     await Promise.resolve();
     controller.expectOne('/api/v1/users/me').flush({}, { status: 401, statusText: 'Unauthorized' });
     await new Promise(resolve => setTimeout(resolve, 0));
@@ -83,7 +88,7 @@ describe('browser authentication', () => {
     vi.spyOn(TestBed.inject(HttpXsrfTokenExtractor), 'getToken').mockReturnValue('rotated');
     controller.expectOne('/api/v1/auth/refresh').flush({});
     await new Promise(resolve => setTimeout(resolve, 0));
-    const retry = controller.expectOne('/api/v1/users/me/profile');
+    const retry = controller.expectOne(path);
     expect(retry.request.headers.get('X-XSRF-TOKEN')).toBe('rotated');
     retry.flush({});
     await result;

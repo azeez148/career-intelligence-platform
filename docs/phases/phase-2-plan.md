@@ -203,4 +203,4 @@ The ADR will explain private company ownership versus a global directory, exact-
 
 Operations docs will cover permission rollout to customized roles, explicit URL/port limitations, unresolved company identities, unverified sources, last-write-wins edits, data deletion, migration rollback risks, and isolated test cleanup. The phase report will list files changed, API/database changes, test evidence, security results, outstanding limitations, and the Phase 3 dependency boundary.
 
-**Approval requested for this plan only. Implementation starts after explicit approval of Phase 2.** After implementation and verification, stop before Phase 3.
+**Approved and implemented.** Local verification is complete; hosted verification is recorded in the Phase 2 evidence document. Stop before Phase 3.

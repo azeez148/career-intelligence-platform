@@ -1,6 +1,6 @@
 # Career Intelligence Platform
 
-Angular → FastAPI → PostgreSQL, with Phase 1 accounts, profiles, revocable browser sessions, and database permissions. No job-search functionality is included yet. [MASTER_PLAN.md](MASTER_PLAN.md) governs engineering scope and phase approvals.
+Angular → FastAPI → PostgreSQL, with accounts, revocable browser sessions, database permissions, private companies, and multiple preference profiles. URLs remain unverified; job discovery and matching are not implemented yet. [MASTER_PLAN.md](MASTER_PLAN.md) governs engineering scope and phase approvals.
 
 ## Start locally with Docker
 
@@ -19,11 +19,11 @@ API: <http://127.0.0.1:8000/docs>, `/api/v1/health/live`, and `/api/v1/health/re
 - Python 3.13.16 in containers/CI (also tested locally on 3.13.15); uv 0.12.24; Node 22.22.3; Angular 22.2.2.
 - Backend: from `apps/api`, `uv sync --locked`, then `uv run --no-sync pytest -q`. Docker is required for the integration tests. `pytest -m "not integration"` is the explicit unit-only alternative.
 - Frontend: from `apps/web`, `npm ci`, `npm run lint`, `npm test`, and `npm run build`.
-- Browser: start the isolated test stack described in [testing](docs/testing/phase-1.md), then run `npx playwright install chromium` and `npm run e2e` from `apps/web`.
+- Browser: start the isolated test stack described in [testing](docs/testing/phase-2.md), then run `npx playwright install chromium` and `npm run e2e` from `apps/web`.
 - Never refresh lockfiles or upgrade dependencies implicitly.
 
 See [local operations](docs/operations/local-development.md), [architecture](docs/architecture/overview.md), [design decisions](docs/decisions/0001-foundation.md), [Phase 0 scope and status](docs/phases/phase-0.md), and [verification evidence](docs/testing/phase-0.md).
 
-See [Phase 1 scope/status](docs/phases/phase-1.md), [authentication design](docs/decisions/0002-authentication-sessions-rbac.md), and [verification evidence](docs/testing/phase-1.md). Phase 2 requires separate explicit approval. This is not a production release.
+See [Phase 2 scope/status](docs/phases/phase-2.md), [company/preference design](docs/decisions/0003-companies-preferences.md), and [verification evidence](docs/testing/phase-2.md). Phase 3 requires a separate approved plan. This is not a production release.
 
-For commands, browser actions, and expected results after each step, follow the [Phase 1 local checklist](docs/testing/phase-1-local-check.md).
+For commands, browser actions, and expected results after each step, follow the [Phase 2 local checklist](docs/testing/phase-2-local-check.md). The [Phase 1 checklist](docs/testing/phase-1-local-check.md) covers initial secrets and account setup.

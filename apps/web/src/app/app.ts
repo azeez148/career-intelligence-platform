@@ -16,7 +16,7 @@ export class App {
   readonly busy = signal(false);
   constructor() {
     effect(() => {
-      if (this.auth.ready() && !this.auth.user() && /^\/(profile|sessions)/.test(this.router.url)) {
+      if (this.auth.ready() && !this.auth.user() && /^\/(profile|sessions|companies|preferences)(\/|\?|$)/.test(this.router.url)) {
         void this.router.navigateByUrl('/login');
       }
     });

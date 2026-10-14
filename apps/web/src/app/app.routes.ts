@@ -3,6 +3,12 @@ import { Foundation } from './foundation';
 import { authenticated, guest } from './auth/auth.guards';
 
 export const routes: Routes = [
+  { path: 'companies', loadComponent: () => import('./companies/company-list').then(m => m.CompanyList), canActivate: [authenticated], data: { permission: 'companies:read:self' }, title: 'Your companies' },
+  { path: 'companies/new', loadComponent: () => import('./companies/company-editor').then(m => m.CompanyEditor), canActivate: [authenticated], data: { permission: 'companies:create:self' }, title: 'Add company' },
+  { path: 'companies/:id/edit', loadComponent: () => import('./companies/company-editor').then(m => m.CompanyEditor), canActivate: [authenticated], data: { permission: 'companies:update:self' }, title: 'Edit company' },
+  { path: 'preferences', loadComponent: () => import('./preferences/preference-list').then(m => m.PreferenceList), canActivate: [authenticated], data: { permission: 'preferences:read:self' }, title: 'Your preference profiles' },
+  { path: 'preferences/new', loadComponent: () => import('./preferences/preference-editor').then(m => m.PreferenceEditor), canActivate: [authenticated], data: { permission: 'preferences:create:self' }, title: 'Add preference profile' },
+  { path: 'preferences/:id/edit', loadComponent: () => import('./preferences/preference-editor').then(m => m.PreferenceEditor), canActivate: [authenticated], data: { permission: 'preferences:update:self' }, title: 'Edit preference profile' },
   { path: 'login', loadComponent: () => import('./auth/credentials').then(m => m.Credentials), canActivate: [guest], title: 'Sign in' },
   { path: 'register', loadComponent: () => import('./auth/credentials').then(m => m.Credentials), canActivate: [guest], data: { registration: true }, title: 'Create account' },
   { path: 'profile', loadComponent: () => import('./auth/profile').then(m => m.Profile), canActivate: [authenticated], data: { permission: 'profile:read:self' }, title: 'Your profile' },

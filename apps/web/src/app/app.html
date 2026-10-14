@@ -4,6 +4,8 @@
     @if (auth.user()) {
       <a routerLink="/profile">Profile</a>
       <a routerLink="/sessions">Sessions</a>
+      @if (auth.user()?.permissions?.includes('companies:read:self')) { <a routerLink="/companies">Companies</a> }
+      @if (auth.user()?.permissions?.includes('preferences:read:self')) { <a routerLink="/preferences">Preferences</a> }
       <button (click)="logout()" [disabled]="busy()">Sign out</button>
     } @else {
       <a routerLink="/login">Sign in</a>
