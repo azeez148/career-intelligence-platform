@@ -1,0 +1,14 @@
+.git
+.env
+.tools
+.artifacts
+**/node_modules
+**/dist
+**/.angular
+**/.venv
+**/__pycache__
+**/test-results
+**/playwright-report
+**/.pytest_cache
+**/.mypy_cache
+**/.ruff_cache

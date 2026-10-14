@@ -101,6 +101,12 @@ def test_timeouts_are_bounded() -> None:
         )
 
 
+def test_invalid_configuration_does_not_print_credentials() -> None:
+    with pytest.raises(ValidationError) as failure:
+        Settings(database_url="postgresql://user:private-password@host/db", _env_file=None)
+    assert "private-password" not in str(failure.value)
+
+
 def test_structured_logging_excludes_unapproved_fields() -> None:
     record = logging.LogRecord("app", logging.INFO, "", 0, "request_completed", (), None)
     record.request_id = "abc"

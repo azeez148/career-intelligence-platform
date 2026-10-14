@@ -1,0 +1,5 @@
+header, main, footer { max-width: 64rem; margin: auto; padding: 1.5rem; }
+header { display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+.phase { font-size: 0.8rem; font-weight: 400; color: #475569; }
+main { min-height: 65vh; padding-top: 4rem; }
+footer { color: #475569; font-size: 0.85rem; }

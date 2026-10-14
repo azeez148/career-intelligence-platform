@@ -118,24 +118,24 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "alembic", specifier = ">=1.14,<2" },
-    { name = "asyncpg", specifier = ">=0.30,<1" },
-    { name = "fastapi", specifier = ">=0.115,<1" },
-    { name = "httpx", specifier = ">=0.28,<1" },
-    { name = "pydantic", specifier = ">=2,<3" },
-    { name = "pydantic-settings", specifier = ">=2,<3" },
-    { name = "sqlalchemy", extras = ["asyncio"], specifier = ">=2.0,<2.1" },
-    { name = "uvicorn", specifier = ">=0.34,<1" },
+    { name = "alembic", specifier = "==1.20.0" },
+    { name = "asyncpg", specifier = "==0.32.0" },
+    { name = "fastapi", specifier = "==0.143.0" },
+    { name = "httpx", specifier = "==0.28.1" },
+    { name = "pydantic", specifier = "==2.14.1" },
+    { name = "pydantic-settings", specifier = "==2.15.0" },
+    { name = "sqlalchemy", extras = ["asyncio"], specifier = "==2.0.54" },
+    { name = "uvicorn", specifier = "==0.54.0" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "mypy", specifier = ">=1.15,<2" },
-    { name = "pip-audit", specifier = ">=2.9,<3" },
-    { name = "pytest", specifier = ">=8,<10" },
-    { name = "pytest-asyncio", specifier = ">=1,<2" },
-    { name = "ruff", specifier = ">=0.11,<1" },
-    { name = "testcontainers", extras = ["postgres"], specifier = ">=4,<5" },
+    { name = "mypy", specifier = "==1.20.2" },
+    { name = "pip-audit", specifier = "==2.10.1" },
+    { name = "pytest", specifier = "==9.1.1" },
+    { name = "pytest-asyncio", specifier = "==1.4.0" },
+    { name = "ruff", specifier = "==0.17.0" },
+    { name = "testcontainers", extras = ["postgres"], specifier = "==4.15.0" },
 ]
 
 [[package]]

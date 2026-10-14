@@ -1,0 +1,10 @@
+# Always use a separate project: docker compose -p career-phase0-test -f compose.yaml -f compose.test.yaml ...
+services:
+  db:
+    volumes: !reset []
+    tmpfs:
+      - /var/lib/postgresql/data
+  api:
+    ports: !override ["127.0.0.1:18000:8000"]
+  web:
+    ports: !override ["127.0.0.1:18080:8080"]
