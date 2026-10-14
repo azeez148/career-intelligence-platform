@@ -24,9 +24,12 @@ RateLimit = Callable[[str], Awaitable[None]]
 
 
 class FetchError(Exception):
-    def __init__(self, code: str, *, transient: bool = False) -> None:
+    def __init__(
+        self, code: str, *, transient: bool = False, retry_after: float | None = None
+    ) -> None:
         self.code = code
         self.transient = transient
+        self.retry_after = retry_after
         super().__init__(code)
 
 

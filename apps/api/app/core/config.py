@@ -35,6 +35,7 @@ class Settings(DatabaseSettings):
     jwt_secret: SecretStr
     csrf_secret: SecretStr
     rate_limit_secret: SecretStr
+    redis_url: SecretStr
     allowed_origins: list[str]
     trusted_proxy_cidrs: list[str] = []
     jwt_issuer: str = "career-intelligence"
@@ -49,6 +50,9 @@ class Settings(DatabaseSettings):
     refresh_session_limit: int = Field(default=30, ge=1, le=1000)
     scan_user_hour_limit: int = Field(default=10, ge=1, le=1000)
     scan_company_hour_limit: int = Field(default=3, ge=1, le=100)
+    discovery_domain_interval_ms: int = Field(default=500, ge=100, le=10000)
+    discovery_max_attempts: int = Field(default=4, ge=1, le=10)
+    discovery_lease_seconds: int = Field(default=120, ge=30, le=900)
 
     @field_validator("jwt_secret", "csrf_secret", "rate_limit_secret")
     @classmethod
@@ -63,6 +67,14 @@ class Settings(DatabaseSettings):
         for value in values:
             ip_network(value)
         return values
+
+    @field_validator("redis_url")
+    @classmethod
+    def valid_redis_url(cls, value: SecretStr) -> SecretStr:
+        parsed = urlsplit(value.get_secret_value())
+        if parsed.scheme not in {"redis", "rediss"} or not parsed.hostname:
+            raise ValueError("A redis:// or rediss:// URL with a hostname is required")
+        return value
 
     @model_validator(mode="after")
     def validate_security(self) -> Self:
@@ -93,6 +105,9 @@ class Settings(DatabaseSettings):
                 raise ValueError("Origins must be exact scheme/host/port values")
             if self.environment == "production" and parsed.scheme != "https":
                 raise ValueError("Production requires HTTPS origins")
+        redis = urlsplit(self.redis_url.get_secret_value())
+        if self.environment == "production" and not redis.password:
+            raise ValueError("Production Redis requires authentication")
         return self
 
     @property

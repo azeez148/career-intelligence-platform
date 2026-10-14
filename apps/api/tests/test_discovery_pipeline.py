@@ -5,6 +5,7 @@ import pytest
 from app.integrations.http import Fetched, FetchError
 from app.modules.discovery.ats import platform_for
 from app.modules.discovery.candidates import name_candidate
+from app.modules.discovery.html import parse_document
 from app.modules.discovery.pipeline import DiscoveryPipeline
 from app.modules.discovery.sitemaps import parse_sitemap
 
@@ -121,3 +122,7 @@ def test_bounded_parsers_candidates_and_ats_classification():
         + "</urlset>"
     )
     assert len(parse_sitemap(many.encode(), max_urls=2).urls) == 2
+    canonical, _, _ = parse_document(
+        b'<link rel="canonical" href="https://unrelated.com/">', "https://acme.com/"
+    )
+    assert canonical == "https://acme.com/"

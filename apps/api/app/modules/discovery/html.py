@@ -79,7 +79,9 @@ def parse_document(body: bytes, base_url: str, max_links: int = 500) -> tuple[st
     canonical = base_url
     if parser.canonical:
         try:
-            canonical = source_url(urljoin(base_url, parser.canonical))
+            candidate = source_url(urljoin(base_url, parser.canonical))
+            if urlsplit(candidate).hostname == urlsplit(base_url).hostname:
+                canonical = candidate
         except ValueError:
             pass
     return (

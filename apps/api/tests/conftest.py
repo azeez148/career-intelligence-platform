@@ -19,6 +19,7 @@ for key in ("JWT_SECRET", "CSRF_SECRET", "RATE_LIMIT_SECRET"):
     os.environ[key] = secrets.token_urlsafe(48)
 os.environ["ENVIRONMENT"] = "development"
 os.environ["ALLOWED_ORIGINS"] = '["http://testserver"]'
+os.environ["REDIS_URL"] = "redis://:test-redis-password@127.0.0.1:6379/15"
 
 
 @pytest.fixture

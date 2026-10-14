@@ -59,6 +59,8 @@ class DiscoveryPipeline:
                 parser = RobotFileParser()
                 parser.parse(page.body.decode("utf-8", errors="replace").splitlines())
                 self.robots[origin] = parser
+            elif page.status in {429, 500, 502, 503, 504}:
+                raise FetchError("robots_unavailable", transient=True)
             else:
                 self.robots[origin] = None
         cached = self.robots[origin]
