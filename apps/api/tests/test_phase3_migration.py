@@ -48,9 +48,8 @@ async def test_phase3_upgrade_preserves_phase2_and_custom_roles_then_downgrades(
                     ),
                     {"id": rid, "permission": UUID(int=2)},
                 )
-            migrate(url, "upgrade", "head")
-            migrate(url, "upgrade", "head")
-            migrate(url, "check")
+            migrate(url, "upgrade", "0004_career_discovery")
+            migrate(url, "upgrade", "0004_career_discovery")
             async with db.sessions() as session:
                 assert await session.scalar(text("SELECT count(*) FROM permissions")) == 15
                 assert (

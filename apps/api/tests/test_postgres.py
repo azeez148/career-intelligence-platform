@@ -102,6 +102,10 @@ async def test_sqlalchemy_sessions_and_current_tables(postgres: PostgresContaine
                 "discovery_candidates",
                 "career_sources",
                 "scan_outbox",
+                "extraction_runs",
+                "extraction_outbox",
+                "jobs",
+                "extraction_run_jobs",
             }
     finally:
         await database.close()
