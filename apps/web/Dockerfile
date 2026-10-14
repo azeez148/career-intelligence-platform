@@ -5,7 +5,7 @@ RUN npm ci
 COPY apps/web/ ./
 RUN npm run build
 
-FROM nginxinc/nginx-unprivileged:1.30.2-alpine@sha256:de3e40ec8b7debd7194fc798d4bbfb102c7f8b012b2c73032816b5f72393acdd AS runtime
+FROM nginxinc/nginx-unprivileged:1.30.5-alpine@sha256:56b8272e43a0525f67aed68d1e0794a712d10e3e45a563e118e9a77c817e6f86 AS runtime
 COPY infrastructure/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /srv/web/dist/career-web/browser /usr/share/nginx/html
 USER 101

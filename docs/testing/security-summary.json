@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-14",
+  "scanner": "Trivy 0.69.3",
+  "gate": "HIGH,CRITICAL",
+  "suppressed_findings": 0,
+  "images": [
+    {
+      "image": "career-api:phase0",
+      "image_id": "sha256:5823996be695a091d23155fb6ec976693433c5ed7387a11e8aa28508a9a79feb",
+      "high_critical_findings": 0
+    },
+    {
+      "image": "career-web:phase0",
+      "image_id": "sha256:62b07ceb7f4b89c665ffb853973649934d61bf9dd4f96baf6d18aedbb496e41a",
+      "high_critical_findings": 0
+    },
+    {
+      "image": "career-db:phase0",
+      "image_id": "sha256:e19b04aa05ef60446bd94fbd608a6bc749d6134093ae47ad1fa1003fc8166b31",
+      "high_critical_findings": 0
+    }
+  ]
+}

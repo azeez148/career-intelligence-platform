@@ -3,7 +3,7 @@ services:
   db:
     volumes: !reset []
     tmpfs:
-      - /var/lib/postgresql/data
+      - /var/lib/postgresql/data:uid=70,gid=70,mode=0700
   api:
     ports: !override ["127.0.0.1:18000:8000"]
   web:

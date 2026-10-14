@@ -8,7 +8,8 @@ x-api-environment: &api-environment
 
 services:
   db:
-    image: postgres:17.9-bookworm
+    build: {context: ./infrastructure/postgres}
+    image: career-db:phase0
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-career}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}

@@ -18,6 +18,9 @@ from app.main import create_app
 
 pytestmark = pytest.mark.integration
 API_ROOT = Path(__file__).resolve().parents[1]
+POSTGRES_IMAGE = (
+    "postgres:17.11-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24"
+)
 
 
 @pytest.fixture(scope="module")
@@ -27,7 +30,7 @@ def postgres() -> Iterator[PostgresContainer]:
     with socket.socket() as reservation:
         reservation.bind(("127.0.0.1", 0))
         port = reservation.getsockname()[1]
-    with PostgresContainer("postgres:17.9-bookworm", driver="asyncpg").with_bind_ports(
+    with PostgresContainer(POSTGRES_IMAGE, driver="asyncpg").with_bind_ports(
         5432, port
     ) as container:
         yield container
