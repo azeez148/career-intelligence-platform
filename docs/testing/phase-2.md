@@ -1,6 +1,8 @@
 # Phase 2 verification evidence
 
-Status: local verification complete; hosted GitHub Actions pending. Pending checks are not claimed as passed.
+Status: local verification and all hosted GitHub Actions gates passed for final implementation commit `fe83d8f`.
+
+[Hosted run 38561810158](https://github.com/azeez148/career-intelligence-platform/actions/runs/38561810158) passed backend, frontend, containers-and-browser, and secrets. The preceding run exposed two navigation-readiness races in the new browser tests; commit `fe83d8f` added explicit route and value readiness assertions, all eight journeys passed locally, and the hosted rerun passed without retries being needed to hide a product failure.
 
 The [local checklist](phase-2-local-check.md) provides commands and expected results after each implementation step. All Phase 0/1 suites remain active; migration-head/table assertions now include the approved Phase 2 schema. No dependency versions changed.
 
@@ -16,7 +18,7 @@ The [local checklist](phase-2-local-check.md) provides commands and expected res
 | npm audit | No known vulnerabilities |
 | Runtime image scans | API, web, and database: zero HIGH/CRITICAL findings |
 | Secret scan | Eight commits scanned; no leaks found |
-| Hosted GitHub Actions | Pending |
+| Hosted GitHub Actions | Passed; all four jobs in run 38561810158 |
 
 Coverage includes strict pure URL validation and IDNA, resource bounds, typed JSON documents, conflicts/weight allocations, concurrent company uniqueness, all eight permission checks, owner isolation, migration data/assignment preservation, safe error output, new-route refresh with rotated CSRF, retained rejected form input, multiple profiles, responsive forms, and cross-tab logout.
 

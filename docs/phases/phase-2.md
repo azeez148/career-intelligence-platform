@@ -1,6 +1,6 @@
 # Phase 2: company and preference management
 
-Status: implemented following explicit approval; local verification complete and hosted verification pending. Phase 3 has not begun.
+Status: complete following explicit approval. Local checks and all four [hosted CI jobs](https://github.com/azeez148/career-intelligence-platform/actions/runs/38561810158) passed for final implementation commit `fe83d8f`. Phase 3 has not begun.
 
 ## Implemented
 
