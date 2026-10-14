@@ -77,7 +77,7 @@ Only use that cleanup command with the disposable test project. It must not targ
 | Database runtime image | PASS | Trivy 0 HIGH/CRITICAL findings |
 | Workflow static validation | PASS | actionlint 1.7.7, including database scan job |
 | Secret scanning | PASS | Gitleaks 8.30.0; committed history scanned with redaction; no leaks found |
-| Hosted GitHub Actions | NOT VERIFIED | No push or hosted workflow execution performed |
+| Hosted GitHub Actions | PASS | [Run 38544334866](https://github.com/azeez148/career-intelligence-platform/actions/runs/38544334866), commit `5d2b9084eaa6cda794dc5407139bab43598dc3e0`; all four jobs successful |
 
 The 16-test complete backend run preceded the final PostgreSQL image pin; the 2 integration tests were then rerun successfully against that final pin. The application code was unchanged by this database image selection. Container-unit results separately prove Python 3.13.16/musl compatibility. Tests are not being counted as hosted CI.
 
@@ -96,4 +96,6 @@ The disposable named-volume project was removed after testing. The isolated brow
 
 ## CI boundary
 
-GitHub Actions is configured for push, pull request, and manual dispatch, but local tests are not a hosted CI run. No repository push is part of this implementation. Hosted CI is **NOT VERIFIED** until the commits are published and the configured workflow succeeds.
+After the user authorized pushing to GitHub, the implementation was published to `main`. [Run 38544334866](https://github.com/azeez148/career-intelligence-platform/actions/runs/38544334866) completed successfully for commit `5d2b9084eaa6cda794dc5407139bab43598dc3e0` on 2026-10-14 at 15:14:37 Asia/Calcutta (09:44:37 UTC).
+
+The GitHub API confirmed successful backend, frontend, containers-and-browser, and secrets jobs, including PostgreSQL integration tests, browser smoke tests, dependency audits, and all three runtime image scans. This closes the previously unverified hosted-CI gate. This evidence applies to that implementation commit; subsequent phase changes require their own CI verification.
