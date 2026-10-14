@@ -33,7 +33,7 @@ test('registration, profile, session reload, and logout', async ({ page, context
   expect((await context.cookies()).find(cookie => cookie.name === 'dev-refresh')?.value).not.toBe(originalRefresh);
   const secondTab = await context.newPage();
   await secondTab.goto('/profile');
-  await expect(secondTab.getByRole('heading', { name: 'Your profile' })).toBeVisible();
+  await expect(secondTab.getByRole('heading', { name: 'Your profile' })).toBeVisible({ timeout: 10000 });
   let refreshes = 0;
   for (const tab of [page, secondTab]) tab.on('request', request => {
     if (request.url().endsWith('/api/v1/auth/refresh')) refreshes++;

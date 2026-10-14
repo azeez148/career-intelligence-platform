@@ -6,6 +6,8 @@ export const routes: Routes = [
   { path: 'companies', loadComponent: () => import('./companies/company-list').then(m => m.CompanyList), canActivate: [authenticated], data: { permission: 'companies:read:self' }, title: 'Your companies' },
   { path: 'companies/new', loadComponent: () => import('./companies/company-editor').then(m => m.CompanyEditor), canActivate: [authenticated], data: { permission: 'companies:create:self' }, title: 'Add company' },
   { path: 'companies/:id/edit', loadComponent: () => import('./companies/company-editor').then(m => m.CompanyEditor), canActivate: [authenticated], data: { permission: 'companies:update:self' }, title: 'Edit company' },
+  { path: 'scans', loadComponent: () => import('./scans/scan-list').then(m => m.ScanList), canActivate: [authenticated], data: { permission: 'scans:read:self' }, title: 'Discovery scans' },
+  { path: 'scans/:id', loadComponent: () => import('./scans/scan-detail').then(m => m.ScanDetail), canActivate: [authenticated], data: { permission: 'scans:read:self' }, title: 'Discovery scan' },
   { path: 'preferences', loadComponent: () => import('./preferences/preference-list').then(m => m.PreferenceList), canActivate: [authenticated], data: { permission: 'preferences:read:self' }, title: 'Your preference profiles' },
   { path: 'preferences/new', loadComponent: () => import('./preferences/preference-editor').then(m => m.PreferenceEditor), canActivate: [authenticated], data: { permission: 'preferences:create:self' }, title: 'Add preference profile' },
   { path: 'preferences/:id/edit', loadComponent: () => import('./preferences/preference-editor').then(m => m.PreferenceEditor), canActivate: [authenticated], data: { permission: 'preferences:update:self' }, title: 'Edit preference profile' },

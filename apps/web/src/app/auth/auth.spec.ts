@@ -27,6 +27,7 @@ describe('browser authentication', () => {
     expect(safeReturnUrl('/sessions')).toBe('/sessions');
     expect(safeReturnUrl('/companies/new')).toBe('/companies/new');
     expect(safeReturnUrl('/preferences/01234567-89ab-cdef-0123-456789abcdef/edit')).toContain('/preferences/');
+    expect(safeReturnUrl('/scans/01234567-89ab-cdef-0123-456789abcdef')).toContain('/scans/');
     for (const path of ['/companies/../login', '/companies//evil', '/preferences/bad/edit', '/companies/%2f%2fevil']) {
       expect(safeReturnUrl(path)).toBe('/profile');
     }

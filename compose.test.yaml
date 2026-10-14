@@ -15,5 +15,13 @@ services:
       TRUSTED_PROXY_CIDRS: '["172.16.0.0/12"]'
       REGISTRATION_IP_LIMIT: 100
     ports: !override ["127.0.0.1:18000:8000"]
+  worker:
+    environment:
+      ENVIRONMENT: development
+      ALLOWED_ORIGINS: '["http://127.0.0.1:18080"]'
+  dispatcher:
+    environment:
+      ENVIRONMENT: development
+      ALLOWED_ORIGINS: '["http://127.0.0.1:18080"]'
   web:
     ports: !override ["127.0.0.1:18080:8080"]

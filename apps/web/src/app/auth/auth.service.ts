@@ -20,7 +20,8 @@ export interface SessionPage { items: Session[]; next_offset: number | null }
 export function safeReturnUrl(value: string | null): string {
   const account = /^\/(profile|sessions)(\?.*)?$/;
   const resource = /^\/(companies|preferences)(?:\/new|\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/edit)?(?:\?.*)?$/i;
-  return value && (account.test(value) || resource.test(value)) ? value : '/profile';
+  const scans = /^\/scans(?:\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})?(?:\?.*)?$/i;
+  return value && (account.test(value) || resource.test(value) || scans.test(value)) ? value : '/profile';
 }
 
 @Injectable({ providedIn: 'root' })

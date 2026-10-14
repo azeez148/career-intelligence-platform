@@ -16,11 +16,11 @@ CMD ["uv", "run", "--no-sync", "pytest", "-m", "not integration", "-q"]
 
 FROM base AS runtime
 # Installation tooling is build-only; its vendored packages are unnecessary at runtime.
-RUN python -m pip uninstall --yes pip
+RUN addgroup -g 10001 app && adduser -D -u 10001 -G app app && python -m pip uninstall --yes pip
 COPY --from=dependencies /srv/api/.venv ./.venv
 COPY app ./app
 COPY alembic.ini ./
 COPY migrations ./migrations
-USER 10001:10001
+USER app:app
 EXPOSE 8000
 CMD [".venv/bin/uvicorn", "app.main:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000", "--no-access-log", "--no-proxy-headers"]

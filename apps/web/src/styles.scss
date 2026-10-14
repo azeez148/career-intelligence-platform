@@ -16,6 +16,8 @@ button:disabled { opacity: 0.6; cursor: wait; }
 select { font: inherit; padding: 0.7rem; }
 .source-url { overflow-wrap: anywhere; }
 .actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.scan-filters { grid-template-columns: minmax(0, 1fr); }
+.status-pill { display: inline-block; padding: 0.2rem 0.55rem; border-radius: 999px; background: #e1eee8; }
 [role='alert'] { color: #8a2020; }
 article { border-block-end: 1px solid #c8d6ce; padding-block: 1rem; margin-bottom: 1rem; }
 @media (max-width: 40rem) { .account-panel { padding: 1rem; margin: 1rem 0; } header { gap: 1rem; flex-wrap: wrap; } }
