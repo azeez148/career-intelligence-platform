@@ -173,7 +173,9 @@ async def process_run(run_id: UUID, settings: Settings | None = None) -> None:
         limiter = DomainRateLimiter(redis, config.discovery_domain_interval_ms)
         try:
             limits = BROWSER_FETCH_LIMITS if stage == "browser" else EXTRACTION_FETCH_LIMITS
-            async with SafeHttpClient(limits=limits, rate_limit=limiter.acquire) as client:
+            async with SafeHttpClient(
+                limits=limits, rate_limit=limiter.acquire, test_hosts=config.outbound_test_hosts
+            ) as client:
                 outcome = await extract_source(source, stage, ExtractionContext(client.fetch))
         except FetchError as error:
             await persist_failure(database, run_id, error, config)

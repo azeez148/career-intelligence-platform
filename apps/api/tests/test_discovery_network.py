@@ -147,3 +147,48 @@ async def test_safe_client_enforces_body_and_response_budgets():
     async with SafeHttpClient(limits=limits, transport=httpx.MockTransport(redirect)) as client:
         with pytest.raises(FetchError, match="response_budget_exceeded"):
             await client.fetch("https://example.com")
+
+
+async def test_test_host_allowlist_is_exact_and_still_pins_the_peer():
+    resolved: list[str] = []
+
+    async def resolve(host: str, port: int) -> list[str]:
+        resolved.append(host)
+        return ["172.18.0.5"]
+
+    async def connect(  # noqa: ASYNC109 -- connector contract
+        host: str,
+        port: int,
+        timeout: float | None,  # noqa: ASYNC109 -- connector contract
+        local_address: str | None,
+        socket_options: Iterable[SOCKET_OPTION] | None,
+    ) -> httpcore.AsyncNetworkStream:
+        return FakeStream(host)
+
+    backend = PinnedNetworkBackend(resolve, connect, {"jobs-fixture.com": "fixture-site"})
+    stream = await backend.connect_tcp("jobs-fixture.com", 80)
+    assert resolved == ["fixture-site"]
+    assert stream.get_extra_info("server_addr") == ("172.18.0.5", 443)
+    for host in ("www.jobs-fixture.com", "jobs-fixture.com.evil.net", "other.com"):
+        with pytest.raises(FetchError, match="dns_blocked"):
+            await backend.connect_tcp(host, 80)
+
+
+def test_test_host_allowlist_is_refused_in_production(monkeypatch):
+    from pydantic import SecretStr, ValidationError
+
+    from app.core.config import Settings
+
+    values = {
+        "database_url": SecretStr("postgresql+asyncpg://user:pass@db:5432/app"),
+        "allowed_origins": ["https://app.example.org"],
+        "redis_url": SecretStr("redis://:secret@redis:6379/0"),
+        "_env_file": None,
+    }
+    monkeypatch.setenv("ENVIRONMENT", "production")
+    with pytest.raises(ValidationError, match="only allowed in development"):
+        Settings(outbound_test_hosts={"jobs-fixture.com": "fixture-site"}, **values)
+    monkeypatch.setenv("ENVIRONMENT", "development")
+    with pytest.raises(ValidationError, match="exact lowercase hostnames"):
+        Settings(outbound_test_hosts={"Jobs-Fixture.com": "fixture-site"}, **values)
+    assert Settings(outbound_test_hosts={"jobs-fixture.com": "fixture-site"}, **values)

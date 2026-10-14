@@ -1,3 +1,5 @@
+import { ExtractionRun } from '../jobs/job-model';
+
 export type ScanStatus = 'queued' | 'running' | 'needs_input' | 'succeeded' |
   'unsupported' | 'failed' | 'superseded';
 
@@ -19,6 +21,7 @@ export interface ScanSummary {
 export interface Scan extends ScanSummary {
   resolved_website_url: string | null; resolution_confidence: string | null;
   resolution_evidence: string[]; candidates: DiscoveryCandidate[]; sources: CareerSource[];
+  extractions: ExtractionRun[];
 }
 
 export interface ScanPage { items: ScanSummary[]; next_offset: number | null }

@@ -9,6 +9,7 @@ const messages: Record<string, string> = {
   weight_total: 'Matching weights must total 100.', weight_without_criteria: 'Every positive weight needs criteria for that factor.',
   company_duplicate: 'This company is already saved.', preference_duplicate: 'This preference profile name is already used.',
   scan_state_conflict: 'This scan no longer needs a website selection. Reload its latest status.',
+  rate_limited: 'Too many requests for now. Wait a while before trying again.',
 };
 
 export function resourceError(error: unknown): string {

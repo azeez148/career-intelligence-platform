@@ -1,8 +1,11 @@
 import { Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+import { ExtractionRun, isActive, runText, strategies } from '../jobs/job-model';
+import { JobService } from '../jobs/job.service';
 import { resourceError } from '../resource-errors';
-import { DiscoveryCandidate, Scan, outcomeText } from './scan-model';
+import { CareerSource, DiscoveryCandidate, Scan, outcomeText } from './scan-model';
 import { ScanService } from './scan.service';
 
 @Component({
@@ -33,7 +36,21 @@ import { ScanService } from './scan.service';
           <h2>Discovered career sources</h2>
           @for (source of current.sources; track source.id) {
             <article><p class="source-url">{{ source.url }}</p>
-              <p>{{ source.platform ?? 'Generic career page' }} · {{ source.discovery_method }}</p></article>
+              <p>{{ source.platform ?? 'Generic career page' }} · {{ source.discovery_method }}</p>
+              @if (runFor(source); as run) {
+                <div class="extraction" [attr.aria-label]="'Job extraction for ' + source.url">
+                  <p><strong>Jobs:</strong> <span class="status-pill">{{ run.status }}</span> {{ runText(run) }}</p>
+                  @if (run.strategy) { <p>{{ strategies[run.strategy] }} · {{ run.confidence }} confidence</p> }
+                  @if (run.status === 'succeeded' || run.status === 'partial') {
+                    <p>{{ run.jobs_created }} new · {{ run.jobs_updated }} updated · {{ run.jobs_unchanged }} unchanged · {{ run.jobs_closed }} no longer listed</p>
+                    <a [routerLink]="['/jobs']" [queryParams]="{ source_id: source.id }">View jobs from this source</a>
+                  }
+                </div>
+              } @else { <p>Job extraction has not run for this source.</p> }
+              @if (canExtract()) {
+                <button (click)="reExtract(source)" [disabled]="extracting() === source.id || isRunActive(source)">Re-extract jobs</button>
+              }
+            </article>
           }
         }
         <div class="actions"><button (click)="load()" [disabled]="loading() || saving()">Refresh status</button>
@@ -44,9 +61,11 @@ import { ScanService } from './scan.service';
 })
 export class ScanDetail implements OnInit {
   private readonly api = inject(ScanService); private readonly route = inject(ActivatedRoute);
+  private readonly jobs = inject(JobService); private readonly auth = inject(AuthService);
   private readonly router = inject(Router); private timer?: ReturnType<typeof setTimeout>;
   readonly scan = signal<Scan | null>(null); readonly loading = signal(false);
   readonly saving = signal(false); readonly error = signal(''); readonly outcomeText = outcomeText;
+  readonly extracting = signal<string | null>(null); readonly runText = runText; readonly strategies = strategies;
   manualUrl = '';
   constructor() { inject(DestroyRef).onDestroy(() => this.stopPolling()); }
   ngOnInit(): void { void this.load(); }
@@ -69,8 +88,26 @@ export class ScanDetail implements OnInit {
     } catch (error) { this.error.set(resourceError(error)); }
     finally { this.saving.set(false); }
   }
+  runFor(source: CareerSource): ExtractionRun | undefined {
+    return this.scan()?.extractions?.find(run => run.source_id === source.id);
+  }
+  isRunActive(source: CareerSource): boolean { const run = this.runFor(source); return !!run && isActive(run); }
+  canExtract(): boolean { return this.auth.user()?.permissions.includes('extractions:create:self') ?? false; }
+  async reExtract(source: CareerSource): Promise<void> {
+    const current = this.scan(); if (!current || this.extracting()) return;
+    this.extracting.set(source.id); this.error.set('');
+    try {
+      const run = await this.jobs.extract(source.id);
+      const latest = this.scan() ?? current;
+      const others = (latest.extractions ?? []).filter(row => row.source_id !== source.id);
+      this.scan.set({ ...latest, extractions: [...others, run] });
+      this.stopPolling(); this.schedulePolling();
+    } catch (error) { this.error.set(resourceError(error)); }
+    finally { this.extracting.set(null); }
+  }
   private schedulePolling(): void {
-    if (['queued', 'running'].includes(this.scan()?.status ?? '')) {
+    const current = this.scan();
+    if (['queued', 'running'].includes(current?.status ?? '') || (current?.extractions ?? []).some(isActive)) {
       this.timer = setTimeout(() => void this.load(), 3000);
     }
   }

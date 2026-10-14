@@ -6,7 +6,7 @@ function scan(status: Scan['status'], failure_code: string | null = null): Scan 
     id: 'scan', company_id: 'company', parent_scan_id: null, status, selected_url: null,
     failure_code, attempt_count: 0, created_at: '', updated_at: '', started_at: null,
     completed_at: null, resolved_website_url: null, resolution_confidence: null,
-    resolution_evidence: [], candidates: [], sources: [],
+    resolution_evidence: [], candidates: [], sources: [], extractions: [],
   };
 }
 

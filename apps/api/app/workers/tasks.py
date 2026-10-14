@@ -155,7 +155,9 @@ async def process_scan(scan_id: UUID, settings: Settings | None = None) -> None:
         selected_url, explicit_careers = claimed
         limiter = DomainRateLimiter(redis, config.discovery_domain_interval_ms)
         try:
-            async with SafeHttpClient(rate_limit=limiter.acquire) as client:
+            async with SafeHttpClient(
+                rate_limit=limiter.acquire, test_hosts=config.outbound_test_hosts
+            ) as client:
                 outcome = await DiscoveryPipeline(client.fetch).run(
                     selected_url, explicit_careers=explicit_careers
                 )

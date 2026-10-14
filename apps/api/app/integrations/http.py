@@ -69,10 +69,14 @@ def public_addresses(addresses: list[str]) -> list[str]:
 
 class PinnedNetworkBackend(httpcore.AsyncNetworkBackend):
     def __init__(
-        self, resolver: Resolver = resolve_host, connector: Connector = connect_ip
+        self,
+        resolver: Resolver = resolve_host,
+        connector: Connector = connect_ip,
+        test_hosts: dict[str, str] | None = None,
     ) -> None:
         self.resolver = resolver
         self.connector = connector
+        self.test_hosts = test_hosts or {}
 
     async def connect_tcp(
         self,
@@ -89,7 +93,13 @@ class PinnedNetworkBackend(httpcore.AsyncNetworkBackend):
         else:
             raise FetchError("dns_blocked")
         try:
-            addresses = public_addresses(await self.resolver(host, port))
+            if host in self.test_hosts:
+                # Development test stacks only (settings refuse this in production).
+                addresses = list(dict.fromkeys(await self.resolver(self.test_hosts[host], port)))
+                if not addresses:
+                    raise FetchError("dns_unavailable", transient=True)
+            else:
+                addresses = public_addresses(await self.resolver(host, port))
         except FetchError:
             raise
         except (OSError, UnicodeError):
@@ -214,13 +224,14 @@ class SafeHttpClient:
         limits: FetchLimits = DEFAULT_FETCH_LIMITS,
         transport: httpx.AsyncBaseTransport | None = None,
         rate_limit: RateLimit | None = None,
+        test_hosts: dict[str, str] | None = None,
     ) -> None:
         self.limits = limits
         self.responses = 0
         self.total_bytes = 0
         self.rate_limit = rate_limit
         self.client = httpx.AsyncClient(
-            transport=transport or PinnedTransport(),
+            transport=transport or PinnedTransport(PinnedNetworkBackend(test_hosts=test_hosts)),
             timeout=httpx.Timeout(
                 limits.read_timeout,
                 connect=limits.connect_timeout,

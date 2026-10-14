@@ -1,3 +1,4 @@
+import re
 from ipaddress import ip_network
 from typing import Literal, Self
 from urllib.parse import urlsplit
@@ -58,6 +59,9 @@ class Settings(DatabaseSettings):
     extraction_max_attempts: int = Field(default=3, ge=1, le=10)
     extraction_lease_seconds: int = Field(default=240, ge=60, le=1800)
     extraction_browser_enabled: bool = False
+    # Test stacks only: exact public-looking hostnames mapped to fixture containers. Refused in
+    # production; never set in compose.yaml.
+    outbound_test_hosts: dict[str, str] = {}
 
     @field_validator("jwt_secret", "csrf_secret", "rate_limit_secret")
     @classmethod
@@ -110,6 +114,11 @@ class Settings(DatabaseSettings):
                 raise ValueError("Origins must be exact scheme/host/port values")
             if self.environment == "production" and parsed.scheme != "https":
                 raise ValueError("Production requires HTTPS origins")
+        if self.outbound_test_hosts and self.environment == "production":
+            raise ValueError("OUTBOUND_TEST_HOSTS is only allowed in development test stacks")
+        for host in self.outbound_test_hosts:
+            if host != host.lower() or not re.fullmatch(r"[a-z0-9.-]{1,253}", host):
+                raise ValueError("OUTBOUND_TEST_HOSTS keys must be exact lowercase hostnames")
         redis = urlsplit(self.redis_url.get_secret_value())
         if self.environment == "production" and not redis.password:
             raise ValueError("Production Redis requires authentication")

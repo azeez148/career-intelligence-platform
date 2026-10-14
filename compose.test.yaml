@@ -19,10 +19,27 @@ services:
     environment:
       ENVIRONMENT: development
       ALLOWED_ORIGINS: '["http://127.0.0.1:18080"]'
+      OUTBOUND_TEST_HOSTS: '{"jobs-fixture.com":"fixture-site","spa-fixture.com":"fixture-site"}'
+    depends_on:
+      fixture-site: {condition: service_healthy}
   browser-worker:
     environment:
       ENVIRONMENT: development
       ALLOWED_ORIGINS: '["http://127.0.0.1:18080"]'
+      OUTBOUND_TEST_HOSTS: '{"jobs-fixture.com":"fixture-site","spa-fixture.com":"fixture-site"}'
+    depends_on:
+      fixture-site: {condition: service_healthy}
+  # Test-only public-looking career sites reachable through OUTBOUND_TEST_HOSTS.
+  fixture-site:
+    image: nginxinc/nginx-unprivileged:1.30.5-alpine@sha256:56b8272e43a0525f67aed68d1e0794a712d10e3e45a563e118e9a77c817e6f86
+    volumes:
+      - ./apps/web/e2e/fixtures/sites:/srv/sites:ro
+      - ./apps/web/e2e/fixtures/sites/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, --header, "Host: jobs-fixture.com", http://127.0.0.1/]
+      interval: 3s
+      timeout: 3s
+      retries: 20
   dispatcher:
     environment:
       ENVIRONMENT: development
