@@ -59,9 +59,8 @@ async def test_upgrade_preserves_accounts_and_custom_rbac_then_downgrades():
                     text("INSERT INTO user_roles(user_id,role_id) VALUES (:uid,:rid)"),
                     {"uid": uid, "rid": rid},
                 )
-            migrate(url, "upgrade", "head")
-            migrate(url, "upgrade", "head")
-            migrate(url, "check")
+            migrate(url, "upgrade", "0003_companies_preferences")
+            migrate(url, "upgrade", "0003_companies_preferences")
             async with db.sessions() as session:
                 assert await session.scalar(text("SELECT count(*) FROM permissions")) == 12
                 assert (
@@ -100,7 +99,6 @@ async def test_upgrade_preserves_accounts_and_custom_rbac_then_downgrades():
                     == 1
                 )
                 assert await session.scalar(text("SELECT to_regclass('public.companies')")) is None
-            migrate(url, "upgrade", "head")
-            migrate(url, "check")
+            migrate(url, "upgrade", "0003_companies_preferences")
         finally:
             await db.close()

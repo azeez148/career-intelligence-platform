@@ -47,6 +47,8 @@ class Settings(DatabaseSettings):
     login_ip_limit: int = Field(default=30, ge=1, le=1000)
     registration_ip_limit: int = Field(default=5, ge=1, le=100)
     refresh_session_limit: int = Field(default=30, ge=1, le=1000)
+    scan_user_hour_limit: int = Field(default=10, ge=1, le=1000)
+    scan_company_hour_limit: int = Field(default=3, ge=1, le=100)
 
     @field_validator("jwt_secret", "csrf_secret", "rate_limit_secret")
     @classmethod

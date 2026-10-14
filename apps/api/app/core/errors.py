@@ -40,7 +40,9 @@ def register_error_handlers(app: FastAPI) -> None:
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(request: Request, exc: RequestValidationError) -> JSONResponse:
-        if request.url.path.startswith(("/api/v1/companies", "/api/v1/preferences")):
+        if request.url.path.startswith(
+            ("/api/v1/companies", "/api/v1/preferences", "/api/v1/scans")
+        ):
             return JSONResponse(
                 status_code=422,
                 content={

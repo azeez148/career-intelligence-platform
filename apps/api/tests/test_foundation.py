@@ -119,4 +119,4 @@ def test_structured_logging_excludes_unapproved_fields() -> None:
 
 
 def test_one_migration_head() -> None:
-    assert migration_heads() == {"0003_companies_preferences"}
+    assert migration_heads() == {"0004_career_discovery"}

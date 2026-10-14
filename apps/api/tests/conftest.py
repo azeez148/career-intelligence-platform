@@ -66,6 +66,15 @@ async def api(identity_postgres):
                         ),
                         {"role": UUID(int=1), "code": f"{resource}:{action}:self"},
                     )
+            for action in ("read", "create", "update"):
+                await db.execute(
+                    text(
+                        "INSERT INTO role_permissions(role_id, permission_id) "
+                        "SELECT :role, id FROM permissions WHERE code = :code "
+                        "ON CONFLICT DO NOTHING"
+                    ),
+                    {"role": UUID(int=1), "code": f"scans:{action}:self"},
+                )
         async with httpx.AsyncClient(
             transport=httpx.ASGITransport(app=app), base_url=ORIGIN
         ) as client:

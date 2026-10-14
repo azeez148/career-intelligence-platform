@@ -98,6 +98,10 @@ async def test_sqlalchemy_sessions_and_current_tables(postgres: PostgresContaine
                 "auth_rate_limits",
                 "companies",
                 "preference_profiles",
+                "discovery_scans",
+                "discovery_candidates",
+                "career_sources",
+                "scan_outbox",
             }
     finally:
         await database.close()
