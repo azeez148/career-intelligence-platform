@@ -6,7 +6,7 @@ The [local checklist](phase-2-local-check.md) provides commands and expected res
 
 | Gate | Result |
 |---|---|
-| Backend unit/integration regression | 128 passed; final URL/name validation focus: 56 passed |
+| Backend unit/integration regression | 129 passed in the final full run |
 | Ruff and strict mypy | Passed |
 | Angular unit tests | 25 passed across seven files |
 | ESLint and production Angular build | Passed |
