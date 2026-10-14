@@ -12,6 +12,7 @@ x-api-environment: &api-environment
   ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:?Set exact browser origins}
   TRUSTED_PROXY_CIDRS: ${TRUSTED_PROXY_CIDRS:-[]}
   REDIS_URL: redis://:${REDIS_PASSWORD:?Set REDIS_PASSWORD in .env}@redis:6379/0
+  EXTRACTION_BROWSER_ENABLED: ${EXTRACTION_BROWSER_ENABLED:-true}
 
 services:
   db:
@@ -70,10 +71,25 @@ services:
   worker:
     image: career-api:phase0
     environment: *api-environment
-    command: [.venv/bin/celery, -A, app.workers.celery_app:celery, worker, --loglevel, INFO, --concurrency, "2", --prefetch-multiplier, "1", --soft-time-limit, "70", --time-limit, "75"]
+    command: [.venv/bin/celery, -A, app.workers.celery_app:celery, worker, --loglevel, INFO, -Q, "discovery,extraction", --concurrency, "2", --prefetch-multiplier, "1", --soft-time-limit, "70", --time-limit, "75"]
     depends_on:
       migrate: {condition: service_completed_successfully}
       redis: {condition: service_healthy}
+    restart: unless-stopped
+
+  browser-worker:
+    build: {context: ./apps/api, dockerfile: Dockerfile.browser, target: runtime}
+    image: career-browser:phase4
+    environment: *api-environment
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    security_opt: [no-new-privileges:true]
+    mem_limit: 1536m
+    pids_limit: 512
     restart: unless-stopped
 
   dispatcher:

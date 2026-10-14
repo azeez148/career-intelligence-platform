@@ -12,7 +12,7 @@ RUN uv sync --locked --no-dev --no-cache
 FROM dependencies AS test
 RUN uv sync --locked
 COPY . .
-CMD ["uv", "run", "--no-sync", "pytest", "-m", "not integration", "-q"]
+CMD ["uv", "run", "--no-sync", "pytest", "-m", "not integration and not browser", "-q"]
 
 FROM base AS runtime
 # Installation tooling is build-only; its vendored packages are unnecessary at runtime.

@@ -31,6 +31,10 @@ dev = [
   "pip-audit==2.10.1",
   "types-defusedxml>=0.7.0.20260504",
 ]
+# Installed only in the Debian browser-worker image and for browser tests; no musl wheels exist.
+browser = [
+  "playwright==1.63.0",
+]
 
 [tool.uv]
 package = false
@@ -40,7 +44,10 @@ testpaths = ["tests"]
 pythonpath = ["."]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
-markers = ["integration: requires Docker and disposable PostgreSQL 17"]
+markers = [
+  "integration: requires Docker and disposable PostgreSQL 17",
+  "browser: requires the Playwright Chromium build (uv run playwright install chromium)",
+]
 
 [tool.ruff]
 target-version = "py313"

@@ -1,4 +1,4 @@
-# Always use a separate project: docker compose -p career-phase0-test -f compose.yaml -f compose.test.yaml ...
+# Always use a separate project: docker compose -p career-phase4-test -f compose.yaml -f compose.test.yaml ...
 services:
   db:
     volumes: !reset []
@@ -16,6 +16,10 @@ services:
       REGISTRATION_IP_LIMIT: 100
     ports: !override ["127.0.0.1:18000:8000"]
   worker:
+    environment:
+      ENVIRONMENT: development
+      ALLOWED_ORIGINS: '["http://127.0.0.1:18080"]'
+  browser-worker:
     environment:
       ENVIRONMENT: development
       ALLOWED_ORIGINS: '["http://127.0.0.1:18080"]'
