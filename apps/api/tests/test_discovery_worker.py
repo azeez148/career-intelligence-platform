@@ -1,3 +1,5 @@
+import subprocess
+import sys
 from datetime import UTC, datetime, timedelta
 from uuid import UUID
 
@@ -80,6 +82,7 @@ async def test_worker_reschedules_transient_failure_then_stops(api, monkeypatch)
         assert scan is not None and outbox is not None
         assert scan.status == "queued" and scan.failure_code == "timeout"
         assert scan.next_attempt_at is not None and scan.next_attempt_at > datetime.now(UTC)
+        assert scan.next_attempt_at <= datetime.now(UTC) + timedelta(seconds=19)
         assert outbox.dispatched_at is None and outbox.available_at == scan.next_attempt_at
 
     app.state.settings.discovery_max_attempts = 1
@@ -91,6 +94,7 @@ async def test_worker_reschedules_transient_failure_then_stops(api, monkeypatch)
     async with app.state.database.sessions() as db:
         scan = await db.get(DiscoveryScan, scan_id)
         assert scan is not None and scan.status == "failed" and scan.completed_at is not None
+        assert scan.failure_code == "retry_exhausted"
         assert await db.get(ScanOutbox, scan_id) is None
 
 
@@ -116,6 +120,16 @@ async def test_dispatcher_publishes_due_outbox_once(api):
         outbox.dispatched_at = datetime.now(UTC) - timedelta(seconds=31)
     assert await dispatch_once(app.state.database, Publisher()) == 1
     assert len(sent) == 2
+
+
+def test_worker_process_registers_every_mapped_table():
+    code = (
+        "import app.workers.tasks, app.workers.dispatcher\n"
+        "from app.db.base import Base\n"
+        "assert [t.name for t in Base.metadata.sorted_tables]\n"
+    )
+    result = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
 
 
 async def test_domain_limiter_waits_for_the_shared_lease(monkeypatch):
