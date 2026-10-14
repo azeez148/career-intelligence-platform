@@ -13,6 +13,8 @@ from app.core.config import Settings
 from app.core.errors import register_error_handlers
 from app.core.logging import configure_logging
 from app.db.session import Database
+from app.modules.identity.rate_limits import RateLimits
+from app.modules.identity.security import Passwords, now
 
 logger = logging.getLogger(__name__)
 
@@ -26,6 +28,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         app.state.database = Database(config)
         app.state.settings = config
         app.state.migration_heads = migration_heads()
+        app.state.clock = now
+        app.state.passwords = Passwords(config.password_workers)
+        await app.state.passwords.initialize()
+        app.state.rate_limits = RateLimits(app.state.database, config)
         try:
             yield
         finally:
@@ -42,6 +48,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             response = await call_next(request)
             status = response.status_code
             response.headers["X-Request-ID"] = request.state.request_id
+            if request.url.path.startswith(("/api/v1/auth", "/api/v1/users")):
+                response.headers["Cache-Control"] = "no-store"
             return response
         finally:
             logger.info(

@@ -1,3 +1,5 @@
+import os
+import secrets
 from collections.abc import Iterator
 
 import pytest
@@ -6,6 +8,11 @@ from pydantic import SecretStr
 
 from app.core.config import Settings
 from app.main import create_app
+
+for key in ("JWT_SECRET", "CSRF_SECRET", "RATE_LIMIT_SECRET"):
+    os.environ[key] = secrets.token_urlsafe(48)
+os.environ["ENVIRONMENT"] = "development"
+os.environ["ALLOWED_ORIGINS"] = '["http://testserver"]'
 
 
 @pytest.fixture

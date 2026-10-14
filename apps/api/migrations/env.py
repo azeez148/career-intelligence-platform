@@ -4,7 +4,8 @@ from alembic import context
 from sqlalchemy import Connection, pool
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from app.core.config import Settings
+from app.core.config import DatabaseSettings
+from app.db import models  # noqa: F401 - register mapped tables
 from app.db.base import Base
 
 
@@ -16,7 +17,7 @@ def run_migrations(connection: Connection) -> None:
 
 async def run_online() -> None:
     engine = create_async_engine(
-        Settings().database_url.get_secret_value(),
+        DatabaseSettings().database_url.get_secret_value(),
         poolclass=pool.NullPool,
     )
     try:
@@ -28,7 +29,7 @@ async def run_online() -> None:
 
 if context.is_offline_mode():
     context.configure(
-        url=Settings().database_url.get_secret_value(),
+        url=DatabaseSettings().database_url.get_secret_value(),
         target_metadata=Base.metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},

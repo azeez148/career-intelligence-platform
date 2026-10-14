@@ -8,6 +8,17 @@ from starlette.exceptions import HTTPException
 logger = logging.getLogger(__name__)
 
 
+class DomainError(Exception):
+    def __init__(
+        self, status: int, code: str, message: str, headers: dict[str, str] | None = None
+    ) -> None:
+        self.status = status
+        self.code = code
+        self.message = message
+        self.headers = headers or {}
+        super().__init__(code)
+
+
 def error_response(request: Request, status: int, code: str, message: str) -> JSONResponse:
     request_id = getattr(request.state, "request_id", "unknown")
     return JSONResponse(
@@ -18,6 +29,13 @@ def error_response(request: Request, status: int, code: str, message: str) -> JS
 
 
 def register_error_handlers(app: FastAPI) -> None:
+    @app.exception_handler(DomainError)
+    async def domain_error(request: Request, exc: DomainError) -> JSONResponse:
+        response = error_response(request, exc.status, exc.code, exc.message)
+        response.headers.update(exc.headers)
+        response.headers["Cache-Control"] = "no-store"
+        return response
+
     @app.exception_handler(RequestValidationError)
     async def validation_error(request: Request, exc: RequestValidationError) -> JSONResponse:
         return error_response(request, 422, "validation_error", "Request validation failed")
