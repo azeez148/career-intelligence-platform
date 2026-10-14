@@ -1,16 +1,15 @@
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
-from urllib.parse import urljoin, urlsplit
-from urllib.robotparser import RobotFileParser
+from urllib.parse import urljoin
 
 from app.core.urls import source_url
 from app.integrations.http import Fetched, FetchError
+from app.integrations.robots import RobotsPolicy, origin_url
 from app.modules.discovery.ats import platform_for
 from app.modules.discovery.html import career_score, parse_document
 from app.modules.discovery.sitemaps import parse_sitemap
 
 Fetch = Callable[[str], Awaitable[Fetched]]
-USER_AGENT = "CareerIntelligenceDiscovery"
 
 
 @dataclass(frozen=True)
@@ -32,11 +31,6 @@ class DiscoveryOutcome:
     failure_code: str | None = None
 
 
-def origin_url(url: str) -> str:
-    parsed = urlsplit(url)
-    return f"{parsed.scheme}://{parsed.netloc}/"
-
-
 def content_type(page: Fetched) -> str:
     return page.headers.get("content-type", "").split(";", 1)[0].strip().lower()
 
@@ -44,27 +38,10 @@ def content_type(page: Fetched) -> str:
 class DiscoveryPipeline:
     def __init__(self, fetch: Fetch) -> None:
         self.fetch = fetch
-        self.robots: dict[str, RobotFileParser | None] = {}
+        self.robots = RobotsPolicy(fetch)
 
     async def allowed(self, url: str) -> bool:
-        origin = origin_url(url)
-        if origin not in self.robots:
-            robots_url = urljoin(origin, "robots.txt")
-            page = await self.fetch(robots_url)
-            if page.status in {401, 403}:
-                parser = RobotFileParser()
-                parser.parse(["User-agent: *", "Disallow: /"])
-                self.robots[origin] = parser
-            elif 200 <= page.status < 300:
-                parser = RobotFileParser()
-                parser.parse(page.body.decode("utf-8", errors="replace").splitlines())
-                self.robots[origin] = parser
-            elif page.status in {429, 500, 502, 503, 504}:
-                raise FetchError("robots_unavailable", transient=True)
-            else:
-                self.robots[origin] = None
-        cached = self.robots[origin]
-        return cached is None or cached.can_fetch(USER_AGENT, url)
+        return await self.robots.allowed(url)
 
     async def run(self, start_url: str, *, explicit_careers: bool = False) -> DiscoveryOutcome:
         start_url = source_url(start_url)
@@ -127,8 +104,7 @@ class DiscoveryPipeline:
         )
 
     async def _sitemap_candidates(self, origin: str) -> list[tuple[str, str, list[str]]]:
-        parser = self.robots.get(origin)
-        sitemap_urls = list(parser.site_maps() or []) if parser is not None else []
+        sitemap_urls = self.robots.sitemaps(origin)
         sitemap_urls.append(urljoin(origin, "sitemap.xml"))
         queue = list(dict.fromkeys(sitemap_urls))[:3]
         seen: set[str] = set()

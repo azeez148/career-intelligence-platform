@@ -23,6 +23,7 @@ from app.modules.discovery.schemas import (
     ScanSummary,
     ScanView,
 )
+from app.modules.extraction.service import latest_for_sources
 
 ACTIVE = ("queued", "running", "needs_input")
 
@@ -57,6 +58,7 @@ async def view(db: AsyncSession, scan: DiscoveryScan) -> ScanView:
         resolution_evidence=scan.resolution_evidence,
         candidates=[CandidateView.model_validate(row, from_attributes=True) for row in candidates],
         sources=[CareerSourceView.model_validate(row, from_attributes=True) for row in sources],
+        extractions=await latest_for_sources(db, [row.id for row in sources]),
     )
 
 

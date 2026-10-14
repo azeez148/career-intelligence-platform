@@ -5,6 +5,7 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from app.core.urls import source_url
+from app.modules.extraction.schemas import ExtractionRunView
 
 ScanStatus = Literal[
     "queued", "running", "needs_input", "succeeded", "unsupported", "failed", "superseded"
@@ -50,6 +51,7 @@ class ScanView(ScanSummary):
     resolution_evidence: list[str]
     candidates: list[CandidateView]
     sources: list[CareerSourceView]
+    extractions: list[ExtractionRunView]
 
 
 class ScanPage(BaseModel):

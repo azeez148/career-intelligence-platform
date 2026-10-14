@@ -1,0 +1,7 @@
+{"start": "https://static-fixture.com/careers", "pages": {
+  "https://static-fixture.com/careers": "careers.html",
+  "https://static-fixture.com/careers?page=2": "careers-page-2.html",
+  "https://static-fixture.com/careers/jobs/101-backend-engineer": "job-101.html",
+  "https://static-fixture.com/careers/jobs/102-data-analyst": "job-102.html",
+  "https://static-fixture.com/careers/jobs/104-support-lead": "job-104.html"
+}}

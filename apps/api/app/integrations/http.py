@@ -194,6 +194,9 @@ class FetchLimits:
 
 
 DEFAULT_FETCH_LIMITS = FetchLimits()
+EXTRACTION_FETCH_LIMITS = FetchLimits(max_responses=60, max_total_bytes=25 * 1024 * 1024)
+BROWSER_FETCH_LIMITS = FetchLimits(max_responses=240, max_total_bytes=40 * 1024 * 1024)
+JSON_ACCEPT = "application/json"
 
 
 @dataclass(frozen=True)
@@ -241,7 +244,8 @@ class SafeHttpClient:
     async def aclose(self) -> None:
         await self.client.aclose()
 
-    async def fetch(self, url: str) -> Fetched:
+    async def fetch(self, url: str, *, accept: str | None = None) -> Fetched:
+        headers = {"Accept": accept} if accept else None
         current = self._safe_url(url, "url_invalid")
         visited: set[str] = set()
         for _ in range(self.limits.max_redirects + 1):
@@ -254,7 +258,7 @@ class SafeHttpClient:
             if self.rate_limit is not None:
                 await self.rate_limit(host)
             try:
-                async with self.client.stream("GET", current) as response:
+                async with self.client.stream("GET", current, headers=headers) as response:
                     self.responses += 1
                     if response.status_code in {301, 302, 303, 307, 308}:
                         location = response.headers.get("location")

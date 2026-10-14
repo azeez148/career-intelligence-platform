@@ -1,0 +1,104 @@
+{
+  "complete": true,
+  "confidence": "low",
+  "failure_code": null,
+  "jobs": [
+    {
+      "canonical_url": "https://static-fixture.com/careers/jobs/101-backend-engineer",
+      "confidence": "medium",
+      "dedupe_key": "https://static-fixture.com/careers/jobs/101-backend-engineer",
+      "department": null,
+      "description_text": "APIs and queues.",
+      "employment_type": "contract",
+      "extraction_method": "structured_data",
+      "field_sources": {
+        "canonical_url": "page",
+        "description_text": "structured",
+        "employment_type": "structured",
+        "location_text": "structured",
+        "posted_at": "structured",
+        "title": "structured"
+      },
+      "fingerprint": "2cc868b1091d72710d7d0b92be4cc2327f114203361320390381f1f6bb0c058f",
+      "location_text": "Nairobi, KE",
+      "posted_at": "2026-09-20 00:00:00+00:00",
+      "requirements_text": null,
+      "shared_url": false,
+      "source_job_id": null,
+      "title": "Backend Engineer",
+      "valid_through": null,
+      "work_mode": "unknown"
+    },
+    {
+      "canonical_url": "https://static-fixture.com/careers/jobs/102-data-analyst",
+      "confidence": "low",
+      "dedupe_key": "https://static-fixture.com/careers/jobs/102-data-analyst",
+      "department": null,
+      "description_text": "Data Analyst (Hybrid)\n\nTurn data into decisions.\n\nRequirements\n\n- SQL",
+      "employment_type": "unknown",
+      "extraction_method": "static_html",
+      "field_sources": {
+        "canonical_url": "page",
+        "description_text": "heuristic",
+        "requirements_text": "heuristic",
+        "title": "heuristic"
+      },
+      "fingerprint": "2e8aa5a2276ebc9297014ee6009d15d19745d2e85928b046f2446ceba35d2b9b",
+      "location_text": null,
+      "posted_at": null,
+      "requirements_text": "- SQL",
+      "shared_url": false,
+      "source_job_id": null,
+      "title": "Data Analyst (Hybrid)",
+      "valid_through": null,
+      "work_mode": "unknown"
+    },
+    {
+      "canonical_url": "https://static-fixture.com/careers/jobs/103-design-lead",
+      "confidence": "low",
+      "dedupe_key": "https://static-fixture.com/careers/jobs/103-design-lead",
+      "department": null,
+      "description_text": null,
+      "employment_type": "unknown",
+      "extraction_method": "static_html",
+      "field_sources": {
+        "canonical_url": "page",
+        "title": "heuristic"
+      },
+      "fingerprint": "8239a7ba091293aa8bf56a16622b3bde32a77122886e675b7df8a6cba51f8e1d",
+      "location_text": null,
+      "posted_at": null,
+      "requirements_text": null,
+      "shared_url": false,
+      "source_job_id": null,
+      "title": "Design Lead",
+      "valid_through": null,
+      "work_mode": "unknown"
+    },
+    {
+      "canonical_url": "https://static-fixture.com/careers/jobs/104-support-lead",
+      "confidence": "low",
+      "dedupe_key": "https://static-fixture.com/careers/jobs/104-support-lead",
+      "department": null,
+      "description_text": "Help customers succeed.",
+      "employment_type": "unknown",
+      "extraction_method": "static_html",
+      "field_sources": {
+        "canonical_url": "page",
+        "description_text": "heuristic",
+        "title": "heuristic"
+      },
+      "fingerprint": "186777f7b8483f4d29b08c383c0814d6ece012d9f9282d61f75baa59c782cb96",
+      "location_text": null,
+      "posted_at": null,
+      "requirements_text": null,
+      "shared_url": false,
+      "source_job_id": null,
+      "title": "Support Lead",
+      "valid_through": null,
+      "work_mode": "unknown"
+    }
+  ],
+  "status": "succeeded",
+  "strategy": "static_html"
+}

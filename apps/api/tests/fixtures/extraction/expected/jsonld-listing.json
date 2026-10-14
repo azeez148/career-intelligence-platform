@@ -1,0 +1,65 @@
+{
+  "complete": true,
+  "confidence": "medium",
+  "failure_code": null,
+  "jobs": [
+    {
+      "canonical_url": "https://jsonld-fixture.com/careers/sre",
+      "confidence": "medium",
+      "dedupe_key": "https://jsonld-fixture.com/careers/sre",
+      "department": null,
+      "description_text": "Keep systems healthy.\n\nQualifications\n\n- Linux\n- On-call experience",
+      "employment_type": "full_time",
+      "extraction_method": "structured_data",
+      "field_sources": {
+        "canonical_url": "structured",
+        "description_text": "structured",
+        "employment_type": "structured",
+        "location_text": "structured",
+        "posted_at": "structured",
+        "requirements_text": "heuristic",
+        "source_job_id": "structured",
+        "title": "structured",
+        "valid_through": "structured",
+        "work_mode": "structured"
+      },
+      "fingerprint": "5f1e45b3efc4444fc8c6eddf4b2fd02a2846a7bb82e5c50b600568d9d4d067db",
+      "location_text": "Lisbon, PT",
+      "posted_at": "2026-08-15 00:00:00+00:00",
+      "requirements_text": "- Linux\n- On-call experience",
+      "shared_url": false,
+      "source_job_id": "SRE-7",
+      "title": "Site Reliability Engineer",
+      "valid_through": "2026-12-31 23:59:59+00:00",
+      "work_mode": "remote"
+    },
+    {
+      "canonical_url": "https://jsonld-fixture.com/careers",
+      "confidence": "medium",
+      "dedupe_key": "https://jsonld-fixture.com/careers#88",
+      "department": null,
+      "description_text": null,
+      "employment_type": "part_time",
+      "extraction_method": "structured_data",
+      "field_sources": {
+        "canonical_url": "page",
+        "employment_type": "structured",
+        "location_text": "structured",
+        "requirements_text": "structured",
+        "source_job_id": "structured",
+        "title": "structured"
+      },
+      "fingerprint": "b061a123c68eaba6b22a2cfaf0b3c99d8640b91494a99fc13c9c5e8f6cef6a85",
+      "location_text": "Porto, Norte, Portugal; Remote within the EU",
+      "posted_at": null,
+      "requirements_text": "Two years of recruiting.",
+      "shared_url": true,
+      "source_job_id": "88",
+      "title": "Recruiter",
+      "valid_through": null,
+      "work_mode": "unknown"
+    }
+  ],
+  "status": "succeeded",
+  "strategy": "structured_data"
+}

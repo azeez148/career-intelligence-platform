@@ -1,0 +1,26 @@
+{
+  "jobs": [
+    {
+      "id": 4012001,
+      "title": "  Senior Backend Engineer ",
+      "absolute_url": "https://boards.greenhouse.io/acmefixture/jobs/4012001?utm_source=board&gh_src=abc#apply",
+      "location": {"name": "Remote"},
+      "departments": [{"name": "Engineering"}, {"name": "Platform"}],
+      "updated_at": "2026-09-30T10:00:00-04:00",
+      "first_published": "2026-09-01T09:00:00Z",
+      "content": "&lt;p&gt;Build reliable services.&lt;/p&gt;&lt;h3&gt;Requirements&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;Python&lt;/li&gt;&lt;li&gt;PostgreSQL&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Benefits&lt;/h3&gt;&lt;p&gt;Lunch&lt;/p&gt;&lt;script&gt;alert(1)&lt;/script&gt;"
+    },
+    {
+      "id": 4012002,
+      "title": "Office Coordinator",
+      "absolute_url": "https://boards.greenhouse.io/acmefixture/jobs/4012002",
+      "location": {"name": "Berlin, Germany"},
+      "departments": [],
+      "updated_at": "2026-09-29T10:00:00Z"
+    },
+    {"id": 4012003, "title": "", "absolute_url": "https://boards.greenhouse.io/acmefixture/jobs/4012003"},
+    {"id": 4012004, "title": "No URL"},
+    "not-an-object"
+  ],
+  "meta": {"total": 5}
+}

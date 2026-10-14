@@ -8,6 +8,7 @@ from celery import shared_task  # type: ignore[import-untyped]
 from redis.asyncio import Redis
 from sqlalchemy import delete, select
 from sqlalchemy.dialects.postgresql import insert
+from sqlalchemy.exc import IntegrityError
 
 from app.core.config import Settings
 from app.core.logging import configure_logging
@@ -17,8 +18,17 @@ from app.integrations.redis import DomainRateLimiter
 from app.modules.companies.models import Company
 from app.modules.discovery.models import CareerSource, DiscoveryScan, ScanOutbox
 from app.modules.discovery.pipeline import DiscoveryOutcome, DiscoveryPipeline
+from app.modules.extraction.service import enqueue_run
 
 logger = logging.getLogger(__name__)
+
+
+def retry_delay(attempt_count: int, retry_after: float | None) -> float:
+    """Capped exponential backoff with jitter; a server-provided delay wins."""
+    if retry_after:
+        return retry_after
+    base = min(15 * (2 ** (attempt_count - 1)), 300)
+    return float(base + secrets.randbelow(max(base // 4, 1) + 1))
 
 
 async def claim(database: Database, scan_id: UUID, settings: Settings) -> tuple[str, bool] | None:
@@ -58,6 +68,7 @@ async def persist_success(database: Database, scan_id: UUID, outcome: DiscoveryO
         )
         if scan is None or scan.status != "running":
             return
+        source_ids = []
         for source in outcome.sources:
             statement = insert(CareerSource).values(
                 user_id=scan.user_id,
@@ -69,7 +80,7 @@ async def persist_success(database: Database, scan_id: UUID, outcome: DiscoveryO
                 discovery_method=source.discovery_method,
                 evidence=source.evidence,
             )
-            await db.execute(
+            source_id = await db.scalar(
                 statement.on_conflict_do_update(
                     constraint="uq_sources_company_url",
                     set_={
@@ -80,8 +91,9 @@ async def persist_success(database: Database, scan_id: UUID, outcome: DiscoveryO
                         "evidence": source.evidence,
                         "updated_at": now,
                     },
-                )
+                ).returning(CareerSource.id)
             )
+            source_ids.append(source_id)
         scan.status = outcome.status
         scan.resolved_website_url = outcome.resolved_website_url
         scan.resolution_confidence = outcome.resolution_confidence
@@ -90,6 +102,15 @@ async def persist_success(database: Database, scan_id: UUID, outcome: DiscoveryO
         scan.completed_at = now
         scan.lease_expires_at = None
         await db.execute(delete(ScanOutbox).where(ScanOutbox.scan_id == scan.id))
+        if outcome.status == "succeeded":
+            for source_id in source_ids:
+                row = await db.get(CareerSource, source_id)
+                assert row is not None
+                try:
+                    async with db.begin_nested():
+                        await enqueue_run(db, row, "discovery", scan.id)
+                except IntegrityError:
+                    pass  # A concurrent manual run for this source is already active.
 
 
 async def persist_failure(
@@ -109,8 +130,7 @@ async def persist_failure(
         )
         scan.lease_expires_at = None
         if retry:
-            base = min(15 * (2 ** (scan.attempt_count - 1)), 300)
-            delay = error.retry_after or base + secrets.randbelow(max(base // 4, 1) + 1)
+            delay = retry_delay(scan.attempt_count, error.retry_after)
             scan.next_attempt_at = now + timedelta(seconds=delay)
             outbox = await db.get(ScanOutbox, scan.id)
             if outbox is None:

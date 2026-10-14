@@ -1,0 +1,40 @@
+[
+  {
+    "id": "lever-100",
+    "text": "Role 100",
+    "hostedUrl": "https://jobs.lever.co/acmefixture/lever-100",
+    "categories": {
+      "location": "Toronto",
+      "commitment": "Full-time",
+      "team": "Data"
+    },
+    "workplaceType": "hybrid",
+    "createdAt": 1788220800000,
+    "description": "<div>Join the data team.</div>",
+    "lists": [
+      {
+        "text": "What you'll need",
+        "content": "<li>SQL</li><li>Statistics</li>"
+      }
+    ],
+    "additional": "<p>Equal opportunity.</p>"
+  },
+  {
+    "id": "lever-101",
+    "text": "Role 101",
+    "hostedUrl": "https://jobs.lever.co/acmefixture/lever-101",
+    "categories": {
+      "commitment": "Seasonal"
+    },
+    "workplaceType": "unspecified",
+    "createdAt": 1788220800000,
+    "description": "<div>Join the data team.</div>",
+    "lists": [
+      {
+        "text": "What you'll need",
+        "content": "<li>SQL</li><li>Statistics</li>"
+      }
+    ],
+    "additional": "<p>Equal opportunity.</p>"
+  }
+]

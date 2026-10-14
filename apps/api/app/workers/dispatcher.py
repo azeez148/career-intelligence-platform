@@ -1,6 +1,8 @@
 import asyncio
 import logging
+from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
+from typing import Any
 
 from celery import Celery  # type: ignore[import-untyped]
 from sqlalchemy import and_, or_, select
@@ -9,60 +11,86 @@ from app.core.config import Settings
 from app.core.logging import configure_logging
 from app.db.session import Database
 from app.modules.discovery.models import DiscoveryScan, ScanOutbox
+from app.modules.extraction.models import ExtractionOutbox, ExtractionRun
 from app.workers.celery_app import celery
 
 logger = logging.getLogger(__name__)
 
 
-async def dispatch_once(database: Database, publisher: Celery, limit: int = 20) -> int:
+@dataclass(frozen=True)
+class OutboxKind:
+    """One durable work type: its outbox, the state row it drives, and how to name tasks."""
+
+    outbox: Any
+    key: Any
+    state: Any
+    prefix: str
+
+    def task_name(self, state: Any) -> str:
+        if self.prefix == "extraction":
+            return "extraction.browser" if state.stage == "browser" else "extraction.run"
+        return "discovery.run"
+
+
+KINDS = (
+    OutboxKind(ScanOutbox, ScanOutbox.scan_id, DiscoveryScan, "scan"),
+    OutboxKind(ExtractionOutbox, ExtractionOutbox.run_id, ExtractionRun, "extraction"),
+)
+
+
+async def dispatch_kind(database: Database, publisher: Celery, kind: OutboxKind, limit: int) -> int:
     now = datetime.now(UTC)
     stale = now - timedelta(seconds=30)
+    state = kind.state
     async with database.sessions() as db, db.begin():
         rows = list(
             (
-                await db.scalars(
-                    select(ScanOutbox)
-                    .join(DiscoveryScan, DiscoveryScan.id == ScanOutbox.scan_id)
+                await db.execute(
+                    select(kind.outbox, state)
+                    .join(state, state.id == kind.key)
                     .where(
                         or_(
                             and_(
-                                DiscoveryScan.status == "queued",
-                                or_(
-                                    DiscoveryScan.next_attempt_at.is_(None),
-                                    DiscoveryScan.next_attempt_at <= now,
-                                ),
+                                state.status == "queued",
+                                or_(state.next_attempt_at.is_(None), state.next_attempt_at <= now),
                             ),
-                            and_(
-                                DiscoveryScan.status == "running",
-                                DiscoveryScan.lease_expires_at <= now,
-                            ),
+                            and_(state.status == "running", state.lease_expires_at <= now),
                         ),
-                        ScanOutbox.available_at <= now,
-                        or_(ScanOutbox.dispatched_at.is_(None), ScanOutbox.dispatched_at <= stale),
+                        kind.outbox.available_at <= now,
+                        or_(
+                            kind.outbox.dispatched_at.is_(None), kind.outbox.dispatched_at <= stale
+                        ),
                     )
-                    .order_by(ScanOutbox.available_at, ScanOutbox.scan_id)
+                    .order_by(kind.outbox.available_at, kind.key)
                     .limit(limit)
-                    .with_for_update(skip_locked=True)
+                    .with_for_update(skip_locked=True, of=kind.outbox)
                 )
             ).all()
         )
-        for row in rows:
+        for row, target in rows:
             try:
                 await asyncio.to_thread(
                     publisher.send_task,
-                    "discovery.run",
-                    args=[str(row.scan_id)],
-                    task_id=f"scan:{row.scan_id}",
+                    kind.task_name(target),
+                    args=[str(target.id)],
+                    task_id=f"{kind.prefix}:{target.id}",
                 )
             except Exception:
                 row.publish_attempts += 1
                 row.last_error_code = "broker_unavailable"
                 row.available_at = now + timedelta(seconds=min(2**row.publish_attempts, 60))
-                logger.exception("scan_dispatch_failed")
+                logger.exception("dispatch_failed", extra={"kind": kind.prefix})
             else:
                 row.dispatched_at = now
                 row.last_error_code = None
         return len(rows)
+
+
+async def dispatch_once(database: Database, publisher: Celery, limit: int = 20) -> int:
+    count = 0
+    for kind in KINDS:
+        count += await dispatch_kind(database, publisher, kind, limit)
+    return count
 
 
 async def run() -> None:

@@ -53,6 +53,11 @@ class Settings(DatabaseSettings):
     discovery_domain_interval_ms: int = Field(default=500, ge=100, le=10000)
     discovery_max_attempts: int = Field(default=4, ge=1, le=10)
     discovery_lease_seconds: int = Field(default=120, ge=30, le=900)
+    extraction_user_hour_limit: int = Field(default=20, ge=1, le=1000)
+    extraction_source_hour_limit: int = Field(default=5, ge=1, le=100)
+    extraction_max_attempts: int = Field(default=3, ge=1, le=10)
+    extraction_lease_seconds: int = Field(default=240, ge=60, le=1800)
+    extraction_browser_enabled: bool = False
 
     @field_validator("jwt_secret", "csrf_secret", "rate_limit_secret")
     @classmethod
