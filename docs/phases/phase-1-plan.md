@@ -1,6 +1,6 @@
 # Phase 1 implementation plan: authentication, profiles, and RBAC
 
-Status: proposed; awaiting explicit approval. No Phase 1 code has been written.
+Status: approved by the user; implementation in progress.
 
 ## Starting evidence and scope
 

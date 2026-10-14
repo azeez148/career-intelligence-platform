@@ -5,6 +5,11 @@ services:
     tmpfs:
       - /var/lib/postgresql/data:uid=70,gid=70,mode=0700
   api:
+    environment:
+      ENVIRONMENT: development
+      ALLOWED_ORIGINS: '["http://127.0.0.1:18080"]'
+      TRUSTED_PROXY_CIDRS: '["172.16.0.0/12"]'
+      REGISTRATION_IP_LIMIT: 100
     ports: !override ["127.0.0.1:18000:8000"]
   web:
     ports: !override ["127.0.0.1:18080:8080"]

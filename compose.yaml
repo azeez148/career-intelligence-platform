@@ -5,6 +5,12 @@ x-api-environment: &api-environment
   LOG_LEVEL: ${LOG_LEVEL:-INFO}
   DB_CONNECT_TIMEOUT: ${DB_CONNECT_TIMEOUT:-2}
   DB_READY_TIMEOUT: ${DB_READY_TIMEOUT:-3}
+  ENVIRONMENT: ${ENVIRONMENT:-production}
+  JWT_SECRET: ${JWT_SECRET:?Set an independent random JWT_SECRET}
+  CSRF_SECRET: ${CSRF_SECRET:?Set an independent random CSRF_SECRET}
+  RATE_LIMIT_SECRET: ${RATE_LIMIT_SECRET:?Set an independent random RATE_LIMIT_SECRET}
+  ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:?Set exact browser origins}
+  TRUSTED_PROXY_CIDRS: ${TRUSTED_PROXY_CIDRS:-[]}
 
 services:
   db:

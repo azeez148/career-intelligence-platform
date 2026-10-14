@@ -1,4 +1,4 @@
-name: Phase 0 foundation
+name: Platform verification
 
 on:
   push:
@@ -68,6 +68,8 @@ jobs:
     env:
       POSTGRES_USER: career_test
       POSTGRES_DB: career_test
+      ENVIRONMENT: development
+      ALLOWED_ORIGINS: '["http://127.0.0.1:18080"]'
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
@@ -82,6 +84,11 @@ jobs:
           password=$(openssl rand -hex 24)
           echo "::add-mask::$password"
           echo "POSTGRES_PASSWORD=$password" >> "$GITHUB_ENV"
+          for name in JWT_SECRET CSRF_SECRET RATE_LIMIT_SECRET; do
+            value=$(openssl rand -hex 48)
+            echo "::add-mask::$value"
+            echo "$name=$value" >> "$GITHUB_ENV"
+          done
       - name: Build and start isolated stack
         run: docker compose -p career-phase0-test -f compose.yaml -f compose.test.yaml up --build -d --wait --wait-timeout 180
       - run: npm ci

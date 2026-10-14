@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, Query, Request, Response
 from sqlalchemy import select
 
 from app.core.config import Settings
+from app.core.errors import DomainError
 from app.modules.authorization.dependencies import (
     Principal,
     SessionDependency,
@@ -27,6 +28,7 @@ from app.modules.identity.security import (
     clear_cookies,
     client_address,
     csrf_cookie,
+    decode_access,
     session_cookies,
     unauthorized,
 )
@@ -40,6 +42,11 @@ async def cookie_binding(request: Request, db: SessionDependency) -> str:
     config: Settings = request.app.state.settings
     sid = await service.refresh_session_id(db, request.cookies.get(config.refresh_cookie, ""))
     await db.rollback()
+    if sid is None:
+        try:
+            _, sid = decode_access(config, request.cookies.get(config.access_cookie, ""))
+        except DomainError:
+            pass
     return str(sid) if sid else "anonymous"
 
 

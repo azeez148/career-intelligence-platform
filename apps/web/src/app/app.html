@@ -1,3 +1,16 @@
-<header><span>Career Intelligence</span><span class="phase">Foundation</span></header>
+<header>
+  <a routerLink="/">Career Intelligence</a>
+  <nav aria-label="Account">
+    @if (auth.user()) {
+      <a routerLink="/profile">Profile</a>
+      <a routerLink="/sessions">Sessions</a>
+      <button (click)="logout()" [disabled]="busy()">Sign out</button>
+    } @else {
+      <a routerLink="/login">Sign in</a>
+      <a routerLink="/register">Register</a>
+    }
+  </nav>
+</header>
+@if (error()) { <p role="alert">{{ error() }}</p> }
 <main><router-outlet /></main>
-<footer>Career Intelligence Platform · Phase 0</footer>
+<footer>Career Intelligence Platform · Accounts and profiles</footer>

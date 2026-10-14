@@ -336,3 +336,16 @@ async def test_password_salt_rehash_and_owned_session_revocation(api):
     current = next(row for row in sessions if row["current"])
     assert (await mutate(client, "DELETE", f"/auth/sessions/{current['id']}")).status_code == 204
     assert "dev-access" not in client.cookies
+
+
+async def test_logout_revokes_access_session_when_refresh_cookie_is_missing(api):
+    client, _ = api
+    await register_login(client)
+    original = dict(client.cookies)
+    del client.cookies["dev-refresh"]
+    await client.get("/api/v1/auth/csrf")
+    assert (await mutate(client, "POST", "/auth/logout")).status_code == 204
+    client.cookies.clear()
+    client.cookies.update(original)
+    assert (await client.get("/api/v1/users/me")).status_code == 401
+    assert (await mutate(client, "POST", "/auth/refresh")).status_code == 401

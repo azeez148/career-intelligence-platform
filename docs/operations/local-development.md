@@ -9,7 +9,7 @@
 
 ## Configuration
 
-Copy root `.env.example` to `.env`. Do not commit `.env` or place secrets in frontend configuration.
+Copy root `.env.example` to `.env`. Generate the required independent JWT/CSRF/rate-limit secrets and configure exact origins as described in [authentication operations](authentication.md). Do not commit `.env` or place secrets in frontend configuration.
 
 | Setting | Meaning |
 |---|---|
@@ -46,7 +46,7 @@ docker compose -f compose.yaml -f compose.dev.yaml up -d db --wait
 cd apps/api
 uv sync --locked
 uv run --env-file ../../.env --no-sync alembic upgrade head
-uv run --env-file ../../.env --no-sync uvicorn app.main:create_app --factory --reload --no-access-log
+uv run --env-file ../../.env --no-sync uvicorn app.main:create_app --factory --reload --no-access-log --no-proxy-headers
 ```
 
 In another terminal, from `apps/web`, run `npm ci` then `npm start`. Open <http://127.0.0.1:4200>. The dev proxy targets API port 8000.
@@ -65,6 +65,6 @@ Use a compatible Node executable rather than the host's older 22.22.0 shim. Duri
 
 ## Security and operational limits
 
-Compose is a local development arrangement. Exposed ports bind to loopback; PostgreSQL is private unless the dev override is used. API and web runtime containers run as non-root users. No production authentication, TLS termination, application permissions, scan rate limits, or backup automation is provided in Phase 0.
+Compose is a local development arrangement. Exposed ports bind to loopback; PostgreSQL is private unless the dev override is used. API and web runtime containers run as non-root users. Phase 1 provides authentication, application permissions, and auth rate limits. Production TLS termination, scan rate limits, and backup automation remain outside this phase.
 
 Stop the isolated test stack after verification using the commands in the testing guide. Never use its cleanup command against the development project.
