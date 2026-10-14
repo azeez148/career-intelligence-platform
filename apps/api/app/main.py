@@ -48,7 +48,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             response = await call_next(request)
             status = response.status_code
             response.headers["X-Request-ID"] = request.state.request_id
-            if request.url.path.startswith(("/api/v1/auth", "/api/v1/users")):
+            if request.url.path.startswith(
+                ("/api/v1/auth", "/api/v1/users", "/api/v1/companies", "/api/v1/preferences")
+            ):
                 response.headers["Cache-Control"] = "no-store"
             return response
         finally:

@@ -76,7 +76,7 @@ def test_migrations_readiness_and_recovery(postgres: PostgresContainer) -> None:
             pytest.fail("Readiness did not recover after PostgreSQL restarted")
 
 
-async def test_sqlalchemy_sessions_and_phase_one_tables(postgres: PostgresContainer) -> None:
+async def test_sqlalchemy_sessions_and_current_tables(postgres: PostgresContainer) -> None:
     migrate(postgres.get_connection_url(), "upgrade", "head")
     database = Database(Settings(database_url=SecretStr(postgres.get_connection_url())))
     try:
@@ -96,6 +96,8 @@ async def test_sqlalchemy_sessions_and_phase_one_tables(postgres: PostgresContai
                 "auth_sessions",
                 "refresh_tokens",
                 "auth_rate_limits",
+                "companies",
+                "preference_profiles",
             }
     finally:
         await database.close()

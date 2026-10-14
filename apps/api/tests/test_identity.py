@@ -4,74 +4,15 @@ from uuid import UUID
 
 import httpx
 import pytest
-from pydantic import SecretStr
-from sqlalchemy import delete, select, text
-from test_postgres import POSTGRES_IMAGE, migrate
-from testcontainers.community.postgres import PostgresContainer
+from auth_helpers import ORIGIN, PASSWORD, mutate, register_login
+from sqlalchemy import delete, select
 
-from app.core.config import Settings
-from app.main import create_app
 from app.modules.authorization.models import RolePermission
 from app.modules.identity.models import AuthSession, RefreshToken
 from app.modules.identity.security import access_token, digest, now
 from app.modules.users.models import User
 
 pytestmark = pytest.mark.integration
-PASSWORD = "A sufficiently long passphrase!"
-ORIGIN = "http://testserver"
-
-
-@pytest.fixture(scope="module")
-def identity_postgres():
-    with PostgresContainer(POSTGRES_IMAGE, driver="asyncpg") as container:
-        migrate(container.get_connection_url(), "upgrade", "head")
-        yield container
-
-
-@pytest.fixture
-async def api(identity_postgres):
-    config = Settings(database_url=SecretStr(identity_postgres.get_connection_url()))
-    app = create_app(config)
-    async with app.router.lifespan_context(app):
-        async with app.state.database.sessions() as db, db.begin():
-            await db.execute(text("TRUNCATE users, auth_rate_limits CASCADE"))
-            for value in range(2, 6):
-                await db.execute(
-                    text(
-                        "INSERT INTO role_permissions(role_id, permission_id) "
-                        "VALUES (:role,:permission) "
-                        "ON CONFLICT DO NOTHING"
-                    ),
-                    {"role": UUID(int=1), "permission": UUID(int=value)},
-                )
-        async with httpx.AsyncClient(
-            transport=httpx.ASGITransport(app=app), base_url=ORIGIN
-        ) as client:
-            yield client, app
-
-
-async def mutate(client, method, path, data=None):
-    if not client.cookies.get("XSRF-TOKEN"):
-        assert (await client.get("/api/v1/auth/csrf")).status_code == 204
-    return await client.request(
-        method,
-        "/api/v1" + path,
-        json=data if data is not None else {},
-        headers={
-            "Origin": ORIGIN,
-            "X-XSRF-TOKEN": client.cookies.get("XSRF-TOKEN"),
-            "Content-Type": "application/json",
-        },
-    )
-
-
-async def register_login(client, email="person@example.com"):
-    data = {"email": email, "password": PASSWORD}
-    registered = await mutate(client, "POST", "/auth/register", {**data, "display_name": "Person"})
-    assert registered.status_code == 201, registered.text
-    response = await mutate(client, "POST", "/auth/login", data)
-    assert response.status_code == 200, response.text
-    return response
 
 
 async def test_registration_validation_duplicates_and_password_protection(api):

@@ -119,7 +119,7 @@ def check_csrf(request: Request, config: Settings, binding: str, at: datetime) -
     denied = DomainError(403, "csrf_failed", "Request verification failed")
     if request.headers.get("origin") not in config.allowed_origins:
         raise denied
-    if request.method in {"POST", "PATCH"} and (
+    if request.method in {"POST", "PUT", "PATCH"} and (
         request.headers.get("content-type", "").split(";")[0].lower() != "application/json"
     ):
         raise denied

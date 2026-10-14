@@ -5,6 +5,8 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException
 
+from app.core.form_errors import safe_issues
+
 logger = logging.getLogger(__name__)
 
 
@@ -38,6 +40,19 @@ def register_error_handlers(app: FastAPI) -> None:
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(request: Request, exc: RequestValidationError) -> JSONResponse:
+        if request.url.path.startswith(("/api/v1/companies", "/api/v1/preferences")):
+            return JSONResponse(
+                status_code=422,
+                content={
+                    "error": {
+                        "code": "validation_error",
+                        "message": "Request validation failed",
+                        "request_id": request.state.request_id,
+                        "issues": safe_issues(exc.errors()),
+                    }
+                },
+                headers={"X-Request-ID": request.state.request_id, "Cache-Control": "no-store"},
+            )
         return error_response(request, 422, "validation_error", "Request validation failed")
 
     @app.exception_handler(HTTPException)
