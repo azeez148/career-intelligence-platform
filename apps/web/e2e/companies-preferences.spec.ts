@@ -48,8 +48,11 @@ test('multiple preference profiles persist independently and reject conflicts', 
   await account(page);
   await page.getByRole('link', { name: 'Preferences', exact: true }).click();
   for (const name of ['First search', 'Second search']) {
-    await page.getByRole('link', { name: 'Add preference profile', exact: true }).click();
-    await page.getByLabel('Profile name', { exact: true }).fill(name);
+    await page.goto('/preferences/new');
+    await expect(page).toHaveURL(/\/preferences\/new$/);
+    const profileName = page.getByLabel('Profile name', { exact: true });
+    await profileName.fill(name);
+    await expect(profileName).toHaveValue(name);
     await page.getByLabel('Preferred skills', { exact: true }).fill('C++\nC#');
     await page.getByRole('button', { name: 'Save preference profile' }).click();
     await expect(page.getByRole('alert')).toContainText('total 100');
@@ -91,6 +94,7 @@ test('new routes isolate users, fit a narrow viewport, and respond to cross-tab 
     await a.getByLabel('Company name', { exact: true }).fill('Private saved company');
     await a.getByRole('button', { name: 'Save company' }).click();
     await a.getByRole('link', { name: 'Edit company' }).click();
+    await expect(a).toHaveURL(/\/companies\/[0-9a-f-]+\/edit$/);
     const privatePath = new URL(a.url()).pathname;
     expect(await a.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await account(b);
