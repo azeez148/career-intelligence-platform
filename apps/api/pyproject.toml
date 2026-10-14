@@ -1,0 +1,48 @@
+[project]
+name = "career-intelligence-api"
+version = "0.1.0"
+description = "Career Intelligence Platform engineering foundation"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.34,<1",
+  "pydantic>=2,<3",
+  "pydantic-settings>=2,<3",
+  "sqlalchemy[asyncio]>=2.0,<2.1",
+  "asyncpg>=0.30,<1",
+  "alembic>=1.14,<2",
+  "httpx>=0.28,<1",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8,<10",
+  "pytest-asyncio>=1,<2",
+  "testcontainers[postgres]>=4,<5",
+  "ruff>=0.11,<1",
+  "mypy>=1.15,<2",
+  "pip-audit>=2.9,<3",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = ["integration: requires Docker and disposable PostgreSQL 17"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+python_version = "3.13"
+strict = true
+files = ["app", "migrations"]

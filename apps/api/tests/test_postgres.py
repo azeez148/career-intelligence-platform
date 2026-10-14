@@ -1,0 +1,86 @@
+import os
+import socket
+import subprocess
+import sys
+import time
+from collections.abc import Iterator
+from pathlib import Path
+
+import pytest
+from fastapi.testclient import TestClient
+from pydantic import SecretStr
+from sqlalchemy import text
+from testcontainers.community.postgres import PostgresContainer
+
+from app.core.config import Settings
+from app.db.session import Database
+from app.main import create_app
+
+pytestmark = pytest.mark.integration
+API_ROOT = Path(__file__).resolve().parents[1]
+
+
+@pytest.fixture(scope="module")
+def postgres() -> Iterator[PostgresContainer]:
+    # Deliberately fail rather than silently skip when Docker is unavailable.
+    # Docker may reassign ephemeral ports on restart; pin the chosen free port.
+    with socket.socket() as reservation:
+        reservation.bind(("127.0.0.1", 0))
+        port = reservation.getsockname()[1]
+    with PostgresContainer("postgres:17.9-bookworm", driver="asyncpg").with_bind_ports(
+        5432, port
+    ) as container:
+        yield container
+
+
+def migrate(url: str, *arguments: str) -> None:
+    subprocess.run(
+        [sys.executable, "-m", "alembic", *arguments],
+        cwd=API_ROOT,
+        env={**os.environ, "DATABASE_URL": url},
+        check=True,
+        timeout=60,
+    )
+
+
+def test_migrations_readiness_and_recovery(postgres: PostgresContainer) -> None:
+    url = postgres.get_connection_url()
+    settings = Settings(database_url=SecretStr(url), db_ready_timeout=1, db_connect_timeout=0.5)
+    with TestClient(create_app(settings)) as client:
+        assert client.get("/api/v1/health/ready").json()["checks"]["schema"] == "mismatch"
+        migrate(url, "upgrade", "head")
+        migrate(url, "upgrade", "head")
+        assert client.get("/api/v1/health/ready").status_code == 200
+        migrate(url, "downgrade", "base")
+        assert client.get("/api/v1/health/ready").status_code == 503
+        migrate(url, "upgrade", "head")
+        assert client.get("/api/v1/health/ready").status_code == 200
+        docker_container = postgres.get_wrapped_container()
+        docker_container.stop(timeout=1)
+        try:
+            start = time.monotonic()
+            assert client.get("/api/v1/health/ready").status_code == 503
+            assert time.monotonic() - start < 3
+            assert client.get("/api/v1/health/live").status_code == 200
+        finally:
+            docker_container.start()
+        deadline = time.monotonic() + 30
+        while time.monotonic() < deadline:
+            if client.get("/api/v1/health/ready").status_code == 200:
+                break
+            time.sleep(0.2)
+        else:
+            pytest.fail("Readiness did not recover after PostgreSQL restarted")
+
+
+async def test_sqlalchemy_sessions_and_no_business_tables(postgres: PostgresContainer) -> None:
+    database = Database(Settings(database_url=SecretStr(postgres.get_connection_url())))
+    try:
+        async with database.sessions() as session:
+            assert await session.scalar(text("SELECT 1")) == 1
+            tables = await session.scalars(
+                text("SELECT tablename FROM pg_tables WHERE schemaname = 'public'")
+            )
+            assert set(tables) <= {"alembic_version"}
+    finally:
+        await database.close()
