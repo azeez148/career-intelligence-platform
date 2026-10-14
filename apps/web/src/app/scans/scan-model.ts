@@ -35,6 +35,7 @@ const outcomes: Record<string, string> = {
   scan_budget_exceeded: 'The scan reached its total download limit.',
   response_budget_exceeded: 'The scan reached its request limit.',
   internal_error: 'The scan could not be completed after bounded retries.',
+  retry_exhausted: 'The selected site remained unavailable after bounded retries.',
 };
 
 export function outcomeText(scan: Scan): string {

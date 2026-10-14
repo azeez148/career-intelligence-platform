@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import secrets
 from datetime import UTC, datetime, timedelta
 from uuid import UUID
 
@@ -103,10 +104,13 @@ async def persist_failure(
             return
         retry = error.transient and scan.attempt_count < settings.discovery_max_attempts
         scan.status = "queued" if retry else "failed"
-        scan.failure_code = error.code
+        scan.failure_code = (
+            error.code if retry else ("retry_exhausted" if error.transient else error.code)
+        )
         scan.lease_expires_at = None
         if retry:
-            delay = error.retry_after or min(15 * (2 ** (scan.attempt_count - 1)), 300)
+            base = min(15 * (2 ** (scan.attempt_count - 1)), 300)
+            delay = error.retry_after or base + secrets.randbelow(max(base // 4, 1) + 1)
             scan.next_attempt_at = now + timedelta(seconds=delay)
             outbox = await db.get(ScanOutbox, scan.id)
             if outbox is None:

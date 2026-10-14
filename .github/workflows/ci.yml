@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: phase0-${{ github.workflow }}-${{ github.ref }}
+  group: phase3-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -79,18 +79,21 @@ jobs:
           node-version-file: apps/web/.nvmrc
           cache: npm
           cache-dependency-path: apps/web/package-lock.json
-      - name: Set ephemeral test password
+      - name: Set ephemeral test secrets
         run: |
           password=$(openssl rand -hex 24)
           echo "::add-mask::$password"
           echo "POSTGRES_PASSWORD=$password" >> "$GITHUB_ENV"
+          redis_password=$(openssl rand -hex 24)
+          echo "::add-mask::$redis_password"
+          echo "REDIS_PASSWORD=$redis_password" >> "$GITHUB_ENV"
           for name in JWT_SECRET CSRF_SECRET RATE_LIMIT_SECRET; do
             value=$(openssl rand -hex 48)
             echo "::add-mask::$value"
             echo "$name=$value" >> "$GITHUB_ENV"
           done
       - name: Build and start isolated stack
-        run: docker compose -p career-phase0-test -f compose.yaml -f compose.test.yaml up --build -d --wait --wait-timeout 180
+        run: docker compose -p career-phase3-test -f compose.yaml -f compose.test.yaml up --build -d --wait --wait-timeout 180
       - run: npm ci
         working-directory: apps/web
       - run: npx playwright install --with-deps chromium
@@ -98,16 +101,18 @@ jobs:
       - run: npm run e2e
         working-directory: apps/web
       - name: Scan API image
-        run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:0.69.3 image --scanners vuln --severity HIGH,CRITICAL --exit-code 1 career-api:phase0
+        run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v trivy-cache:/root/.cache/trivy aquasec/trivy:0.69.3 image --scanners vuln --severity HIGH,CRITICAL --exit-code 1 career-api:phase0
       - name: Scan web image
-        run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:0.69.3 image --scanners vuln --severity HIGH,CRITICAL --exit-code 1 career-web:phase0
+        run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v trivy-cache:/root/.cache/trivy aquasec/trivy:0.69.3 image --scanners vuln --severity HIGH,CRITICAL --exit-code 1 career-web:phase0
       - name: Scan database image
-        run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:0.69.3 image --scanners vuln --severity HIGH,CRITICAL --exit-code 1 career-db:phase0
+        run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v trivy-cache:/root/.cache/trivy aquasec/trivy:0.69.3 image --scanners vuln --severity HIGH,CRITICAL --exit-code 1 career-db:phase0
+      - name: Scan Redis image
+        run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v trivy-cache:/root/.cache/trivy aquasec/trivy:0.69.3 image --scanners vuln --severity HIGH,CRITICAL --exit-code 1 redis:8.2.10-alpine3.22@sha256:b51665e66f00759be7c3152ad5ac3c66fb2f619c13ef62dea7cc1f9914524635
       - name: Collect service logs
         if: always()
         run: |
           mkdir -p .artifacts
-          docker compose -p career-phase0-test -f compose.yaml -f compose.test.yaml logs --no-color > .artifacts/compose.log
+          docker compose -p career-phase3-test -f compose.yaml -f compose.test.yaml logs --no-color > .artifacts/compose.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:
@@ -118,7 +123,7 @@ jobs:
             .artifacts/
       - name: Remove isolated test stack
         if: always()
-        run: docker compose -p career-phase0-test -f compose.yaml -f compose.test.yaml down --volumes
+        run: docker compose -p career-phase3-test -f compose.yaml -f compose.test.yaml down --volumes
 
   secrets:
     runs-on: ubuntu-24.04

@@ -33,7 +33,7 @@ services:
     image: redis:8.2.10-alpine3.22@sha256:b51665e66f00759be7c3152ad5ac3c66fb2f619c13ef62dea7cc1f9914524635
     environment:
       REDIS_PASSWORD: ${REDIS_PASSWORD:?Set REDIS_PASSWORD in .env}
-    command: [sh, -c, 'exec redis-server --requirepass "$$REDIS_PASSWORD" --appendonly yes --appendfsync everysec']
+    command: [sh, -c, 'exec redis-server --requirepass "$$REDIS_PASSWORD" --appendonly yes --appendfsync everysec --maxmemory-policy noeviction']
     volumes:
       - redis-data:/data
     healthcheck:
@@ -70,7 +70,7 @@ services:
   worker:
     image: career-api:phase0
     environment: *api-environment
-    command: [.venv/bin/celery, -A, app.workers.celery_app:celery, worker, --loglevel, INFO, --concurrency, "2", --prefetch-multiplier, "1"]
+    command: [.venv/bin/celery, -A, app.workers.celery_app:celery, worker, --loglevel, INFO, --concurrency, "2", --prefetch-multiplier, "1", --soft-time-limit, "70", --time-limit, "75"]
     depends_on:
       migrate: {condition: service_completed_successfully}
       redis: {condition: service_healthy}
