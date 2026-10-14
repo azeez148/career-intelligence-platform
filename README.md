@@ -25,3 +25,5 @@ API: <http://127.0.0.1:8000/docs>, `/api/v1/health/live`, and `/api/v1/health/re
 See [local operations](docs/operations/local-development.md), [architecture](docs/architecture/overview.md), [design decisions](docs/decisions/0001-foundation.md), [Phase 0 scope and status](docs/phases/phase-0.md), and [verification evidence](docs/testing/phase-0.md).
 
 See [Phase 1 scope/status](docs/phases/phase-1.md), [authentication design](docs/decisions/0002-authentication-sessions-rbac.md), and [verification evidence](docs/testing/phase-1.md). Phase 2 requires separate explicit approval. This is not a production release.
+
+For commands, browser actions, and expected results after each step, follow the [Phase 1 local checklist](docs/testing/phase-1-local-check.md).

@@ -1,6 +1,8 @@
 # Phase 1 verification
 
-Status: local verification passed; hosted CI pending. Do not interpret pending checks as passed.
+Status: local verification and all hosted CI gates passed for implementation commit `20648939c17f8dd39154f9bb7ddc957289c20d54`.
+
+[Hosted run 38548891819](https://github.com/azeez148/career-intelligence-platform/actions/runs/38548891819) completed successfully on 2026-10-14 at 10:22:50 UTC (15:52:50 IST): backend, frontend, containers-and-browser, and secrets all passed. Follow the [step-by-step local checklist](phase-1-local-check.md) to reproduce the visible behavior and automated checks.
 
 ## Commands
 
@@ -44,7 +46,7 @@ Local verification on 2026-10-14:
 | npm audit | 0 vulnerabilities |
 | Trivy 0.69.3 API/web/database images | 0 HIGH/CRITICAL findings across all three; no suppressions |
 | Gitleaks committed history | Passed; final pushed history also checked in CI |
-| Hosted CI | Pending |
+| Hosted CI | **Passed**, all four jobs; run linked above |
 
 Argon2 local sanity benchmark (five hashes, configured 64 MiB/t=3/p=1, concurrent development workloads): 385.3, 424.9, 370.8, 364.6, 398.4 ms; median 385.3 ms. This is a workstation sanity check, not a production load/SLA claim. Two workers cap hashing work at roughly 128 MiB per API process; capacity saturation is tested.
 

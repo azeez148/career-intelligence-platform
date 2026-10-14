@@ -1,6 +1,6 @@
 # Phase 1 implementation plan: authentication, profiles, and RBAC
 
-Status: approved by the user; implementation in progress.
+Status: approved by the user; Phase 1 implemented and verified. See [completion report](phase-1.md) and [local checks](../testing/phase-1-local-check.md).
 
 ## Starting evidence and scope
 
@@ -138,7 +138,7 @@ After approval, implement incrementally: schema/RBAC → credentials/session ser
 
 Create `docs/decisions/0002-authentication-sessions-rbac.md`, `docs/phases/phase-1.md`, `docs/testing/phase-1.md`, and `docs/operations/authentication.md`. Update architecture/README/API contracts and document configuration, key rotation effects, profile ownership, session races, RBAC seed changes, rate-limit tradeoffs, migrations, and excluded functionality.
 
-This document is the reviewable plan, not approval to implement. Wait for explicit approval, then implement Phase 1 only and stop before Phase 2.
+Approval was received and Phase 1 was implemented. Stop before Phase 2; do not begin the next phase without its required explicit approval.
 
 ## Security references reviewed
 

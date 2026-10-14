@@ -1,6 +1,8 @@
 # Phase 1: authentication, profiles, and RBAC
 
-Status: implemented and locally verified following explicit approval of [the plan](phase-1-plan.md); hosted CI verification pending. Phase 2 has not begun.
+Status: complete following explicit approval of [the plan](phase-1-plan.md). Local checks and all four [hosted CI jobs](https://github.com/azeez148/career-intelligence-platform/actions/runs/38548891819) passed for implementation commit `2064893`. Phase 2 has not begun.
+
+Local verification: use the [step-by-step checklist](../testing/phase-1-local-check.md), which explains the command or browser action and expected result after each implementation step.
 
 ## Delivered behavior
 
