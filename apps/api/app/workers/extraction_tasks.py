@@ -28,6 +28,7 @@ from app.modules.extraction.strategies import (
     StrategyResult,
     static_html,
 )
+from app.modules.matching.queue import enqueue_for_user as enqueue_matches_for_user
 from app.workers.tasks import retry_delay
 
 logger = logging.getLogger(__name__)
@@ -119,6 +120,7 @@ async def persist_outcome(
             run.jobs_updated = counts.updated
             run.jobs_unchanged = counts.unchanged
             run.jobs_closed = counts.closed
+            await enqueue_matches_for_user(db, run.user_id, "jobs_changed")
         run.completed_at = now
         await db.execute(delete(ExtractionOutbox).where(ExtractionOutbox.run_id == run.id))
 

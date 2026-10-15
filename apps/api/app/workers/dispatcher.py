@@ -12,6 +12,7 @@ from app.core.logging import configure_logging
 from app.db.session import Database
 from app.modules.discovery.models import DiscoveryScan, ScanOutbox
 from app.modules.extraction.models import ExtractionOutbox, ExtractionRun
+from app.modules.matching.models import MatchingOutbox, MatchRun
 from app.workers.celery_app import celery
 
 logger = logging.getLogger(__name__)
@@ -29,12 +30,15 @@ class OutboxKind:
     def task_name(self, state: Any) -> str:
         if self.prefix == "extraction":
             return "extraction.browser" if state.stage == "browser" else "extraction.run"
+        if self.prefix == "match":
+            return "matching.run"
         return "discovery.run"
 
 
 KINDS = (
     OutboxKind(ScanOutbox, ScanOutbox.scan_id, DiscoveryScan, "scan"),
     OutboxKind(ExtractionOutbox, ExtractionOutbox.run_id, ExtractionRun, "extraction"),
+    OutboxKind(MatchingOutbox, MatchingOutbox.run_id, MatchRun, "match"),
 )
 
 

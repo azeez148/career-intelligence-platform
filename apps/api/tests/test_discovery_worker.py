@@ -125,6 +125,7 @@ async def test_dispatcher_publishes_due_outbox_once(api):
 def test_worker_process_registers_every_mapped_table():
     code = (
         "import app.workers.tasks, app.workers.dispatcher, app.workers.extraction_tasks\n"
+        "import app.workers.matching_tasks\n"
         "from app.db.base import Base\n"
         "assert [t.name for t in Base.metadata.sorted_tables]\n"
     )

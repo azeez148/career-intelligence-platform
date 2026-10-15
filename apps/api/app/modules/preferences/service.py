@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.errors import DomainError
 from app.core.values import comparison_key
+from app.modules.matching.queue import enqueue_run as enqueue_match_run
 from app.modules.preferences.models import PreferenceProfile
 from app.modules.preferences.schemas import (
     Criteria,
@@ -75,6 +76,7 @@ async def save(
         await db.flush()
         await db.refresh(profile)
         result = view(profile)
+        await enqueue_match_run(db, user_id, profile.id, "preference_update")
         await db.commit()
     except IntegrityError as error:
         await db.rollback()

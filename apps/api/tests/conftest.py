@@ -76,7 +76,13 @@ async def api(identity_postgres):
                     ),
                     {"role": UUID(int=1), "code": f"scans:{action}:self"},
                 )
-            for code in ("jobs:read:self", "extractions:create:self"):
+            for code in (
+                "jobs:read:self",
+                "extractions:create:self",
+                "matches:read:self",
+                "matches:update:self",
+                "ai:use:self",
+            ):
                 await db.execute(
                     text(
                         "INSERT INTO role_permissions(role_id, permission_id) "

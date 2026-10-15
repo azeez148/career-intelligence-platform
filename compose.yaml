@@ -71,7 +71,7 @@ services:
   worker:
     image: career-api:phase0
     environment: *api-environment
-    command: [.venv/bin/celery, -A, app.workers.celery_app:celery, worker, --loglevel, INFO, -Q, "discovery,extraction", --concurrency, "2", --prefetch-multiplier, "1", --soft-time-limit, "70", --time-limit, "75"]
+    command: [.venv/bin/celery, -A, app.workers.celery_app:celery, worker, --loglevel, INFO, -Q, "discovery,extraction,matching", --concurrency, "2", --prefetch-multiplier, "1", --soft-time-limit, "70", --time-limit, "75"]
     depends_on:
       migrate: {condition: service_completed_successfully}
       redis: {condition: service_healthy}

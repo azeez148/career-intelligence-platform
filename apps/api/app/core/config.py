@@ -59,6 +59,7 @@ class Settings(DatabaseSettings):
     extraction_max_attempts: int = Field(default=3, ge=1, le=10)
     extraction_lease_seconds: int = Field(default=240, ge=60, le=1800)
     extraction_browser_enabled: bool = False
+    matching_user_hour_limit: int = Field(default=30, ge=1, le=1000)
     # Test stacks only: exact public-looking hostnames mapped to fixture containers. Refused in
     # production; never set in compose.yaml.
     outbound_test_hosts: dict[str, str] = {}

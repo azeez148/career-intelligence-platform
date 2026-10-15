@@ -5,7 +5,7 @@ from celery import Celery  # type: ignore[import-untyped]
 celery = Celery(
     "career-intelligence",
     broker=os.environ.get("REDIS_URL", "redis://127.0.0.1:6379/0"),
-    include=["app.workers.tasks", "app.workers.extraction_tasks"],
+    include=["app.workers.tasks", "app.workers.extraction_tasks", "app.workers.matching_tasks"],
 )
 celery.conf.update(
     accept_content=["json"],
@@ -26,6 +26,7 @@ celery.conf.update(
     task_routes={
         "extraction.run": {"queue": "extraction"},
         "extraction.browser": {"queue": "extraction-browser"},
+        "matching.run": {"queue": "matching"},
     },
     task_serializer="json",
     task_soft_time_limit=70,
