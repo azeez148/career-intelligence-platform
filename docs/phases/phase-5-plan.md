@@ -1,6 +1,6 @@
 # Phase 5 implementation plan: matching engine and AI integration
 
-Status: approved by the user with the four recommended decisions in section 4; implementation in progress.
+Status: approved with the four recommended decisions in section 4, implemented, and locally verified. See [Phase 5 status](phase-5.md) for deviations.
 
 ## 1. Starting evidence and gap assessment
 

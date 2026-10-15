@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: phase4-${{ github.workflow }}-${{ github.ref }}
+  group: phase5-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -95,7 +95,7 @@ jobs:
             echo "$name=$value" >> "$GITHUB_ENV"
           done
       - name: Build and start isolated stack
-        run: docker compose -p career-phase4-test -f compose.yaml -f compose.test.yaml up --build -d --wait --wait-timeout 180
+        run: docker compose -p career-phase5-test -f compose.yaml -f compose.test.yaml up --build -d --wait --wait-timeout 180
       - run: npm ci
         working-directory: apps/web
       - run: npx playwright install --with-deps chromium
@@ -118,7 +118,7 @@ jobs:
         if: always()
         run: |
           mkdir -p .artifacts
-          docker compose -p career-phase4-test -f compose.yaml -f compose.test.yaml logs --no-color > .artifacts/compose.log
+          docker compose -p career-phase5-test -f compose.yaml -f compose.test.yaml logs --no-color > .artifacts/compose.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:
@@ -129,7 +129,7 @@ jobs:
             .artifacts/
       - name: Remove isolated test stack
         if: always()
-        run: docker compose -p career-phase4-test -f compose.yaml -f compose.test.yaml down --volumes
+        run: docker compose -p career-phase5-test -f compose.yaml -f compose.test.yaml down --volumes
 
   secrets:
     runs-on: ubuntu-24.04

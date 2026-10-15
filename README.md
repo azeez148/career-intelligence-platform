@@ -1,13 +1,14 @@
 # Career Intelligence Platform
 
-Angular → FastAPI → PostgreSQL, with Redis/Celery workers and an isolated Chromium worker. The approved Phase 4 system provides:
+Angular → FastAPI → PostgreSQL, with Redis/Celery workers and an isolated Chromium worker. The approved Phase 5 system provides:
 
 - accounts, private companies, and preference profiles;
 - durable career-source discovery with explicit domain confirmation;
 - job extraction from public ATS APIs, structured data, static pages, and script-rendered pages, all through SSRF-safe outbound networking;
-- a job explorer with normalized fields, confidence, and provenance.
+- a job explorer with normalized fields, confidence, and provenance;
+- deterministic, explainable matching of jobs against preference profiles, with optional advisory AI assessments (off by default; OpenRouter).
 
-It does not perform matching. [MASTER_PLAN.md](MASTER_PLAN.md) governs engineering scope and phase approvals.
+Match scores describe fit with stated preferences, not hiring probability. [MASTER_PLAN.md](MASTER_PLAN.md) governs engineering scope and phase approvals.
 
 ## Start locally with Docker
 
@@ -34,6 +35,6 @@ API: <http://127.0.0.1:8000/docs>, `/api/v1/health/live`, and `/api/v1/health/re
 - **Browser journeys:** start the isolated test stack from the [Phase 4 local checklist](docs/testing/phase-4-local-check.md), then run `npx playwright install chromium` and `npm run e2e` from `apps/web`.
 - Never refresh lockfiles or upgrade dependencies implicitly.
 
-See [architecture](docs/architecture/overview.md), [Phase 4 status](docs/phases/phase-4.md), [extraction design](docs/decisions/0005-job-extraction.md), [extraction operations](docs/operations/job-extraction.md), [discovery operations](docs/operations/career-discovery.md), and [verification evidence](docs/testing/phase-4.md). This is not a production release.
+See [architecture](docs/architecture/overview.md), [Phase 5 status](docs/phases/phase-5.md), [matching and AI design](docs/decisions/0006-matching-and-ai.md), [matching and AI operations](docs/operations/matching-and-ai.md), [extraction operations](docs/operations/job-extraction.md), [discovery operations](docs/operations/career-discovery.md), and [verification evidence](docs/testing/phase-5.md). This is not a production release.
 
-For commands, browser actions, expected results, and cleanup, follow the [Phase 4 local checklist](docs/testing/phase-4-local-check.md).
+For commands, browser actions, expected results, and cleanup, follow the [Phase 4 local checklist](docs/testing/phase-4-local-check.md) and then the [Phase 5 local checklist](docs/testing/phase-5-local-check.md).
