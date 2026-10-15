@@ -10,7 +10,7 @@ export const authInterceptor: HttpInterceptorFn = (request, next) => {
   const protectedRequest = request.url.startsWith('/api/v1/users/') ||
     request.url.startsWith('/api/v1/auth/sessions') || request.url === '/api/v1/auth/logout-all' ||
     ['/api/v1/companies', '/api/v1/preferences', '/api/v1/scans', '/api/v1/jobs', '/api/v1/sources',
-      '/api/v1/extractions'].some(prefix => path === prefix || path.startsWith(prefix + '/'));
+      '/api/v1/extractions', '/api/v1/ai'].some(prefix => path === prefix || path.startsWith(prefix + '/'));
   return next(request).pipe(catchError((error: unknown) => {
     if (!protectedRequest || !(error instanceof HttpErrorResponse) || error.status !== 401) {
       return throwError(() => error);

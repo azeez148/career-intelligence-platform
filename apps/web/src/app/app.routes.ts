@@ -12,6 +12,8 @@ export const routes: Routes = [
   { path: 'jobs/:id', loadComponent: () => import('./jobs/job-detail').then(m => m.JobDetail), canActivate: [authenticated], data: { permission: 'jobs:read:self' }, title: 'Job' },
   { path: 'preferences', loadComponent: () => import('./preferences/preference-list').then(m => m.PreferenceList), canActivate: [authenticated], data: { permission: 'preferences:read:self' }, title: 'Your preference profiles' },
   { path: 'preferences/new', loadComponent: () => import('./preferences/preference-editor').then(m => m.PreferenceEditor), canActivate: [authenticated], data: { permission: 'preferences:create:self' }, title: 'Add preference profile' },
+  { path: 'preferences/:id/matches', loadComponent: () => import('./matches/match-list').then(m => m.MatchList), canActivate: [authenticated], data: { permission: 'matches:read:self' }, title: 'Matches' },
+  { path: 'preferences/:id/matches/:jobId', loadComponent: () => import('./matches/match-detail').then(m => m.MatchDetail), canActivate: [authenticated], data: { permission: 'matches:read:self' }, title: 'Match' },
   { path: 'preferences/:id/edit', loadComponent: () => import('./preferences/preference-editor').then(m => m.PreferenceEditor), canActivate: [authenticated], data: { permission: 'preferences:update:self' }, title: 'Edit preference profile' },
   { path: 'login', loadComponent: () => import('./auth/credentials').then(m => m.Credentials), canActivate: [guest], title: 'Sign in' },
   { path: 'register', loadComponent: () => import('./auth/credentials').then(m => m.Credentials), canActivate: [guest], data: { registration: true }, title: 'Create account' },

@@ -124,7 +124,8 @@ class Settings(DatabaseSettings):
                 raise ValueError("Origins must be exact scheme/host/port values")
             if self.environment == "production" and parsed.scheme != "https":
                 raise ValueError("Production requires HTTPS origins")
-        if self.ai_enabled and (self.openrouter_api_key is None or not self.ai_model):
+        key = self.openrouter_api_key.get_secret_value() if self.openrouter_api_key else ""
+        if self.ai_enabled and (not key or not self.ai_model):
             raise ValueError("AI_ENABLED requires OPENROUTER_API_KEY and AI_MODEL")
         if self.environment == "production" and self.openrouter_base_url != (
             "https://openrouter.ai/api/v1"

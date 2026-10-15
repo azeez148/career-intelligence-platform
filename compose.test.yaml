@@ -14,6 +14,10 @@ services:
       ALLOWED_ORIGINS: '["http://127.0.0.1:18080"]'
       TRUSTED_PROXY_CIDRS: '["172.16.0.0/12"]'
       REGISTRATION_IP_LIMIT: 100
+      AI_ENABLED: "true"
+      AI_MODEL: stub/model
+      OPENROUTER_API_KEY: test-only-key
+      OPENROUTER_BASE_URL: http://ai-stub/api/v1
     ports: !override ["127.0.0.1:18000:8000"]
   worker:
     environment:
@@ -31,6 +35,9 @@ services:
       fixture-site: {condition: service_healthy}
   # Test-only public-looking career sites reachable through OUTBOUND_TEST_HOSTS.
   fixture-site:
+    networks:
+      default:
+        aliases: [ai-stub]
     image: nginxinc/nginx-unprivileged:1.30.5-alpine@sha256:56b8272e43a0525f67aed68d1e0794a712d10e3e45a563e118e9a77c817e6f86
     volumes:
       - ./apps/web/e2e/fixtures/sites:/srv/sites:ro

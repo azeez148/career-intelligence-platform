@@ -10,6 +10,8 @@ const messages: Record<string, string> = {
   company_duplicate: 'This company is already saved.', preference_duplicate: 'This preference profile name is already used.',
   scan_state_conflict: 'This scan no longer needs a website selection. Reload its latest status.',
   rate_limited: 'Too many requests for now. Wait a while before trying again.',
+  ai_disabled: 'AI assessments are not enabled on this system.',
+  ai_daily_limit: 'You have used all AI assessments for today. Try again tomorrow.',
 };
 
 export function resourceError(error: unknown): string {

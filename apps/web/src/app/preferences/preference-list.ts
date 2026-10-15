@@ -9,13 +9,14 @@ import { PreferenceService } from './preference.service';
   selector: 'app-preference-list', imports: [RouterLink],
   template: `
     <section class="resource-panel"><h1>Your preference profiles</h1>
-      <p>Keep separate profiles for different searches. Matching scores are not calculated yet.</p>
+      <p>Keep separate profiles for different searches. Each profile ranks your extracted jobs by how well they fit it.</p>
       @if (can('create')) { <a routerLink="/preferences/new">Add preference profile</a> }
       @if (saved) { <p role="status">Preference profile saved.</p> }
       @if (error()) { <p role="alert">{{ error() }}</p> }
       @if (loading()) { <p role="status">Loading preference profiles…</p> }
       @for (profile of items(); track profile.id) {
         <article><h2>{{ profile.name }}</h2><div class="actions">
+          @if (canMatch()) { <a [routerLink]="['/preferences', profile.id, 'matches']">View matches</a> }
           @if (can('update')) { <a [routerLink]="['/preferences', profile.id, 'edit']">Edit preference profile</a> }
           @if (can('delete')) { <button (click)="remove(profile)" [disabled]="busy()">Delete preference profile</button> }
         </div></article>
@@ -37,6 +38,7 @@ export class PreferenceList implements OnInit {
   readonly busy = signal(false);
   readonly error = signal('');
   can(action: string): boolean { return this.auth.user()?.permissions.includes(`preferences:${action}:self`) ?? false; }
+  canMatch(): boolean { return this.auth.user()?.permissions.includes('matches:read:self') ?? false; }
   ngOnInit(): void { void this.load(); }
   async load(offset = 0): Promise<void> {
     this.loading.set(true); this.error.set('');
