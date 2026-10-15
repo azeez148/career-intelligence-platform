@@ -1,6 +1,6 @@
 # Phase 5 implementation plan: matching engine and AI integration
 
-Status: proposed; awaiting approval. No Phase 5 code, migration, dependency, or runtime configuration has been added.
+Status: approved by the user with the four recommended decisions in section 4; implementation in progress.
 
 ## 1. Starting evidence and gap assessment
 
@@ -8,7 +8,7 @@ Phase 4 is committed at `3510781` and verified locally:
 - 201 backend tests, 42 Angular tests, and 13 Playwright journeys pass;
 - migration, container, audit, and secret gates pass.
 
-Hosted GitHub Actions has **not** run for Phase 3 or Phase 4 because nothing has been pushed. Implementation should wait until that gate is green or explicitly waived again.
+Hosted GitHub Actions passed for Phase 4 at `9d8a817` ([run 38646275133](https://github.com/azeez148/career-intelligence-platform/actions/runs/38646275133)).
 
 What matching can build on:
 

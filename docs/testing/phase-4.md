@@ -62,4 +62,4 @@ Verified locally on Windows 11 with Docker Desktop 29.8.2 (Linux containers), Py
 ## Environment notes
 
 - One earlier full backend run took about 4 hours and failed only the Phase 4 migration test because the machine slept mid-run. That test passes alone in 31 s, and the clean full runs listed above pass.
-- Hosted GitHub Actions has **not** run for Phase 3 or Phase 4, because nothing has been pushed.
+- Hosted GitHub Actions passed backend, frontend, containers-and-browser, and secrets jobs at `9d8a817` ([run 38646275133](https://github.com/azeez148/career-intelligence-platform/actions/runs/38646275133)), including Python Playwright browser tests and the browser-image gate on Linux.

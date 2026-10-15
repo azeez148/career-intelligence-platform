@@ -1,6 +1,6 @@
 # Phase 4 implementation plan: job extraction and normalization
 
-Status: approved (four recommended decisions in section 4, plus a fixable-only image-scan gate for the browser image approved during implementation), implemented, and locally verified. Hosted CI for Phases 3 and 4 is pending push. See [Phase 4 status](phase-4.md) for deviations.
+Status: approved (four recommended decisions in section 4, plus a fixable-only image-scan gate for the browser image approved during implementation), implemented, and verified locally and in hosted CI. See [Phase 4 status](phase-4.md) for deviations.
 
 ## 1. Starting evidence and gap assessment
 

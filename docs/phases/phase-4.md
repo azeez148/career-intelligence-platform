@@ -1,6 +1,6 @@
 # Phase 4: job extraction and normalization
 
-Status: implemented and locally verified on 2026-10-14/15. Hosted CI has not run because the commits are not pushed (the Phase 3 hosted gate is also still pending). Phase 5 has not started.
+Status: complete. Verified locally on 2026-10-14/15, and hosted CI passed all four jobs at `9d8a817` ([run 38646275133](https://github.com/azeez148/career-intelligence-platform/actions/runs/38646275133)). Phase 3 hosted CI passed at `e32c4b1`.
 
 ## What was implemented
 
