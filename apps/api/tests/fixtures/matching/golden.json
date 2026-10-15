@@ -1,0 +1,4895 @@
+[
+ {
+  "criteria": {
+   "experience_max_months": null,
+   "experience_min_months": 12,
+   "job_titles": [
+    "Site Reliability Engineer",
+    "Product Designer"
+   ],
+   "seniority_preferences": [
+    "Senior"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 38,
+    "keywords": 0,
+    "location": 0,
+    "skills": 0,
+    "title": 62
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Data",
+   "description_text": null,
+   "employment_type": "contract",
+   "location_text": "Lisbon, PT",
+   "requirements_text": null,
+   "title": "Backend Engineer",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.6200",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "25.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Site Reliability Engineer",
+      "Product Designer",
+      "Senior"
+     ],
+     "score": "0.2500",
+     "status": "partial",
+     "text": "The job title partly resembles Site Reliability Engineer.",
+     "weight": 62
+    },
+    {
+     "contribution": null,
+     "factor": "experience",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate experience; this factor was left out.",
+     "weight": 38
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 25,
+   "status": "eligible",
+   "summary": "Strongest match: job title."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Internship",
+    "Full-time"
+   ],
+   "excluded_keywords": [
+    "Clearance"
+   ],
+   "locations": [
+    "Lisbon"
+   ],
+   "remote_policy": "any",
+   "weights": {
+    "employment": 49,
+    "experience": 0,
+    "keywords": 0,
+    "location": 51,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Data",
+   "description_text": null,
+   "employment_type": "part_time",
+   "location_text": "Berlin, Germany",
+   "requirements_text": null,
+   "title": "Site Reliability Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Lisbon"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The location does not mention Lisbon.",
+     "weight": 51
+    },
+    {
+     "contribution": "0.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Internship",
+      "Full-time"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Employment type is part-time, not one you selected.",
+     "weight": 49
+    }
+   ],
+   "flags": [],
+   "score": 0,
+   "status": "eligible",
+   "summary": "None of your weighted preferences matched."
+  }
+ },
+ {
+  "criteria": {
+   "excluded_keywords": [
+    "Unpaid"
+   ],
+   "job_titles": [
+    "Site Reliability Engineer"
+   ],
+   "preferred_keywords": [
+    "APIs",
+    "observability",
+    "on-call"
+   ],
+   "seniority_preferences": [
+    "Junior"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 13,
+    "location": 0,
+    "skills": 0,
+    "title": 87
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Data",
+   "description_text": "We build Kubernetes and SQL and PostgreSQL systems. on-call matter.",
+   "employment_type": "full_time",
+   "location_text": "Berlin, Germany",
+   "requirements_text": null,
+   "title": "Senior Data Analyst",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Site Reliability Engineer",
+      "Junior"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 87
+    },
+    {
+     "contribution": "4.33",
+     "factor": "keywords",
+     "found_in": {
+      "on-call": "description"
+     },
+     "matched": [
+      "on-call"
+     ],
+     "missing": [
+      "APIs",
+      "observability"
+     ],
+     "score": "0.3333",
+     "status": "partial",
+     "text": "Found 1 of 3 keywords in the description: on-call. Not found: APIs, observability.",
+     "weight": 13
+    }
+   ],
+   "flags": [],
+   "score": 4,
+   "status": "eligible",
+   "summary": "Strongest match: keywords."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Full-time"
+   ],
+   "job_titles": [
+    "Product Designer"
+   ],
+   "preferred_keywords": [
+    "startup"
+   ],
+   "preferred_skills": [
+    "React"
+   ],
+   "required_skills": [],
+   "seniority_preferences": [
+    "Junior"
+   ],
+   "weights": {
+    "employment": 45,
+    "experience": 0,
+    "keywords": 48,
+    "location": 0,
+    "skills": 1,
+    "title": 6
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": null,
+   "description_text": "We build Node.js and React and PostgreSQL and SQL systems. startup matter.",
+   "employment_type": "contract",
+   "location_text": "Berlin, Germany",
+   "requirements_text": null,
+   "title": "Senior Site Reliability Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "1.00",
+     "factor": "skills",
+     "found_in": {
+      "React": "description"
+     },
+     "matched": [
+      "React"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Found 1 of 1 skills in the description: React.",
+     "weight": 1
+    },
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Product Designer",
+      "Junior"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 6
+    },
+    {
+     "contribution": "0.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Full-time"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Employment type is contract, not one you selected.",
+     "weight": 45
+    },
+    {
+     "contribution": "48.00",
+     "factor": "keywords",
+     "found_in": {
+      "startup": "description"
+     },
+     "matched": [
+      "startup"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Found 1 of 1 keywords in the description: startup.",
+     "weight": 48
+    }
+   ],
+   "flags": [],
+   "score": 49,
+   "status": "eligible",
+   "summary": "Strongest match: keywords."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Part-time"
+   ],
+   "job_titles": [
+    "Product Designer",
+    "Backend Engineer"
+   ],
+   "preferred_skills": [
+    "C++",
+    "SQL",
+    "Node.js"
+   ],
+   "required_skills": [
+    "Python"
+   ],
+   "seniority_preferences": [],
+   "weights": {
+    "employment": 49,
+    "experience": 0,
+    "keywords": 0,
+    "location": 0,
+    "skills": 0,
+    "title": 51
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Data",
+   "description_text": "We build PostgreSQL systems. APIs matter.",
+   "employment_type": "full_time",
+   "location_text": "Remote - Canada",
+   "requirements_text": null,
+   "title": "Senior Backend Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [
+    {
+     "code": "missing_required_skill",
+     "text": "A required skill is not mentioned: Python.",
+     "values": [
+      "Python"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "51.00",
+     "factor": "title",
+     "found_in": {
+      "Backend Engineer": "title"
+     },
+     "matched": [
+      "Backend Engineer"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The job title matches Backend Engineer.",
+     "weight": 51
+    },
+    {
+     "contribution": "0.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Part-time"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Employment type is full-time, not one you selected.",
+     "weight": 49
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 0,
+   "status": "excluded",
+   "summary": "A required skill is not mentioned: Python."
+  }
+ },
+ {
+  "criteria": {
+   "excluded_keywords": [
+    "Unpaid"
+   ],
+   "experience_max_months": 60,
+   "experience_min_months": null,
+   "weights": {
+    "employment": 0,
+    "experience": 100,
+    "keywords": 0,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": "Platform",
+   "description_text": "We build Go systems. observability matter.",
+   "employment_type": "full_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "3+ years experience",
+   "title": "Lead Backend Engineer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "100.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "3+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 3+ years, within your experience range.",
+     "weight": 100
+    }
+   ],
+   "flags": [],
+   "score": 100,
+   "status": "eligible",
+   "summary": "Strongest match: experience."
+  }
+ },
+ {
+  "criteria": {
+   "excluded_keywords": [
+    "Unpaid"
+   ],
+   "preferred_skills": [
+    "C#",
+    "Kubernetes"
+   ],
+   "required_skills": [],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 0,
+    "location": 0,
+    "skills": 100,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": null,
+   "description_text": null,
+   "employment_type": "contract",
+   "location_text": "Remote - Canada",
+   "requirements_text": null,
+   "title": "Senior Data Analyst",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "skills",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "C#",
+      "Kubernetes"
+     ],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate skills; this factor was left out.",
+     "weight": 100
+    }
+   ],
+   "flags": [
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": null,
+   "status": "insufficient_information",
+   "summary": "The job does not state enough to evaluate any weighted preference."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": null,
+   "experience_min_months": 36,
+   "locations": [],
+   "preferred_keywords": [
+    "observability"
+   ],
+   "remote_policy": "exclude_remote",
+   "weights": {
+    "employment": 0,
+    "experience": 63,
+    "keywords": 25,
+    "location": 12,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Data",
+   "description_text": null,
+   "employment_type": "part_time",
+   "location_text": null,
+   "requirements_text": null,
+   "title": "Senior Data Analyst",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.1200",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "100.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The work mode (onsite) fits your remote preference.",
+     "weight": 12
+    },
+    {
+     "contribution": null,
+     "factor": "experience",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate experience; this factor was left out.",
+     "weight": 63
+    },
+    {
+     "contribution": null,
+     "factor": "keywords",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "observability"
+     ],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate keywords; this factor was left out.",
+     "weight": 25
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    },
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": 100,
+   "status": "eligible",
+   "summary": "Strongest match: location."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": null,
+   "experience_min_months": 12,
+   "job_titles": [
+    "Backend Engineer"
+   ],
+   "seniority_preferences": [],
+   "weights": {
+    "employment": 0,
+    "experience": 40,
+    "keywords": 0,
+    "location": 0,
+    "skills": 0,
+    "title": 60
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Platform",
+   "description_text": "We build React and PostgreSQL systems. on-call matter.",
+   "employment_type": "unknown",
+   "location_text": "Berlin, Germany",
+   "requirements_text": "3+ years experience",
+   "title": "Senior Data Analyst",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Backend Engineer"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 60
+    },
+    {
+     "contribution": "40.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "3+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 3+ years, within your experience range.",
+     "weight": 40
+    }
+   ],
+   "flags": [],
+   "score": 40,
+   "status": "eligible",
+   "summary": "Strongest match: experience."
+  }
+ },
+ {
+  "criteria": {
+   "locations": [
+    "Toronto",
+    "Remote"
+   ],
+   "preferred_skills": [
+    "Kubernetes",
+    "Go"
+   ],
+   "remote_policy": "any",
+   "required_skills": [],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 0,
+    "location": 27,
+    "skills": 73,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Data",
+   "description_text": "We build React and C# and Go and PostgreSQL systems. on-call matter. Security clearance needed.",
+   "employment_type": "full_time",
+   "location_text": "Berlin, Germany",
+   "requirements_text": "3+ years experience",
+   "title": "Backend Engineer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "36.50",
+     "factor": "skills",
+     "found_in": {
+      "Go": "description"
+     },
+     "matched": [
+      "Go"
+     ],
+     "missing": [
+      "Kubernetes"
+     ],
+     "score": "0.5000",
+     "status": "partial",
+     "text": "Found 1 of 2 skills in the description: Go. Not found: Kubernetes.",
+     "weight": 73
+    },
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Toronto",
+      "Remote"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The location does not mention Toronto, Remote.",
+     "weight": 27
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 37,
+   "status": "eligible",
+   "summary": "Strongest match: skills."
+  }
+ },
+ {
+  "criteria": {
+   "preferred_keywords": [
+    "observability",
+    "on-call"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 100,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": null,
+   "description_text": "We build C# and React and Node.js systems. on-call matter.",
+   "employment_type": "contract",
+   "location_text": "Remote - Canada",
+   "requirements_text": "2-4 years",
+   "title": "Senior Site Reliability Engineer",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "50.00",
+     "factor": "keywords",
+     "found_in": {
+      "on-call": "description"
+     },
+     "matched": [
+      "on-call"
+     ],
+     "missing": [
+      "observability"
+     ],
+     "score": "0.5000",
+     "status": "partial",
+     "text": "Found 1 of 2 keywords in the description: on-call. Not found: observability.",
+     "weight": 100
+    }
+   ],
+   "flags": [],
+   "score": 50,
+   "status": "eligible",
+   "summary": "Strongest match: keywords."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Full-time",
+    "Internship"
+   ],
+   "experience_max_months": null,
+   "experience_min_months": 12,
+   "locations": [],
+   "preferred_keywords": [
+    "on-call"
+   ],
+   "preferred_skills": [
+    "SQL",
+    ".NET"
+   ],
+   "remote_policy": "exclude_remote",
+   "required_skills": [
+    "C++"
+   ],
+   "weights": {
+    "employment": 2,
+    "experience": 58,
+    "keywords": 38,
+    "location": 2,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": null,
+   "description_text": "We build  systems. on-call matter.",
+   "employment_type": "full_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": null,
+   "title": "Site Reliability Engineer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.4000",
+   "exclusions": [
+    {
+     "code": "missing_required_skill",
+     "text": "A required skill is not mentioned: C++.",
+     "values": [
+      "C++"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate location; this factor was left out.",
+     "weight": 2
+    },
+    {
+     "contribution": null,
+     "factor": "experience",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate experience; this factor was left out.",
+     "weight": 58
+    },
+    {
+     "contribution": "5.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [
+      "Full-time"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Employment type matches Full-time.",
+     "weight": 2
+    },
+    {
+     "contribution": "95.00",
+     "factor": "keywords",
+     "found_in": {
+      "on-call": "description"
+     },
+     "matched": [
+      "on-call"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Found 1 of 1 keywords in the description: on-call.",
+     "weight": 38
+    }
+   ],
+   "flags": [
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": 0,
+   "status": "excluded",
+   "summary": "A required skill is not mentioned: C++."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": null,
+   "experience_min_months": 36,
+   "locations": [
+    "Berlin",
+    "Toronto"
+   ],
+   "preferred_keywords": [
+    "observability"
+   ],
+   "preferred_skills": [
+    "Go",
+    "C#"
+   ],
+   "remote_policy": "any",
+   "required_skills": [
+    "PostgreSQL"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 6,
+    "keywords": 12,
+    "location": 71,
+    "skills": 11,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Platform",
+   "description_text": "We build C++ and React and C# and Kubernetes and Python systems. on-call matter.",
+   "employment_type": "part_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "2-4 years",
+   "title": "Site Reliability Engineer",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [
+    {
+     "code": "missing_required_skill",
+     "text": "A required skill is not mentioned: PostgreSQL.",
+     "values": [
+      "PostgreSQL"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "2.75",
+     "factor": "skills",
+     "found_in": {
+      "C#": "description"
+     },
+     "matched": [
+      "C#"
+     ],
+     "missing": [
+      "PostgreSQL",
+      "Go"
+     ],
+     "score": "0.2500",
+     "status": "partial",
+     "text": "Found 1 of 3 skills in the description: C#. Not found: PostgreSQL, Go.",
+     "weight": 11
+    },
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Berlin",
+      "Toronto"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The location does not mention Berlin, Toronto.",
+     "weight": 71
+    },
+    {
+     "contribution": "6.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "2\u20134 years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 2\u20134 years, within your experience range.",
+     "weight": 6
+    },
+    {
+     "contribution": "0.00",
+     "factor": "keywords",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "observability"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 1 keywords. Not found: observability.",
+     "weight": 12
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 0,
+   "status": "excluded",
+   "summary": "A required skill is not mentioned: PostgreSQL."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Part-time"
+   ],
+   "excluded_keywords": [
+    "Clearance"
+   ],
+   "preferred_keywords": [
+    "APIs",
+    "startup"
+   ],
+   "weights": {
+    "employment": 80,
+    "experience": 0,
+    "keywords": 20,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Platform",
+   "description_text": "We build Node.js and Python and React and .NET systems. APIs matter.",
+   "employment_type": "full_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "2-4 years",
+   "title": "Lead Site Reliability Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Part-time"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Employment type is full-time, not one you selected.",
+     "weight": 80
+    },
+    {
+     "contribution": "10.00",
+     "factor": "keywords",
+     "found_in": {
+      "APIs": "description"
+     },
+     "matched": [
+      "APIs"
+     ],
+     "missing": [
+      "startup"
+     ],
+     "score": "0.5000",
+     "status": "partial",
+     "text": "Found 1 of 2 keywords in the description: APIs. Not found: startup.",
+     "weight": 20
+    }
+   ],
+   "flags": [],
+   "score": 10,
+   "status": "eligible",
+   "summary": "Strongest match: keywords."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Full-time",
+    "Part-time"
+   ],
+   "weights": {
+    "employment": 100,
+    "experience": 0,
+    "keywords": 0,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": null,
+   "description_text": "We build  systems. APIs matter.",
+   "employment_type": "part_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "2-4 years",
+   "title": "Senior Data Analyst",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "100.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [
+      "Part-time"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Employment type matches Part-time.",
+     "weight": 100
+    }
+   ],
+   "flags": [],
+   "score": 100,
+   "status": "eligible",
+   "summary": "Strongest match: employment type."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Contract",
+    "Internship"
+   ],
+   "job_titles": [
+    "Site Reliability Engineer"
+   ],
+   "locations": [
+    "Berlin",
+    "Toronto"
+   ],
+   "preferred_keywords": [
+    "observability",
+    "on-call"
+   ],
+   "remote_policy": "remote_only",
+   "seniority_preferences": [
+    "Lead"
+   ],
+   "weights": {
+    "employment": 22,
+    "experience": 0,
+    "keywords": 29,
+    "location": 26,
+    "skills": 0,
+    "title": 23
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": "Platform",
+   "description_text": "We build Go and .NET and Node.js and Kubernetes systems. APIs matter.",
+   "employment_type": "unknown",
+   "location_text": null,
+   "requirements_text": null,
+   "title": "Product Designer",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.5200",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Site Reliability Engineer",
+      "Lead"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 23
+    },
+    {
+     "contribution": null,
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate location; this factor was left out.",
+     "weight": 26
+    },
+    {
+     "contribution": null,
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate employment type; this factor was left out.",
+     "weight": 22
+    },
+    {
+     "contribution": "0.00",
+     "factor": "keywords",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "observability",
+      "on-call"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 2 keywords. Not found: observability, on-call.",
+     "weight": 29
+    }
+   ],
+   "flags": [],
+   "score": 0,
+   "status": "eligible",
+   "summary": "None of your weighted preferences matched."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Contract",
+    "Internship"
+   ],
+   "experience_max_months": null,
+   "experience_min_months": 36,
+   "preferred_skills": [
+    "SQL"
+   ],
+   "required_skills": [
+    "Go"
+   ],
+   "weights": {
+    "employment": 59,
+    "experience": 41,
+    "keywords": 0,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": null,
+   "description_text": "We build C++ and Go and Python and React and .NET systems. startup matter.",
+   "employment_type": "full_time",
+   "location_text": "Berlin, Germany",
+   "requirements_text": "3+ years experience",
+   "title": "Senior Site Reliability Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "41.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "3+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 3+ years, within your experience range.",
+     "weight": 41
+    },
+    {
+     "contribution": "0.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Contract",
+      "Internship"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Employment type is full-time, not one you selected.",
+     "weight": 59
+    }
+   ],
+   "flags": [],
+   "score": 41,
+   "status": "eligible",
+   "summary": "Strongest match: experience."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": null,
+   "experience_min_months": 36,
+   "job_titles": [
+    "Backend Engineer"
+   ],
+   "seniority_preferences": [],
+   "weights": {
+    "employment": 0,
+    "experience": 65,
+    "keywords": 0,
+    "location": 0,
+    "skills": 0,
+    "title": 35
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Data",
+   "description_text": "We build  systems. observability matter.",
+   "employment_type": "part_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": null,
+   "title": "Site Reliability Engineer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.3500",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "25.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Backend Engineer"
+     ],
+     "score": "0.2500",
+     "status": "partial",
+     "text": "The job title partly resembles Backend Engineer.",
+     "weight": 35
+    },
+    {
+     "contribution": null,
+     "factor": "experience",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate experience; this factor was left out.",
+     "weight": 65
+    }
+   ],
+   "flags": [
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": 25,
+   "status": "eligible",
+   "summary": "Strongest match: job title."
+  }
+ },
+ {
+  "criteria": {
+   "excluded_keywords": [
+    "Unpaid"
+   ],
+   "preferred_skills": [
+    ".NET",
+    "C#"
+   ],
+   "required_skills": [
+    "PostgreSQL"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 0,
+    "location": 0,
+    "skills": 100,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": "Platform",
+   "description_text": null,
+   "employment_type": "unknown",
+   "location_text": "Berlin, Germany",
+   "requirements_text": null,
+   "title": "Senior Data Analyst",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "skills",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "PostgreSQL",
+      ".NET",
+      "C#"
+     ],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate skills; this factor was left out.",
+     "weight": 100
+    }
+   ],
+   "flags": [
+    {
+     "code": "required_skills_unverified",
+     "text": "Required skills could not be checked: the job has no description."
+    },
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": null,
+   "status": "insufficient_information",
+   "summary": "The job does not state enough to evaluate any weighted preference."
+  }
+ },
+ {
+  "criteria": {
+   "preferred_keywords": [
+    "APIs",
+    "observability",
+    "startup"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 100,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Data",
+   "description_text": null,
+   "employment_type": "part_time",
+   "location_text": null,
+   "requirements_text": null,
+   "title": "Senior Site Reliability Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "keywords",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "APIs",
+      "observability",
+      "startup"
+     ],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate keywords; this factor was left out.",
+     "weight": 100
+    }
+   ],
+   "flags": [
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": null,
+   "status": "insufficient_information",
+   "summary": "The job does not state enough to evaluate any weighted preference."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Part-time"
+   ],
+   "locations": [],
+   "remote_policy": "exclude_remote",
+   "weights": {
+    "employment": 63,
+    "experience": 0,
+    "keywords": 0,
+    "location": 37,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Platform",
+   "description_text": "We build  systems. APIs matter. Security clearance needed.",
+   "employment_type": "unknown",
+   "location_text": null,
+   "requirements_text": "2-4 years",
+   "title": "Senior Product Designer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.3700",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "100.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The work mode (hybrid) fits your remote preference.",
+     "weight": 37
+    },
+    {
+     "contribution": null,
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate employment type; this factor was left out.",
+     "weight": 63
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    },
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": 100,
+   "status": "eligible",
+   "summary": "Strongest match: location."
+  }
+ },
+ {
+  "criteria": {
+   "preferred_keywords": [
+    "APIs"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 100,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": null,
+   "description_text": "We build .NET and Go and C++ systems. startup matter. Security clearance needed.",
+   "employment_type": "unknown",
+   "location_text": "Berlin, Germany",
+   "requirements_text": "2-4 years",
+   "title": "Data Analyst",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "keywords",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "APIs"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 1 keywords. Not found: APIs.",
+     "weight": 100
+    }
+   ],
+   "flags": [],
+   "score": 0,
+   "status": "eligible",
+   "summary": "None of your weighted preferences matched."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Contract"
+   ],
+   "locations": [],
+   "remote_policy": "remote_only",
+   "weights": {
+    "employment": 22,
+    "experience": 0,
+    "keywords": 0,
+    "location": 78,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Platform",
+   "description_text": "We build Kubernetes and PostgreSQL and Go and Python systems. startup matter.",
+   "employment_type": "contract",
+   "location_text": "Lisbon, PT",
+   "requirements_text": null,
+   "title": "Site Reliability Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [
+    {
+     "code": "not_remote",
+     "text": "You asked for remote roles only; this job is onsite.",
+     "values": [
+      "onsite"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The work mode (onsite) fits your remote preference.",
+     "weight": 78
+    },
+    {
+     "contribution": "22.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [
+      "Contract"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Employment type matches Contract.",
+     "weight": 22
+    }
+   ],
+   "flags": [],
+   "score": 0,
+   "status": "excluded",
+   "summary": "You asked for remote roles only; this job is onsite."
+  }
+ },
+ {
+  "criteria": {
+   "locations": [],
+   "remote_policy": "remote_only",
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 0,
+    "location": 100,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Platform",
+   "description_text": "We build Go and C# and PostgreSQL systems. on-call matter.",
+   "employment_type": "contract",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "2-4 years",
+   "title": "Senior Product Designer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate location; this factor was left out.",
+     "weight": 100
+    }
+   ],
+   "flags": [
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": null,
+   "status": "insufficient_information",
+   "summary": "The job does not state enough to evaluate any weighted preference."
+  }
+ },
+ {
+  "criteria": {
+   "preferred_keywords": [
+    "on-call",
+    "APIs"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 100,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": null,
+   "description_text": "We build SQL and Python and PostgreSQL and C# systems. on-call matter.",
+   "employment_type": "full_time",
+   "location_text": "Berlin, Germany",
+   "requirements_text": "3+ years experience",
+   "title": "Lead Backend Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "50.00",
+     "factor": "keywords",
+     "found_in": {
+      "on-call": "description"
+     },
+     "matched": [
+      "on-call"
+     ],
+     "missing": [
+      "APIs"
+     ],
+     "score": "0.5000",
+     "status": "partial",
+     "text": "Found 1 of 2 keywords in the description: on-call. Not found: APIs.",
+     "weight": 100
+    }
+   ],
+   "flags": [],
+   "score": 50,
+   "status": "eligible",
+   "summary": "Strongest match: keywords."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Full-time"
+   ],
+   "excluded_keywords": [
+    "Unpaid"
+   ],
+   "experience_max_months": 60,
+   "experience_min_months": null,
+   "locations": [],
+   "remote_policy": "exclude_remote",
+   "weights": {
+    "employment": 61,
+    "experience": 32,
+    "keywords": 0,
+    "location": 7,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Platform",
+   "description_text": "We build C++ and .NET and SQL systems. observability matter. Security clearance needed.",
+   "employment_type": "full_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "5 years of SQL",
+   "title": "Data Analyst",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [
+    {
+     "code": "remote_excluded",
+     "text": "You excluded remote roles; this job is remote.",
+     "values": [
+      "remote"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The work mode (remote) fits your remote preference.",
+     "weight": 7
+    },
+    {
+     "contribution": "32.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "5+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 5+ years, within your experience range.",
+     "weight": 32
+    },
+    {
+     "contribution": "61.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [
+      "Full-time"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Employment type matches Full-time.",
+     "weight": 61
+    }
+   ],
+   "flags": [],
+   "score": 0,
+   "status": "excluded",
+   "summary": "You excluded remote roles; this job is remote."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": null,
+   "experience_min_months": 36,
+   "locations": [
+    "Berlin",
+    "Remote"
+   ],
+   "preferred_keywords": [
+    "on-call"
+   ],
+   "preferred_skills": [
+    "Kubernetes"
+   ],
+   "remote_policy": "any",
+   "required_skills": [
+    ".NET"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 88,
+    "keywords": 10,
+    "location": 2,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": null,
+   "description_text": "We build PostgreSQL and C# and .NET and Node.js and React systems. APIs matter.",
+   "employment_type": "part_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "5 years of SQL",
+   "title": "Lead Backend Engineer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Berlin",
+      "Remote"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The location does not mention Berlin, Remote.",
+     "weight": 2
+    },
+    {
+     "contribution": "88.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "5+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 5+ years, within your experience range.",
+     "weight": 88
+    },
+    {
+     "contribution": "0.00",
+     "factor": "keywords",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "on-call"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 1 keywords. Not found: on-call.",
+     "weight": 10
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 88,
+   "status": "eligible",
+   "summary": "Strongest match: experience."
+  }
+ },
+ {
+  "criteria": {
+   "excluded_keywords": [
+    "Unpaid"
+   ],
+   "locations": [],
+   "remote_policy": "remote_only",
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 0,
+    "location": 100,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": null,
+   "description_text": "We build SQL systems. on-call matter.",
+   "employment_type": "full_time",
+   "location_text": "Berlin, Germany",
+   "requirements_text": "5 years of SQL",
+   "title": "Senior Product Designer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate location; this factor was left out.",
+     "weight": 100
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    },
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": null,
+   "status": "insufficient_information",
+   "summary": "The job does not state enough to evaluate any weighted preference."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": 60,
+   "experience_min_months": null,
+   "job_titles": [
+    "Backend Engineer"
+   ],
+   "locations": [
+    "Toronto"
+   ],
+   "preferred_keywords": [
+    "APIs"
+   ],
+   "remote_policy": "any",
+   "seniority_preferences": [
+    "Senior"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 19,
+    "keywords": 68,
+    "location": 10,
+    "skills": 0,
+    "title": 3
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": "Platform",
+   "description_text": "We build Python systems. APIs matter.",
+   "employment_type": "part_time",
+   "location_text": null,
+   "requirements_text": "5 years of SQL",
+   "title": "Data Analyst",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.9000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Backend Engineer",
+      "Senior"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 3
+    },
+    {
+     "contribution": null,
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate location; this factor was left out.",
+     "weight": 10
+    },
+    {
+     "contribution": "21.11",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "5+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 5+ years, within your experience range.",
+     "weight": 19
+    },
+    {
+     "contribution": "75.56",
+     "factor": "keywords",
+     "found_in": {
+      "APIs": "description"
+     },
+     "matched": [
+      "APIs"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Found 1 of 1 keywords in the description: APIs.",
+     "weight": 68
+    }
+   ],
+   "flags": [],
+   "score": 97,
+   "status": "eligible",
+   "summary": "Strongest match: keywords."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Full-time",
+    "Part-time"
+   ],
+   "job_titles": [
+    "Data Analyst"
+   ],
+   "locations": [
+    "Berlin"
+   ],
+   "preferred_keywords": [
+    "observability",
+    "startup",
+    "on-call"
+   ],
+   "remote_policy": "remote_only",
+   "seniority_preferences": [
+    "Junior"
+   ],
+   "weights": {
+    "employment": 2,
+    "experience": 0,
+    "keywords": 13,
+    "location": 66,
+    "skills": 0,
+    "title": 19
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Platform",
+   "description_text": "We build C++ systems. startup matter.",
+   "employment_type": "full_time",
+   "location_text": "Remote - Canada",
+   "requirements_text": "2-4 years",
+   "title": "Site Reliability Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [
+    {
+     "code": "not_remote",
+     "text": "You asked for remote roles only; this job is onsite.",
+     "values": [
+      "onsite"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Data Analyst",
+      "Junior"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 19
+    },
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Berlin"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The location does not mention Berlin.",
+     "weight": 66
+    },
+    {
+     "contribution": "2.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [
+      "Full-time"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Employment type matches Full-time.",
+     "weight": 2
+    },
+    {
+     "contribution": "4.33",
+     "factor": "keywords",
+     "found_in": {
+      "startup": "description"
+     },
+     "matched": [
+      "startup"
+     ],
+     "missing": [
+      "observability",
+      "on-call"
+     ],
+     "score": "0.3333",
+     "status": "partial",
+     "text": "Found 1 of 3 keywords in the description: startup. Not found: observability, on-call.",
+     "weight": 13
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 0,
+   "status": "excluded",
+   "summary": "You asked for remote roles only; this job is onsite."
+  }
+ },
+ {
+  "criteria": {
+   "locations": [
+    "Remote"
+   ],
+   "preferred_skills": [
+    "Go"
+   ],
+   "remote_policy": "remote_only",
+   "required_skills": [],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 0,
+    "location": 100,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Data",
+   "description_text": "We build Node.js and Kubernetes and Python and React and PostgreSQL systems. on-call matter.",
+   "employment_type": "contract",
+   "location_text": null,
+   "requirements_text": "2-4 years",
+   "title": "Senior Site Reliability Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.0000",
+   "exclusions": [
+    {
+     "code": "not_remote",
+     "text": "You asked for remote roles only; this job is onsite.",
+     "values": [
+      "onsite"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate location; this factor was left out.",
+     "weight": 100
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    },
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": null,
+   "status": "insufficient_information",
+   "summary": "The job does not state enough to evaluate any weighted preference."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Part-time"
+   ],
+   "experience_max_months": null,
+   "experience_min_months": 12,
+   "locations": [
+    "Lisbon",
+    "Berlin"
+   ],
+   "preferred_skills": [
+    "SQL"
+   ],
+   "remote_policy": "remote_only",
+   "required_skills": [
+    "Python"
+   ],
+   "weights": {
+    "employment": 8,
+    "experience": 5,
+    "keywords": 0,
+    "location": 26,
+    "skills": 61,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": null,
+   "description_text": null,
+   "employment_type": "full_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": null,
+   "title": "Lead Backend Engineer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.3400",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "skills",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Python",
+      "SQL"
+     ],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate skills; this factor was left out.",
+     "weight": 61
+    },
+    {
+     "contribution": "76.47",
+     "factor": "location",
+     "found_in": {
+      "Lisbon": "location"
+     },
+     "matched": [
+      "Lisbon"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The location mentions Lisbon.",
+     "weight": 26
+    },
+    {
+     "contribution": null,
+     "factor": "experience",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate experience; this factor was left out.",
+     "weight": 5
+    },
+    {
+     "contribution": "0.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Part-time"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Employment type is full-time, not one you selected.",
+     "weight": 8
+    }
+   ],
+   "flags": [
+    {
+     "code": "required_skills_unverified",
+     "text": "Required skills could not be checked: the job has no description."
+    },
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": 76,
+   "status": "eligible",
+   "summary": "Strongest match: location."
+  }
+ },
+ {
+  "criteria": {
+   "excluded_keywords": [
+    "Clearance"
+   ],
+   "experience_max_months": null,
+   "experience_min_months": 36,
+   "job_titles": [
+    "Site Reliability Engineer",
+    "Product Designer"
+   ],
+   "preferred_keywords": [
+    "APIs",
+    "on-call",
+    "observability"
+   ],
+   "preferred_skills": [
+    "React"
+   ],
+   "required_skills": [],
+   "seniority_preferences": [
+    "Lead"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 5,
+    "keywords": 71,
+    "location": 0,
+    "skills": 0,
+    "title": 24
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": "Platform",
+   "description_text": null,
+   "employment_type": "unknown",
+   "location_text": "Berlin, Germany",
+   "requirements_text": null,
+   "title": "Lead Product Designer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.2400",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "100.00",
+     "factor": "title",
+     "found_in": {
+      "Lead": "title",
+      "Product Designer": "title"
+     },
+     "matched": [
+      "Product Designer",
+      "Lead"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The job title matches Product Designer, Lead.",
+     "weight": 24
+    },
+    {
+     "contribution": null,
+     "factor": "experience",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate experience; this factor was left out.",
+     "weight": 5
+    },
+    {
+     "contribution": null,
+     "factor": "keywords",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "APIs",
+      "on-call",
+      "observability"
+     ],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate keywords; this factor was left out.",
+     "weight": 71
+    }
+   ],
+   "flags": [
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": 100,
+   "status": "eligible",
+   "summary": "Strongest match: job title."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": null,
+   "experience_min_months": 12,
+   "locations": [
+    "Toronto",
+    "Remote"
+   ],
+   "remote_policy": "any",
+   "weights": {
+    "employment": 0,
+    "experience": 65,
+    "keywords": 0,
+    "location": 35,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": null,
+   "description_text": "We build Python systems. observability matter.",
+   "employment_type": "full_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "3+ years experience",
+   "title": "Senior Data Analyst",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Toronto",
+      "Remote"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The location does not mention Toronto, Remote.",
+     "weight": 35
+    },
+    {
+     "contribution": "65.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "3+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 3+ years, within your experience range.",
+     "weight": 65
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 65,
+   "status": "eligible",
+   "summary": "Strongest match: experience."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": 60,
+   "experience_min_months": null,
+   "weights": {
+    "employment": 0,
+    "experience": 100,
+    "keywords": 0,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": null,
+   "description_text": "We build React systems. startup matter.",
+   "employment_type": "unknown",
+   "location_text": "Remote - Canada",
+   "requirements_text": "5 years of SQL",
+   "title": "Senior Site Reliability Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "100.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "5+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 5+ years, within your experience range.",
+     "weight": 100
+    }
+   ],
+   "flags": [],
+   "score": 100,
+   "status": "eligible",
+   "summary": "Strongest match: experience."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": 96,
+   "experience_min_months": null,
+   "job_titles": [
+    "Data Analyst"
+   ],
+   "locations": [],
+   "preferred_skills": [
+    "Python",
+    "C++",
+    ".NET"
+   ],
+   "remote_policy": "remote_only",
+   "required_skills": [
+    "React"
+   ],
+   "seniority_preferences": [],
+   "weights": {
+    "employment": 0,
+    "experience": 9,
+    "keywords": 0,
+    "location": 70,
+    "skills": 20,
+    "title": 1
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Data",
+   "description_text": "We build C# and React systems. startup matter.",
+   "employment_type": "contract",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "5 years of SQL",
+   "title": "Senior Site Reliability Engineer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.3000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "26.67",
+     "factor": "skills",
+     "found_in": {
+      "React": "description"
+     },
+     "matched": [
+      "React"
+     ],
+     "missing": [
+      "Python",
+      "C++",
+      ".NET"
+     ],
+     "score": "0.4000",
+     "status": "partial",
+     "text": "Found 1 of 4 skills in the description: React. Not found: Python, C++, .NET.",
+     "weight": 20
+    },
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Data Analyst"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 1
+    },
+    {
+     "contribution": null,
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate location; this factor was left out.",
+     "weight": 70
+    },
+    {
+     "contribution": "30.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "5+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 5+ years, within your experience range.",
+     "weight": 9
+    }
+   ],
+   "flags": [
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": 57,
+   "status": "eligible",
+   "summary": "Strongest match: experience."
+  }
+ },
+ {
+  "criteria": {
+   "job_titles": [
+    "Backend Engineer"
+   ],
+   "preferred_keywords": [
+    "APIs",
+    "startup",
+    "observability"
+   ],
+   "preferred_skills": [
+    "Kubernetes"
+   ],
+   "required_skills": [],
+   "seniority_preferences": [
+    "Senior"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 8,
+    "location": 0,
+    "skills": 0,
+    "title": 92
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Data",
+   "description_text": "We build PostgreSQL and SQL and .NET and Node.js and Go systems. APIs matter.",
+   "employment_type": "part_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "3+ years experience",
+   "title": "Lead Backend Engineer",
+   "work_mode": "onsite"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "92.00",
+     "factor": "title",
+     "found_in": {
+      "Backend Engineer": "title"
+     },
+     "matched": [
+      "Backend Engineer"
+     ],
+     "missing": [
+      "Senior"
+     ],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The job title matches Backend Engineer.",
+     "weight": 92
+    },
+    {
+     "contribution": "2.67",
+     "factor": "keywords",
+     "found_in": {
+      "APIs": "description"
+     },
+     "matched": [
+      "APIs"
+     ],
+     "missing": [
+      "startup",
+      "observability"
+     ],
+     "score": "0.3333",
+     "status": "partial",
+     "text": "Found 1 of 3 keywords in the description: APIs. Not found: startup, observability.",
+     "weight": 8
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 95,
+   "status": "eligible",
+   "summary": "Strongest match: job title."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Full-time"
+   ],
+   "locations": [],
+   "preferred_skills": [
+    "C++",
+    "Kubernetes",
+    ".NET"
+   ],
+   "remote_policy": "remote_only",
+   "required_skills": [
+    "Node.js"
+   ],
+   "weights": {
+    "employment": 34,
+    "experience": 0,
+    "keywords": 0,
+    "location": 66,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": null,
+   "description_text": "We build .NET and PostgreSQL and Kubernetes and Python and Go systems. observability matter.",
+   "employment_type": "full_time",
+   "location_text": "Berlin, Germany",
+   "requirements_text": "5 years of SQL",
+   "title": "Backend Engineer",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [
+    {
+     "code": "missing_required_skill",
+     "text": "A required skill is not mentioned: Node.js.",
+     "values": [
+      "Node.js"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "66.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The work mode (remote) fits your remote preference.",
+     "weight": 66
+    },
+    {
+     "contribution": "34.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [
+      "Full-time"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Employment type matches Full-time.",
+     "weight": 34
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 0,
+   "status": "excluded",
+   "summary": "A required skill is not mentioned: Node.js."
+  }
+ },
+ {
+  "criteria": {
+   "excluded_keywords": [
+    "Unpaid"
+   ],
+   "experience_max_months": 60,
+   "experience_min_months": null,
+   "weights": {
+    "employment": 0,
+    "experience": 100,
+    "keywords": 0,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Platform",
+   "description_text": "We build  systems. APIs matter. Security clearance needed.",
+   "employment_type": "full_time",
+   "location_text": "Berlin, Germany",
+   "requirements_text": null,
+   "title": "Backend Engineer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "experience",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate experience; this factor was left out.",
+     "weight": 100
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    },
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": null,
+   "status": "insufficient_information",
+   "summary": "The job does not state enough to evaluate any weighted preference."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": null,
+   "experience_min_months": 12,
+   "preferred_skills": [
+    "Go",
+    ".NET",
+    "SQL"
+   ],
+   "required_skills": [
+    "Python"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 41,
+    "keywords": 0,
+    "location": 0,
+    "skills": 59,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Platform",
+   "description_text": "We build SQL and C# and .NET systems. startup matter.",
+   "employment_type": "part_time",
+   "location_text": null,
+   "requirements_text": null,
+   "title": "Senior Backend Engineer",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.5900",
+   "exclusions": [
+    {
+     "code": "missing_required_skill",
+     "text": "A required skill is not mentioned: Python.",
+     "values": [
+      "Python"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "40.00",
+     "factor": "skills",
+     "found_in": {
+      ".NET": "description",
+      "SQL": "description"
+     },
+     "matched": [
+      ".NET",
+      "SQL"
+     ],
+     "missing": [
+      "Python",
+      "Go"
+     ],
+     "score": "0.4000",
+     "status": "partial",
+     "text": "Found 2 of 4 skills in the description: .NET, SQL. Not found: Python, Go.",
+     "weight": 59
+    },
+    {
+     "contribution": null,
+     "factor": "experience",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate experience; this factor was left out.",
+     "weight": 41
+    }
+   ],
+   "flags": [],
+   "score": 0,
+   "status": "excluded",
+   "summary": "A required skill is not mentioned: Python."
+  }
+ },
+ {
+  "criteria": {
+   "job_titles": [
+    "Product Designer"
+   ],
+   "locations": [
+    "Toronto"
+   ],
+   "preferred_keywords": [
+    "startup"
+   ],
+   "preferred_skills": [
+    "PostgreSQL",
+    "React",
+    "SQL"
+   ],
+   "remote_policy": "remote_only",
+   "required_skills": [
+    "C#"
+   ],
+   "seniority_preferences": [],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 25,
+    "location": 36,
+    "skills": 2,
+    "title": 37
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": null,
+   "description_text": "We build .NET systems. APIs matter.",
+   "employment_type": "contract",
+   "location_text": null,
+   "requirements_text": "2-4 years",
+   "title": "Data Analyst",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.6400",
+   "exclusions": [
+    {
+     "code": "missing_required_skill",
+     "text": "A required skill is not mentioned: C#.",
+     "values": [
+      "C#"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "skills",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "C#",
+      "PostgreSQL",
+      "React",
+      "SQL"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 4 skills. Not found: C#, PostgreSQL, React, SQL.",
+     "weight": 2
+    },
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Product Designer"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 37
+    },
+    {
+     "contribution": null,
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate location; this factor was left out.",
+     "weight": 36
+    },
+    {
+     "contribution": "0.00",
+     "factor": "keywords",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "startup"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 1 keywords. Not found: startup.",
+     "weight": 25
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 0,
+   "status": "excluded",
+   "summary": "A required skill is not mentioned: C#."
+  }
+ },
+ {
+  "criteria": {
+   "job_titles": [
+    "Backend Engineer"
+   ],
+   "locations": [],
+   "remote_policy": "remote_only",
+   "seniority_preferences": [],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 0,
+    "location": 63,
+    "skills": 0,
+    "title": 37
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Data",
+   "description_text": "We build C++ and Node.js and React and Kubernetes and PostgreSQL systems. observability matter.",
+   "employment_type": "unknown",
+   "location_text": null,
+   "requirements_text": "3+ years experience",
+   "title": "Backend Engineer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.3700",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "100.00",
+     "factor": "title",
+     "found_in": {
+      "Backend Engineer": "title"
+     },
+     "matched": [
+      "Backend Engineer"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The job title matches Backend Engineer.",
+     "weight": 37
+    },
+    {
+     "contribution": null,
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate location; this factor was left out.",
+     "weight": 63
+    }
+   ],
+   "flags": [
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": 100,
+   "status": "eligible",
+   "summary": "Strongest match: job title."
+  }
+ },
+ {
+  "criteria": {
+   "job_titles": [
+    "Backend Engineer",
+    "Data Analyst"
+   ],
+   "locations": [
+    "Remote"
+   ],
+   "remote_policy": "remote_only",
+   "seniority_preferences": [],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 0,
+    "location": 3,
+    "skills": 0,
+    "title": 97
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Platform",
+   "description_text": "We build .NET and C# and Node.js and Go systems. on-call matter.",
+   "employment_type": "part_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": null,
+   "title": "Senior Product Designer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [
+    {
+     "code": "not_remote",
+     "text": "You asked for remote roles only; this job is hybrid.",
+     "values": [
+      "hybrid"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Backend Engineer",
+      "Data Analyst"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 97
+    },
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Remote"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The location does not mention Remote.",
+     "weight": 3
+    }
+   ],
+   "flags": [],
+   "score": 0,
+   "status": "excluded",
+   "summary": "You asked for remote roles only; this job is hybrid."
+  }
+ },
+ {
+  "criteria": {
+   "excluded_keywords": [
+    "Unpaid"
+   ],
+   "experience_max_months": 60,
+   "experience_min_months": null,
+   "preferred_keywords": [
+    "on-call",
+    "APIs",
+    "startup"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 18,
+    "keywords": 82,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": "Data",
+   "description_text": "We build C++ and React systems. on-call matter.",
+   "employment_type": "unknown",
+   "location_text": "Berlin, Germany",
+   "requirements_text": "3+ years experience",
+   "title": "Lead Backend Engineer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "18.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "3+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 3+ years, within your experience range.",
+     "weight": 18
+    },
+    {
+     "contribution": "27.33",
+     "factor": "keywords",
+     "found_in": {
+      "on-call": "description"
+     },
+     "matched": [
+      "on-call"
+     ],
+     "missing": [
+      "APIs",
+      "startup"
+     ],
+     "score": "0.3333",
+     "status": "partial",
+     "text": "Found 1 of 3 keywords in the description: on-call. Not found: APIs, startup.",
+     "weight": 82
+    }
+   ],
+   "flags": [],
+   "score": 45,
+   "status": "eligible",
+   "summary": "Strongest match: keywords."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": 96,
+   "experience_min_months": null,
+   "job_titles": [
+    "Backend Engineer",
+    "Data Analyst"
+   ],
+   "preferred_keywords": [
+    "APIs",
+    "on-call",
+    "observability"
+   ],
+   "preferred_skills": [
+    "SQL"
+   ],
+   "required_skills": [
+    "Node.js"
+   ],
+   "seniority_preferences": [],
+   "weights": {
+    "employment": 0,
+    "experience": 2,
+    "keywords": 17,
+    "location": 0,
+    "skills": 27,
+    "title": 54
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": null,
+   "description_text": "We build Python and .NET systems. startup matter.",
+   "employment_type": "full_time",
+   "location_text": null,
+   "requirements_text": "3+ years experience",
+   "title": "Senior Product Designer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [
+    {
+     "code": "missing_required_skill",
+     "text": "A required skill is not mentioned: Node.js.",
+     "values": [
+      "Node.js"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "skills",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Node.js",
+      "SQL"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 2 skills. Not found: Node.js, SQL.",
+     "weight": 27
+    },
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Backend Engineer",
+      "Data Analyst"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 54
+    },
+    {
+     "contribution": "2.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "3+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 3+ years, within your experience range.",
+     "weight": 2
+    },
+    {
+     "contribution": "0.00",
+     "factor": "keywords",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "APIs",
+      "on-call",
+      "observability"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 3 keywords. Not found: APIs, on-call, observability.",
+     "weight": 17
+    }
+   ],
+   "flags": [],
+   "score": 0,
+   "status": "excluded",
+   "summary": "A required skill is not mentioned: Node.js."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": null,
+   "experience_min_months": 36,
+   "locations": [
+    "Remote"
+   ],
+   "preferred_keywords": [
+    "APIs"
+   ],
+   "preferred_skills": [
+    "Kubernetes"
+   ],
+   "remote_policy": "remote_only",
+   "required_skills": [
+    "C++"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 36,
+    "keywords": 43,
+    "location": 20,
+    "skills": 1,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": "Data",
+   "description_text": "We build SQL and Go and React and Kubernetes systems. observability matter.",
+   "employment_type": "contract",
+   "location_text": "Remote - Canada",
+   "requirements_text": null,
+   "title": "Lead Product Designer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.6400",
+   "exclusions": [
+    {
+     "code": "not_remote",
+     "text": "You asked for remote roles only; this job is hybrid.",
+     "values": [
+      "hybrid"
+     ]
+    },
+    {
+     "code": "missing_required_skill",
+     "text": "A required skill is not mentioned: C++.",
+     "values": [
+      "C++"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "0.52",
+     "factor": "skills",
+     "found_in": {
+      "Kubernetes": "description"
+     },
+     "matched": [
+      "Kubernetes"
+     ],
+     "missing": [
+      "C++"
+     ],
+     "score": "0.3333",
+     "status": "partial",
+     "text": "Found 1 of 2 skills in the description: Kubernetes. Not found: C++.",
+     "weight": 1
+    },
+    {
+     "contribution": "31.25",
+     "factor": "location",
+     "found_in": {
+      "Remote": "location"
+     },
+     "matched": [
+      "Remote"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The location mentions Remote.",
+     "weight": 20
+    },
+    {
+     "contribution": null,
+     "factor": "experience",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate experience; this factor was left out.",
+     "weight": 36
+    },
+    {
+     "contribution": "0.00",
+     "factor": "keywords",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "APIs"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 1 keywords. Not found: APIs.",
+     "weight": 43
+    }
+   ],
+   "flags": [],
+   "score": 0,
+   "status": "excluded",
+   "summary": "You asked for remote roles only; this job is hybrid."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Full-time"
+   ],
+   "preferred_keywords": [
+    "on-call"
+   ],
+   "preferred_skills": [
+    "React"
+   ],
+   "required_skills": [
+    "Go"
+   ],
+   "weights": {
+    "employment": 29,
+    "experience": 0,
+    "keywords": 10,
+    "location": 0,
+    "skills": 61,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": null,
+   "description_text": null,
+   "employment_type": "part_time",
+   "location_text": "Berlin, Germany",
+   "requirements_text": null,
+   "title": "Backend Engineer",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.2900",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "skills",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Go",
+      "React"
+     ],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate skills; this factor was left out.",
+     "weight": 61
+    },
+    {
+     "contribution": "0.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Full-time"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Employment type is part-time, not one you selected.",
+     "weight": 29
+    },
+    {
+     "contribution": null,
+     "factor": "keywords",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "on-call"
+     ],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate keywords; this factor was left out.",
+     "weight": 10
+    }
+   ],
+   "flags": [
+    {
+     "code": "required_skills_unverified",
+     "text": "Required skills could not be checked: the job has no description."
+    },
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": 0,
+   "status": "eligible",
+   "summary": "None of your weighted preferences matched."
+  }
+ },
+ {
+  "criteria": {
+   "job_titles": [
+    "Data Analyst",
+    "Site Reliability Engineer"
+   ],
+   "locations": [
+    "Berlin"
+   ],
+   "preferred_keywords": [
+    "startup",
+    "APIs",
+    "observability"
+   ],
+   "preferred_skills": [
+    "React"
+   ],
+   "remote_policy": "any",
+   "required_skills": [],
+   "seniority_preferences": [],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 46,
+    "location": 19,
+    "skills": 0,
+    "title": 35
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": "Data",
+   "description_text": "We build PostgreSQL and C# systems. observability matter.",
+   "employment_type": "full_time",
+   "location_text": "Berlin, Germany",
+   "requirements_text": "2-4 years",
+   "title": "Senior Site Reliability Engineer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "35.00",
+     "factor": "title",
+     "found_in": {
+      "Site Reliability Engineer": "title"
+     },
+     "matched": [
+      "Site Reliability Engineer"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The job title matches Site Reliability Engineer.",
+     "weight": 35
+    },
+    {
+     "contribution": "19.00",
+     "factor": "location",
+     "found_in": {
+      "Berlin": "location"
+     },
+     "matched": [
+      "Berlin"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The location mentions Berlin.",
+     "weight": 19
+    },
+    {
+     "contribution": "15.33",
+     "factor": "keywords",
+     "found_in": {
+      "observability": "description"
+     },
+     "matched": [
+      "observability"
+     ],
+     "missing": [
+      "startup",
+      "APIs"
+     ],
+     "score": "0.3333",
+     "status": "partial",
+     "text": "Found 1 of 3 keywords in the description: observability. Not found: startup, APIs.",
+     "weight": 46
+    }
+   ],
+   "flags": [],
+   "score": 69,
+   "status": "eligible",
+   "summary": "Strongest match: job title."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Part-time",
+    "Contract"
+   ],
+   "preferred_skills": [
+    ".NET",
+    "C++",
+    "Kubernetes"
+   ],
+   "required_skills": [
+    "C#"
+   ],
+   "weights": {
+    "employment": 68,
+    "experience": 0,
+    "keywords": 0,
+    "location": 0,
+    "skills": 32,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": null,
+   "description_text": "We build PostgreSQL systems. startup matter.",
+   "employment_type": "part_time",
+   "location_text": "Remote - Canada",
+   "requirements_text": "5 years of SQL",
+   "title": "Data Analyst",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [
+    {
+     "code": "missing_required_skill",
+     "text": "A required skill is not mentioned: C#.",
+     "values": [
+      "C#"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "skills",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "C#",
+      ".NET",
+      "C++",
+      "Kubernetes"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 4 skills. Not found: C#, .NET, C++, Kubernetes.",
+     "weight": 32
+    },
+    {
+     "contribution": "68.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [
+      "Part-time"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Employment type matches Part-time.",
+     "weight": 68
+    }
+   ],
+   "flags": [],
+   "score": 0,
+   "status": "excluded",
+   "summary": "A required skill is not mentioned: C#."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Contract",
+    "Internship"
+   ],
+   "experience_max_months": null,
+   "experience_min_months": 36,
+   "locations": [],
+   "preferred_skills": [
+    "Python",
+    "Node.js"
+   ],
+   "remote_policy": "exclude_remote",
+   "required_skills": [
+    "Kubernetes"
+   ],
+   "weights": {
+    "employment": 71,
+    "experience": 3,
+    "keywords": 0,
+    "location": 17,
+    "skills": 9,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": null,
+   "description_text": "We build C# and Python systems. APIs matter.",
+   "employment_type": "unknown",
+   "location_text": "Berlin, Germany",
+   "requirements_text": "2-4 years",
+   "title": "Backend Engineer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.1200",
+   "exclusions": [
+    {
+     "code": "missing_required_skill",
+     "text": "A required skill is not mentioned: Kubernetes.",
+     "values": [
+      "Kubernetes"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "18.75",
+     "factor": "skills",
+     "found_in": {
+      "Python": "description"
+     },
+     "matched": [
+      "Python"
+     ],
+     "missing": [
+      "Kubernetes",
+      "Node.js"
+     ],
+     "score": "0.2500",
+     "status": "partial",
+     "text": "Found 1 of 3 skills in the description: Python. Not found: Kubernetes, Node.js.",
+     "weight": 9
+    },
+    {
+     "contribution": null,
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate location; this factor was left out.",
+     "weight": 17
+    },
+    {
+     "contribution": "25.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "2\u20134 years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 2\u20134 years, within your experience range.",
+     "weight": 3
+    },
+    {
+     "contribution": null,
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate employment type; this factor was left out.",
+     "weight": 71
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    },
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": 0,
+   "status": "excluded",
+   "summary": "A required skill is not mentioned: Kubernetes."
+  }
+ },
+ {
+  "criteria": {
+   "locations": [
+    "Lisbon",
+    "Berlin"
+   ],
+   "remote_policy": "any",
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 0,
+    "location": 100,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": "Platform",
+   "description_text": null,
+   "employment_type": "part_time",
+   "location_text": null,
+   "requirements_text": null,
+   "title": "Lead Product Designer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate location; this factor was left out.",
+     "weight": 100
+    }
+   ],
+   "flags": [
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": null,
+   "status": "insufficient_information",
+   "summary": "The job does not state enough to evaluate any weighted preference."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Part-time",
+    "Contract"
+   ],
+   "job_titles": [
+    "Data Analyst"
+   ],
+   "preferred_keywords": [
+    "APIs",
+    "observability"
+   ],
+   "preferred_skills": [
+    "SQL",
+    "C#",
+    "Python"
+   ],
+   "required_skills": [],
+   "seniority_preferences": [
+    "Senior"
+   ],
+   "weights": {
+    "employment": 47,
+    "experience": 0,
+    "keywords": 7,
+    "location": 0,
+    "skills": 34,
+    "title": 12
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Data",
+   "description_text": "We build PostgreSQL and SQL and Node.js systems. APIs matter.",
+   "employment_type": "full_time",
+   "location_text": "Remote - Canada",
+   "requirements_text": "2-4 years",
+   "title": "Lead Backend Engineer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "11.33",
+     "factor": "skills",
+     "found_in": {
+      "SQL": "description"
+     },
+     "matched": [
+      "SQL"
+     ],
+     "missing": [
+      "C#",
+      "Python"
+     ],
+     "score": "0.3333",
+     "status": "partial",
+     "text": "Found 1 of 3 skills in the description: SQL. Not found: C#, Python.",
+     "weight": 34
+    },
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Data Analyst",
+      "Senior"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 12
+    },
+    {
+     "contribution": "0.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Part-time",
+      "Contract"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Employment type is full-time, not one you selected.",
+     "weight": 47
+    },
+    {
+     "contribution": "3.50",
+     "factor": "keywords",
+     "found_in": {
+      "APIs": "description"
+     },
+     "matched": [
+      "APIs"
+     ],
+     "missing": [
+      "observability"
+     ],
+     "score": "0.5000",
+     "status": "partial",
+     "text": "Found 1 of 2 keywords in the description: APIs. Not found: observability.",
+     "weight": 7
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 15,
+   "status": "eligible",
+   "summary": "Strongest match: skills."
+  }
+ },
+ {
+  "criteria": {
+   "job_titles": [
+    "Product Designer",
+    "Site Reliability Engineer"
+   ],
+   "locations": [],
+   "preferred_skills": [
+    "SQL"
+   ],
+   "remote_policy": "exclude_remote",
+   "required_skills": [
+    "C++"
+   ],
+   "seniority_preferences": [
+    "Junior"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 0,
+    "location": 19,
+    "skills": 5,
+    "title": 76
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Platform",
+   "description_text": "We build Go systems. startup matter.",
+   "employment_type": "full_time",
+   "location_text": null,
+   "requirements_text": "2-4 years",
+   "title": "Backend Engineer",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [
+    {
+     "code": "remote_excluded",
+     "text": "You excluded remote roles; this job is remote.",
+     "values": [
+      "remote"
+     ]
+    },
+    {
+     "code": "missing_required_skill",
+     "text": "A required skill is not mentioned: C++.",
+     "values": [
+      "C++"
+     ]
+    }
+   ],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "skills",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "C++",
+      "SQL"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 2 skills. Not found: C++, SQL.",
+     "weight": 5
+    },
+    {
+     "contribution": "19.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Product Designer",
+      "Site Reliability Engineer",
+      "Junior"
+     ],
+     "score": "0.2500",
+     "status": "partial",
+     "text": "The job title partly resembles Site Reliability Engineer.",
+     "weight": 76
+    },
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The work mode (remote) fits your remote preference.",
+     "weight": 19
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 0,
+   "status": "excluded",
+   "summary": "You excluded remote roles; this job is remote."
+  }
+ },
+ {
+  "criteria": {
+   "preferred_skills": [
+    "Node.js",
+    "PostgreSQL",
+    "SQL"
+   ],
+   "required_skills": [
+    "Go"
+   ],
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 0,
+    "location": 0,
+    "skills": 100,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Data",
+   "description_text": "We build Go and SQL and Kubernetes and C++ systems. on-call matter.",
+   "employment_type": "part_time",
+   "location_text": null,
+   "requirements_text": "2-4 years",
+   "title": "Lead Site Reliability Engineer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "60.00",
+     "factor": "skills",
+     "found_in": {
+      "Go": "description",
+      "SQL": "description"
+     },
+     "matched": [
+      "Go",
+      "SQL"
+     ],
+     "missing": [
+      "Node.js",
+      "PostgreSQL"
+     ],
+     "score": "0.6000",
+     "status": "partial",
+     "text": "Found 2 of 4 skills in the description: Go, SQL. Not found: Node.js, PostgreSQL.",
+     "weight": 100
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 60,
+   "status": "eligible",
+   "summary": "Strongest match: skills."
+  }
+ },
+ {
+  "criteria": {
+   "excluded_keywords": [
+    "Unpaid"
+   ],
+   "experience_max_months": null,
+   "experience_min_months": 12,
+   "job_titles": [
+    "Product Designer"
+   ],
+   "preferred_skills": [
+    "PostgreSQL"
+   ],
+   "required_skills": [],
+   "seniority_preferences": [],
+   "weights": {
+    "employment": 0,
+    "experience": 15,
+    "keywords": 0,
+    "location": 0,
+    "skills": 43,
+    "title": 42
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Data",
+   "description_text": null,
+   "employment_type": "contract",
+   "location_text": null,
+   "requirements_text": null,
+   "title": "Backend Engineer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "0.4200",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": null,
+     "factor": "skills",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "PostgreSQL"
+     ],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate skills; this factor was left out.",
+     "weight": 43
+    },
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Product Designer"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 42
+    },
+    {
+     "contribution": null,
+     "factor": "experience",
+     "found_in": {},
+     "matched": [],
+     "missing": [],
+     "score": null,
+     "status": "unknown",
+     "text": "The job does not state enough to evaluate experience; this factor was left out.",
+     "weight": 15
+    }
+   ],
+   "flags": [
+    {
+     "code": "limited_information",
+     "text": "Less than half of your weighting could be evaluated for this job."
+    }
+   ],
+   "score": 0,
+   "status": "eligible",
+   "summary": "None of your weighted preferences matched."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Full-time"
+   ],
+   "excluded_keywords": [
+    "Unpaid"
+   ],
+   "experience_max_months": 60,
+   "experience_min_months": null,
+   "locations": [
+    "Berlin"
+   ],
+   "remote_policy": "any",
+   "weights": {
+    "employment": 8,
+    "experience": 85,
+    "keywords": 0,
+    "location": 7,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": null,
+   "description_text": "We build  systems. observability matter. Security clearance needed.",
+   "employment_type": "full_time",
+   "location_text": "Remote - Canada",
+   "requirements_text": "2-4 years",
+   "title": "Lead Site Reliability Engineer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Berlin"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The location does not mention Berlin.",
+     "weight": 7
+    },
+    {
+     "contribution": "85.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "2\u20134 years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 2\u20134 years, within your experience range.",
+     "weight": 85
+    },
+    {
+     "contribution": "8.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [
+      "Full-time"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Employment type matches Full-time.",
+     "weight": 8
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 93,
+   "status": "eligible",
+   "summary": "Strongest match: experience."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": null,
+   "experience_min_months": 36,
+   "job_titles": [
+    "Data Analyst",
+    "Product Designer"
+   ],
+   "preferred_skills": [
+    "Kubernetes"
+   ],
+   "required_skills": [],
+   "seniority_preferences": [],
+   "weights": {
+    "employment": 0,
+    "experience": 20,
+    "keywords": 0,
+    "location": 0,
+    "skills": 61,
+    "title": 19
+   }
+  },
+  "job": {
+   "confidence": "medium",
+   "department": "Platform",
+   "description_text": "We build Python and React and C# systems. startup matter. Security clearance needed.",
+   "employment_type": "unknown",
+   "location_text": null,
+   "requirements_text": "5 years of SQL",
+   "title": "Product Designer",
+   "work_mode": "hybrid"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "skills",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Kubernetes"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Found 0 of 1 skills. Not found: Kubernetes.",
+     "weight": 61
+    },
+    {
+     "contribution": "19.00",
+     "factor": "title",
+     "found_in": {
+      "Product Designer": "title"
+     },
+     "matched": [
+      "Product Designer"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "The job title matches Product Designer.",
+     "weight": 19
+    },
+    {
+     "contribution": "20.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "5+ years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 5+ years, within your experience range.",
+     "weight": 20
+    }
+   ],
+   "flags": [],
+   "score": 39,
+   "status": "eligible",
+   "summary": "Strongest match: experience."
+  }
+ },
+ {
+  "criteria": {
+   "employment_types": [
+    "Internship"
+   ],
+   "job_titles": [
+    "Data Analyst",
+    "Site Reliability Engineer"
+   ],
+   "seniority_preferences": [
+    "Junior"
+   ],
+   "weights": {
+    "employment": 90,
+    "experience": 0,
+    "keywords": 0,
+    "location": 0,
+    "skills": 0,
+    "title": 10
+   }
+  },
+  "job": {
+   "confidence": "low",
+   "department": "Platform",
+   "description_text": "We build  systems. APIs matter.",
+   "employment_type": "contract",
+   "location_text": "Remote - Canada",
+   "requirements_text": "3+ years experience",
+   "title": "Product Designer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "title",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Data Analyst",
+      "Site Reliability Engineer",
+      "Junior"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The job title does not match your titles.",
+     "weight": 10
+    },
+    {
+     "contribution": "0.00",
+     "factor": "employment",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Internship"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "Employment type is contract, not one you selected.",
+     "weight": 90
+    }
+   ],
+   "flags": [
+    {
+     "code": "low_confidence_source",
+     "text": "Job details were inferred from page layout and may be incomplete."
+    }
+   ],
+   "score": 0,
+   "status": "eligible",
+   "summary": "None of your weighted preferences matched."
+  }
+ },
+ {
+  "criteria": {
+   "locations": [
+    "Toronto",
+    "Remote"
+   ],
+   "preferred_keywords": [
+    "observability",
+    "on-call",
+    "startup"
+   ],
+   "remote_policy": "remote_only",
+   "weights": {
+    "employment": 0,
+    "experience": 0,
+    "keywords": 38,
+    "location": 62,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": "Platform",
+   "description_text": "We build C++ and Node.js systems. on-call matter.",
+   "employment_type": "contract",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "5 years of SQL",
+   "title": "Product Designer",
+   "work_mode": "unknown"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "0.00",
+     "factor": "location",
+     "found_in": {},
+     "matched": [],
+     "missing": [
+      "Toronto",
+      "Remote"
+     ],
+     "score": "0.0000",
+     "status": "not_matched",
+     "text": "The location does not mention Toronto, Remote.",
+     "weight": 62
+    },
+    {
+     "contribution": "12.67",
+     "factor": "keywords",
+     "found_in": {
+      "on-call": "description"
+     },
+     "matched": [
+      "on-call"
+     ],
+     "missing": [
+      "observability",
+      "startup"
+     ],
+     "score": "0.3333",
+     "status": "partial",
+     "text": "Found 1 of 3 keywords in the description: on-call. Not found: observability, startup.",
+     "weight": 38
+    }
+   ],
+   "flags": [],
+   "score": 13,
+   "status": "eligible",
+   "summary": "Strongest match: keywords."
+  }
+ },
+ {
+  "criteria": {
+   "experience_max_months": 60,
+   "experience_min_months": null,
+   "weights": {
+    "employment": 0,
+    "experience": 100,
+    "keywords": 0,
+    "location": 0,
+    "skills": 0,
+    "title": 0
+   }
+  },
+  "job": {
+   "confidence": "high",
+   "department": null,
+   "description_text": "We build Python and C++ and SQL and .NET and React systems. APIs matter.",
+   "employment_type": "full_time",
+   "location_text": "Lisbon, PT",
+   "requirements_text": "2-4 years",
+   "title": "Backend Engineer",
+   "work_mode": "remote"
+  },
+  "result": {
+   "algorithm_version": "deterministic-1",
+   "coverage": "1.0000",
+   "exclusions": [],
+   "factors": [
+    {
+     "contribution": "100.00",
+     "factor": "experience",
+     "found_in": {},
+     "matched": [
+      "2\u20134 years"
+     ],
+     "missing": [],
+     "score": "1.0000",
+     "status": "matched",
+     "text": "Asks for 2\u20134 years, within your experience range.",
+     "weight": 100
+    }
+   ],
+   "flags": [],
+   "score": 100,
+   "status": "eligible",
+   "summary": "Strongest match: experience."
+  }
+ }
+]
