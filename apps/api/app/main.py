@@ -13,6 +13,7 @@ from app.core.config import Settings
 from app.core.errors import register_error_handlers
 from app.core.logging import configure_logging
 from app.db.session import Database
+from app.integrations.ai import provider_from_settings
 from app.modules.identity.rate_limits import RateLimits
 from app.modules.identity.security import Passwords, now
 
@@ -32,9 +33,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         app.state.passwords = Passwords(config.password_workers)
         await app.state.passwords.initialize()
         app.state.rate_limits = RateLimits(app.state.database, config)
+        app.state.ai_provider = provider_from_settings(config)
         try:
             yield
         finally:
+            close = getattr(app.state.ai_provider, "aclose", None)
+            if close is not None:
+                await close()
             await app.state.database.close()
 
     app = FastAPI(title="Career Intelligence API", version="0.1.0", lifespan=lifespan)
@@ -55,6 +60,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     "/api/v1/companies",
                     "/api/v1/preferences",
                     "/api/v1/scans",
+                    "/api/v1/jobs",
+                    "/api/v1/sources",
+                    "/api/v1/extractions",
+                    "/api/v1/ai",
                 )
             ):
                 response.headers["Cache-Control"] = "no-store"

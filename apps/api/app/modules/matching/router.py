@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, Query, Request
 from app.modules.authorization.dependencies import Principal, SessionDependency, require_permission
 from app.modules.identity.security import check_csrf
 from app.modules.jobs.schemas import WorkMode
-from app.modules.matching import service
+from app.modules.matching import ai_service, service
 from app.modules.matching.schemas import MatchPage, MatchRunView, MatchStatusView, MatchView
 
 router = APIRouter(prefix="/preferences/{profile_id}", tags=["matching"])
@@ -81,3 +81,37 @@ async def recalculate(
     if not created:
         await state.rate_limits.refund(key)
     return run
+
+
+ai_router = APIRouter(tags=["ai"])
+AIUser = Annotated[Principal, Depends(require_permission("ai:use:self"))]
+
+
+@ai_router.get("/ai/status", response_model=ai_service.AIStatusView)
+async def ai_status(
+    request: Request, db: SessionDependency, principal: AIUser
+) -> ai_service.AIStatusView:
+    state = request.app.state
+    return await ai_service.status(
+        db, principal.user.id, state.ai_provider, state.settings, state.clock()
+    )
+
+
+@ai_router.post(
+    "/preferences/{profile_id}/matches/{job_id}/ai-assessment",
+    response_model=ai_service.AIAssessmentResponse,
+)
+async def ai_assessment(
+    profile_id: UUID, job_id: UUID, request: Request, db: SessionDependency, principal: AIUser
+) -> ai_service.AIAssessmentResponse:
+    state = request.app.state
+    check_csrf(request, state.settings, str(principal.session.id), state.clock())
+    return await ai_service.assess(
+        db,
+        principal.user.id,
+        profile_id,
+        job_id,
+        state.ai_provider,
+        state.settings,
+        state.clock(),
+    )

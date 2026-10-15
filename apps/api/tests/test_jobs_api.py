@@ -133,7 +133,9 @@ async def test_jobs_listing_filters_search_and_detail(api):
     user_id, company_id = await owner(api, "jobs@example.com")
     source_id, ids = await seed(app, user_id, company_id)
 
-    page = (await client.get("/api/v1/jobs")).json()
+    response = await client.get("/api/v1/jobs")
+    assert response.headers["cache-control"] == "no-store"
+    page = response.json()
     assert [row["title"] for row in page["items"]] == ["Backend Engineer", "Product Designer"]
     assert page["items"][0]["company_name"] == "Co jobs@example.com"
     assert page["next_offset"] is None

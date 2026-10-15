@@ -60,6 +60,15 @@ class Settings(DatabaseSettings):
     extraction_lease_seconds: int = Field(default=240, ge=60, le=1800)
     extraction_browser_enabled: bool = False
     matching_user_hour_limit: int = Field(default=30, ge=1, le=1000)
+    # Optional advisory AI. Off unless explicitly enabled with a key and an operator-chosen model.
+    ai_enabled: bool = False
+    ai_provider: Literal["openrouter"] = "openrouter"
+    openrouter_api_key: SecretStr | None = None
+    openrouter_base_url: str = "https://openrouter.ai/api/v1"
+    ai_model: str | None = Field(default=None, max_length=200)
+    ai_timeout_seconds: float = Field(default=20, gt=0, le=60)
+    ai_max_output_tokens: int = Field(default=800, ge=100, le=4000)
+    ai_user_daily_limit: int = Field(default=20, ge=1, le=1000)
     # Test stacks only: exact public-looking hostnames mapped to fixture containers. Refused in
     # production; never set in compose.yaml.
     outbound_test_hosts: dict[str, str] = {}
@@ -115,6 +124,12 @@ class Settings(DatabaseSettings):
                 raise ValueError("Origins must be exact scheme/host/port values")
             if self.environment == "production" and parsed.scheme != "https":
                 raise ValueError("Production requires HTTPS origins")
+        if self.ai_enabled and (self.openrouter_api_key is None or not self.ai_model):
+            raise ValueError("AI_ENABLED requires OPENROUTER_API_KEY and AI_MODEL")
+        if self.environment == "production" and self.openrouter_base_url != (
+            "https://openrouter.ai/api/v1"
+        ):
+            raise ValueError("Production AI traffic must use the official OpenRouter API")
         if self.outbound_test_hosts and self.environment == "production":
             raise ValueError("OUTBOUND_TEST_HOSTS is only allowed in development test stacks")
         for host in self.outbound_test_hosts:
